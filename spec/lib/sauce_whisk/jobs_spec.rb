@@ -37,11 +37,17 @@ describe Jobs do
   end
 
   describe "##fail_job" do
-    it "Calls change_status to failt the job" do
+    it "Calls change_status to fail the job" do
       job_id = "rcercer"
       Jobs.should_receive(:change_status).with(job_id, false) {}
 
       Jobs.fail_job job_id
+    end
+  end
+
+  describe "##save" do
+    it "calls update" do
+      
     end
   end
 end

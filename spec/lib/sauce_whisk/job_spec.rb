@@ -34,6 +34,28 @@ describe Job do
         subject.send(k).should eq v
       end
     end
-    
+
+    it "tracks changes to methods" do
+      subject.name = "ANewName"
+      subject.updated_fields.should include :name
+
+      subject.public = true
+      subject.updated_fields.should include :public
+    end
+
+    describe "#save" do
+      subject {Job.new(params)}
+
+      context "with changed values" do
+        before(:each) do
+          subject.name = "New_Name"
+        end
+
+        it "calls the save method of the Jobs object" do
+          Jobs.should_receive(:save).with(subject)
+          subject.save
+        end
+      end
+    end
   end
 end

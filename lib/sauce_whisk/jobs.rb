@@ -28,11 +28,33 @@ class Jobs
 end
 
 class Job
-    attr_accessor :id, :owner, :status, :error, :name, :browser, :browser_version, :os, :creation_time, :start_time, :end_time, :video_url, :log_url, :public, :tags
+  attr_writer :updated_fields
+  
+  def self.tracked_attr_accessor(*methods)
+    methods.each do |method|
+      attr_reader method
+      self.define_method("#{method}=") do |arg|
+        if method != arg 
+          updated_fields << method
+          instance_variable_set("@#{method}", arg)
+        end
+      end
+    end
+  end
+
+  tracked_attr_accessor :id, :owner, :browser, :browser_version, :os, :status, :error, :creation_time, :start_time, :end_time, :video_url, :log_url, :tags, :name, :public
 
   def initialize(parameters={})
     parameters.each do |k,v|
       self.send("#{k}=",v)
     end
+  end
+
+  def save
+    Jobs.save(self)
+  end
+
+  def updated_fields
+    @updated_fields ||= []
   end
 end
