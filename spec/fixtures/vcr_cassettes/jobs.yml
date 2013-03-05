@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://<%= ENV["SAUCE_USERNAME"]%>:<%= ENV["SAUCE_ACCESS_KEY"] %>@saucelabs.com/rest/v1/<%= ENV["SAUCE_USERNAME"] %>/jobs
+    uri: https://<%= "#{ENV["SAUCE_USERNAME"]:"#{ENV["SAUCE_ACCESS_KEY]}"%>@saucelabs.com/rest/v1/<%= ENV["SAUCE_USERNAME"] %>/jobs
     body:
       encoding: US-ASCII
       string: ''
@@ -24,7 +24,7 @@ http_interactions:
         bmdpbngvMC43LjYy
       !binary "RGF0ZQ==":
       - !binary |-
-        TW9uLCAwNCBNYXIgMjAxMyAyMjozNjozMCBHTVQ=
+        VHVlLCAwNSBNYXIgMjAxMyAwMTo0Mjo0NyBHTVQ=
       !binary "Q29udGVudC1UeXBl":
       - !binary |-
         YXBwbGljYXRpb24vanNvbg==
@@ -45,12 +45,12 @@ http_interactions:
         REVOWQ==
       !binary "U2V0LUNvb2tpZQ==":
       - !binary |-
-        Y3NyZl90b2tlbj1mNjljMTYzYzBjNTQzM2QyY2MwNDAzY2M4YWQ3ODg0ODsg
-        ZXhwaXJlcz0iTW9uLCAwNC1NYXItMjAxMyAyMjo1MToxNCBHTVQiOyBNYXgt
+        Y3NyZl90b2tlbj02NDA5NDU1YjQ5N2UwYjI3MDI1YWYxNTAxOTNmNWU0ZDsg
+        ZXhwaXJlcz0iVHVlLCAwNS1NYXItMjAxMyAwMTo1NzozMiBHTVQiOyBNYXgt
         QWdlPTYwMDsgUGF0aD0v
       - !binary |-
-        bWV0cmljcz1iYTJiNWY1Mzc2MDBmZTVkYTU0ZTk1MGYzNDE2ZTc2NjdiNzQ3
-        Y2JjM2M5NGU4NmU5ZWZmNGYwOTlmYWI5ZjIzYjgzZWVkZTM7IFBhdGg9Lw==
+        bWV0cmljcz02YzIxODQ3Yzc1ZWJmYzRiYzQ2MTU0ZDVhYjY4NTAzMmMyZmVk
+        OGJmZjk1ODcwZjU4MGIwNDgwMDhmYzVmZTNkZDM4YTRjMDM7IFBhdGg9Lw==
       !binary "Q29udGVudC1FbmNvZGluZw==":
       - !binary |-
         Z3ppcA==
@@ -104,5 +104,57 @@ http_interactions:
         PNnH7/z9WTNKeJHsp4ZQfpLSFjOWKHEhXVk49xEC/+MXvBhrgcgsVuDXJpRm
         6t+6O0nDcP7P/wBPGlBcMBEAAA==
     http_version: 
-  recorded_at: Mon, 04 Mar 2013 22:41:15 GMT
+  recorded_at: Tue, 05 Mar 2013 01:47:31 GMT
+- request:
+    method: put
+    uri: https://<%= "#{ENV["SAUCE_USERNAME"]:ENV["SAUCE_ACCESS_KEY"]" %>@saucelabs.com/rest/v1/<%= ENV["SAUCE_USERNAME"] %>/jobs/bd9c43dd6b5549f1b942d1d581d98cac
+    body:
+      encoding: UTF-8
+      string: ! '{"passed":true}'
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Length:
+      - '15'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Tue, 05 Mar 2013 01:42:47 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=69a827a5d00a30eb6a9fe39004f4d290; expires="Tue, 05-Mar-2013 01:57:33
+        GMT"; Max-Age=600; Path=/
+      - metrics=40948e099b20f264e6ab1b6db19a4b284778d256aadacf52f410437eb13327d860640fb8;
+        Path=/
+      Content-Length:
+      - '594'
+    body:
+      encoding: US-ASCII
+      string: ! '{"status": "complete", "commands_not_successful": 2, "name": "Ruby
+        Example for Appium", "video_url": "http://saucelabs.com/jobs/bd9c43dd6b5549f1b942d1d581d98cac/video.flv",
+        "tags": [], "start_time": 1362100867, "log_url": "http://saucelabs.com/jobs/bd9c43dd6b5549f1b942d1d581d98cac/selenium-server.log",
+        "creation_time": 1362100864, "custom-data": null, "public": false, "browser_version":
+        "6.0", "end_time": 1362101005, "passed": true, "error": null, "owner": "dylan",
+        "build": null, "os": "Mac 10.8", "id": "bd9c43dd6b5549f1b942d1d581d98cac",
+        "breakpointed": null, "browser": "iphone"}'
+    http_version: 
+  recorded_at: Tue, 05 Mar 2013 01:47:32 GMT
 recorded_with: VCR 2.4.0
