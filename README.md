@@ -1,6 +1,6 @@
 # SauceWhisk
 
-TODO: Write a gem description
+SauceWhisk provides an "ActiveRecord" style client for the [Sauce Labs](http://www.saucelabs.com) RESTful API.  If you're not using the [Sauce Gem](https://rubygems.org/gems/sauce) and you want a nice way to interact with our API, give this a try.
 
 ## Installation
 
@@ -17,8 +17,14 @@ Or install it yourself as:
     $ gem install sauce_whisk
 
 ## Usage
+    
+### Marking a Job as Passed
 
-TODO: Write usage instructions here
+    SauceWhisk::Jobs.pass_job job_id
+    
+### Marking a Job as Failed
+   
+    SauceWhisk::Jobs.fail_job job_id
 
 ## Contributing
 
