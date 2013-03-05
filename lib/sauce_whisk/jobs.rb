@@ -28,13 +28,11 @@ class Jobs
 end
 
 class Job
+    attr_accessor :id, :owner, :status, :error, :name, :browser, :browser_version, :os, :creation_time, :start_time, :end_time, :video_url, :log_url, :public, :tags
+
   def initialize(parameters={})
-    
-  end
-
-  def id
-  end
-
-  def id=
+    parameters.each do |k,v|
+      self.send("#{k}=",v)
+    end
   end
 end
