@@ -15,4 +15,8 @@ module SauceWhisk
   def self.password
     ENV["SAUCE_PASSWORD"]
   end
+
+  def self.pass_job(job_id)
+    Jobs.pass_job job_id
+  end
 end

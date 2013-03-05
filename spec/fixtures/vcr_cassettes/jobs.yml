@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://<%= "#{ENV["SAUCE_USERNAME"]:"#{ENV["SAUCE_ACCESS_KEY]}"%>@saucelabs.com/rest/v1/<%= ENV["SAUCE_USERNAME"] %>/jobs
+    uri: https://<%= "#{ENV["SAUCE_USERNAME"]}:#{ENV["SAUCE_ACCESS_KEY"]}"%>@saucelabs.com/rest/v1/<%= ENV["SAUCE_USERNAME"] %>/jobs
     body:
       encoding: US-ASCII
       string: ''
@@ -107,7 +107,7 @@ http_interactions:
   recorded_at: Tue, 05 Mar 2013 01:47:31 GMT
 - request:
     method: put
-    uri: https://<%= "#{ENV["SAUCE_USERNAME"]:ENV["SAUCE_ACCESS_KEY"]" %>@saucelabs.com/rest/v1/<%= ENV["SAUCE_USERNAME"] %>/jobs/bd9c43dd6b5549f1b942d1d581d98cac
+    uri: https://<%= "#{ENV["SAUCE_USERNAME"]}:#{ENV["SAUCE_ACCESS_KEY"]}" %>@saucelabs.com/rest/v1/<%= ENV["SAUCE_USERNAME"] %>/jobs/bd9c43dd6b5549f1b942d1d581d98cac
     body:
       encoding: UTF-8
       string: ! '{"passed":true}'

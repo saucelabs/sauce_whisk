@@ -38,4 +38,13 @@ describe RestRequestBuilder do
       dummy_client.get
     end
   end
+
+  describe "#put", :vcr => {:cassette_name => 'jobs'} do
+    it "calls the base URL with the put method" do
+      expected_url = "#{SauceWhisk.base_url}/#{dummy_client.resource}/something"
+      expected_params = {:method => :put, :url => expected_url, :payload => "another_thing", :content_type => "application/json"}.merge mock_auth
+      RestClient::Request.should_receive(:execute).with(expected_params)
+      dummy_client.put "something", "another_thing"
+    end
+  end
 end
