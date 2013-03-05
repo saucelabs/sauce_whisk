@@ -6,7 +6,7 @@ class Jobs
   extend RestRequestBuilder
 
   def self.resource
-    "#{ENV["SAUCE_USERNAME"]}/jobs"
+    "#{SauceWhisk.username}/jobs"
   end
 
   def self.all
@@ -19,11 +19,22 @@ class Jobs
   end
 
   def self.pass_job(job_id)
-    
+    change_status(job_id, true)    
+  end
+
+  def self.fail_job(job_id)
+    change_status(job_id, false)
   end
 end
 
 class Job
   def initialize(parameters={})
+    
+  end
+
+  def id
+  end
+
+  def id=
   end
 end

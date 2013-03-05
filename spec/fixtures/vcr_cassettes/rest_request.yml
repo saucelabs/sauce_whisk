@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://dylanatsauce:949c5f1a-68eb-4252-b1d8-215fa4acc3ef@saucelabs.com/rest/v1/dummy
+    uri: https://<%= "#{ENV["SAUCE_USERNAME"]}:#{ENV["SAUCE_ACCESS_KEY"]}" %>@saucelabs.com/rest/v1/dummy
     body:
       encoding: US-ASCII
       string: ''
@@ -50,7 +50,7 @@ http_interactions:
   recorded_at: Tue, 05 Mar 2013 00:14:55 GMT
 - request:
     method: get
-    uri: https://dylanatsauce:949c5f1a-68eb-4252-b1d8-215fa4acc3ef@saucelabs.com/rest/v1/dummy/a_thing
+    uri: https://<%= "#{ENV["SAUCE_USERNAME]}:#{ENV["SAUCE_ACCESS_KEY]}" %>@saucelabs.com/rest/v1/dummy/a_thing
     body:
       encoding: US-ASCII
       string: ''

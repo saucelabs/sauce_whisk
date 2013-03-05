@@ -14,7 +14,7 @@ describe SauceWhisk do
 
   describe "##password" do
     subject {SauceWhisk.password}
-    it {should eq ENV["SAUCE_PASSWORD"]}
+    it {should eq ENV["SAUCE_ACCESS_KEY"]}
   end
 
   describe "##pass_job" do

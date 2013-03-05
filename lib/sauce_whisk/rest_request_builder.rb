@@ -18,7 +18,7 @@ module RestRequestBuilder
   end
 
   def auth_details
-    {:user => ENV["SAUCE_USERNAME"], :password => ENV["SAUCE_ACCESS_KEY"]}
+    {:user => SauceWhisk.username, :password => SauceWhisk.password}
   end
 
   def fully_qualified_resource

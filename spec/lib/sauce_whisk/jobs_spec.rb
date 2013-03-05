@@ -26,4 +26,22 @@ describe Jobs do
       assert_requested :put, "https://#{auth}@saucelabs.com/rest/v1/dylanatsauce/jobs/#{job_id}", :body => pass_string, :content_type => "application/json"
     end
   end
+
+  describe "##pass_job" do
+    it "Calls the API and passes the given job" do
+      job_id = "rerfreferf"
+      Jobs.should_receive(:change_status).with(job_id, true) {}
+
+      Jobs.pass_job job_id
+    end
+  end
+
+  describe "##fail_job" do
+    it "Calls change_status to failt the job" do
+      job_id = "rcercer"
+      Jobs.should_receive(:change_status).with(job_id, false) {}
+
+      Jobs.fail_job job_id
+    end
+  end
 end
