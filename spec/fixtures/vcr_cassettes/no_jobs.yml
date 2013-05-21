@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://dylanatsauce:949c5f1a-68eb-4252-b1d8-215fa4acc3ef@saucelabs.com/rest/v1/dylanatsauce/jobs
+    uri: https://<%= "#{ENV["SAUCE_USERNAME"]}:#{ENV["SAUCE_ACCESS_KEY"]}" %>@saucelabs.com/rest/v1/<%= ENV["SAUCE_USERNAME"] %>/jobs
     body:
       encoding: US-ASCII
       string: ''

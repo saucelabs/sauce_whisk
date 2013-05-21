@@ -10,6 +10,8 @@ VCR.configure do |config|
     :erb => true,
     :record => :none
   }
+  config.filter_sensitive_data("<SAUCE_USERNAME>") { ENV["SAUCE_USERNAME"] }
+  config.filter_sensitive_data("<SAUCE_ACCESS_KEY>") { ENV["SAUCE_ACCESS_KEY"] }
 end
 
 RSpec.configure do |config|
