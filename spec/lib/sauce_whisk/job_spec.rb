@@ -6,8 +6,6 @@ describe Job do
 
   it {should respond_to :id}
 
-  it {should respond_to :id=}
-
   context "Initialized" do
     let(:params) {{
       "id" => "dsfargeg",
@@ -39,8 +37,17 @@ describe Job do
       subject.name = "ANewName"
       subject.updated_fields.should include :name
 
-      subject.public = true
-      subject.updated_fields.should include :public
+      subject.visibility = true
+      subject.updated_fields.should include :visibility
+    end
+
+    it "does not track unchanged methods" do
+      subject.updated_fields.should_not include :build
+    end
+
+    it "has empty updated_fields for new instances" do
+      new_job = Job.new(params)
+      new_job.updated_fields.should eq []
     end
 
     describe "#save" do
@@ -54,6 +61,28 @@ describe Job do
         it "calls the save method of the Jobs object" do
           Jobs.should_receive(:save).with(subject)
           subject.save
+        end
+      end
+    end
+
+    describe "parameters" do
+      it "lets you set only the parameters which are mutable" do
+        [:name, :build, :passed, :tags, :custom_data, :visibility].each do |param|
+          changed_value = "Changed#{param}"
+          subject.send("#{param}=", changed_value)
+          subject.send(param).should eq changed_value
+        end
+      end
+
+      it "throws an exception if you try to set one of the fixed attributes" do
+        [:id, :owner, :browser, :browser_version, :os, :error, :creation_time,
+         :start_time, :end_time, :video_url, :log_url
+        ].each do |param|
+          expect {
+            subject.send("#{param}=", "TOTALLYDIFFERENT")
+          }.to raise_exception
+
+          subject.send(param).should_not eq "TOTALLYDIFFERENT"
         end
       end
     end

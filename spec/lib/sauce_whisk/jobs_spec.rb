@@ -45,9 +45,21 @@ describe Jobs do
     end
   end
 
-  describe "##save" do
-    it "calls update" do
-      
+  describe "##save", :vcr => {:cassette_name => "jobs"} do
+    it "sends a put request" do
+      job_id = "bd9c43dd6b5549f1b942d1d581d98cac"
+      job = Job.new({:id => job_id})
+      Jobs.save (job)
+      assert_requested :put, "https://#{auth}@saucelabs.com/rest/v1/dylanatsauce/jobs/#{job.id}", :body => anything, :content_type => "application/json"
+    end
+
+    it "only sends updated information" do
+      job_id = "bd9c43dd6b5549f1b942d1d581d98cac"
+      job = Job.new({:id => job_id})
+      job.name = "Updated Name"
+      Jobs.save (job)
+      expected_body = {:name => "Updated Name"}.to_json
+      assert_requested :put, "https://#{auth}@saucelabs.com/rest/v1/dylanatsauce/jobs/#{job.id}", :body => expected_body, :content_type => "application/json"
     end
   end
 end

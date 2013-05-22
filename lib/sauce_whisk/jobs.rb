@@ -10,7 +10,7 @@ class Jobs
   end
 
   def self.all
-    all_jobs = JSON.parse get
+    all_jobs = JSON.parse get :job
     all_jobs.map {|job| Job.new(job)}
   end
 
@@ -24,6 +24,13 @@ class Jobs
 
   def self.fail_job(job_id)
     change_status(job_id, false)
+  end
+
+  def self.save(job)
+    fields_to_save = job.updated_fields.each_with_object(Hash.new) do |field, hsh|
+      hsh[field] = job.send(field.to_s)
+    end
+    put job.id, fields_to_save.to_json
   end
 end
 
@@ -42,12 +49,25 @@ class Job
     end
   end
 
-  tracked_attr_accessor :id, :owner, :browser, :browser_version, :os, :status, :error, :creation_time, :start_time, :end_time, :video_url, :log_url, :tags, :name, :public
+  attr_reader :id, :owner, :browser, :browser_version, :os, :log_url
+  attr_reader :error, :creation_time, :start_time, :end_time, :video_url
+
+  tracked_attr_accessor :custom_data, :tags, :name, :visibility, :build, :passed
 
   def initialize(parameters={})
+    passed = parameters.delete "status"
+    cd = parameters.delete "custom-data"
+    visibility = parameters.delete "public"
+
+    self.passed = passed
+    self.custom_data = cd
+    self.visibility = visibility
+
     parameters.each do |k,v|
-      self.send("#{k}=",v)
+      self.instance_variable_set("@#{k}".to_sym, v)
     end
+
+    @updated_fields = []
   end
 
   def save

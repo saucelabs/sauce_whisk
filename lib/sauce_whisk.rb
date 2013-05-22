@@ -9,6 +9,7 @@ module SauceWhisk
   end
 
   def self.username
+    puts ENV.inspect
     ENV["SAUCE_USERNAME"]
   end
 
