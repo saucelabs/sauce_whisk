@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://<%= "#{ENV["SAUCE_USERNAME"]}:#{ENV["SAUCE_ACCESS_KEY"]}"%>@saucelabs.com/rest/v1/<%= ENV["SAUCE_USERNAME"] %>/jobs
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs
     body:
       encoding: US-ASCII
       string: ''
@@ -107,7 +107,7 @@ http_interactions:
   recorded_at: Tue, 05 Mar 2013 01:47:31 GMT
 - request:
     method: put
-    uri: https://<%= "#{ENV["SAUCE_USERNAME"]}:#{ENV["SAUCE_ACCESS_KEY"]}" %>@saucelabs.com/rest/v1/<%= ENV["SAUCE_USERNAME"] %>/jobs/bd9c43dd6b5549f1b942d1d581d98cac
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/bd9c43dd6b5549f1b942d1d581d98cac
     body:
       encoding: UTF-8
       string: ! '{"passed":true}'
@@ -157,4 +157,146 @@ http_interactions:
         "breakpointed": null, "browser": "iphone"}'
     http_version: 
   recorded_at: Tue, 05 Mar 2013 01:47:32 GMT
+- request:
+    method: get
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/job
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Wed, 22 May 2013 12:12:54 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=475d1cd5f3dd2ced1dfdba88774e799d; expires="Wed, 22-May-2013 12:29:31
+        GMT"; Max-Age=600; Path=/
+      - metrics=507a1d793515060f8d2e6610af40c80102443b4a1c27471a77f04f6389f26655b03a5ad6;
+        Path=/
+      - metrics=6e5b6721028019310dc186b8fdcc54e61d893a013cb3c9e1c6e541f39c6b94c9a6ee4ff4;
+        Path=/
+      Content-Length:
+      - '23'
+    body:
+      encoding: US-ASCII
+      string: ! '{"errors": "Not Found"}'
+    http_version: 
+  recorded_at: Wed, 22 May 2013 12:19:31 GMT
+- request:
+    method: get
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/bd9c43dd6b5549f1b942d1d581d98cac
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Thu, 23 May 2013 06:59:48 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=a0cc6d1b1dce7916b6cd0ef1e34298e8; expires="Thu, 23-May-2013 07:16:26
+        GMT"; Max-Age=600; Path=/
+      - metrics=dc0a989f97eea604f30361a9e582cac7ebbeb383598b644fd2c64231915ce96769a70da4;
+        Path=/
+      Content-Length:
+      - '611'
+    body:
+      encoding: US-ASCII
+      string: ! '{"status": "complete", "commands_not_successful": 2, "name": "Ruby
+        Example for Appium", "video_url": "http://saucelabs.com/jobs/bd9c43dd6b5549f1b942d1d581d98cac/video.flv",
+        "tags": [], "proxied": false, "start_time": 1362100867, "log_url": "http://saucelabs.com/jobs/bd9c43dd6b5549f1b942d1d581d98cac/selenium-server.log",
+        "creation_time": 1362100864, "custom-data": null, "public": null, "browser_version":
+        "6.0", "end_time": 1362101005, "passed": true, "error": null, "owner": "<SAUCE_USERNAME>",
+        "build": null, "os": "Mac 10.8", "id": "bd9c43dd6b5549f1b942d1d581d98cac",
+        "breakpointed": null, "browser": "iphone"}'
+    http_version: 
+  recorded_at: Thu, 23 May 2013 07:06:26 GMT
+- request:
+    method: get
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/bd9c43dd6b5549f1b942d1d581d98cac/assets
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Thu, 23 May 2013 06:59:49 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=625a03b690f0c41a06cfb7f1e885b97e; expires="Thu, 23-May-2013 07:16:27
+        GMT"; Max-Age=600; Path=/
+      - metrics=373f55b1eaa471fb18944c540ecc502396b423c483b7474c0a364e00bbd9a95536d06632;
+        Path=/
+      Content-Length:
+      - '191'
+    body:
+      encoding: US-ASCII
+      string: ! '{"sauce-log": "log.json", "video": "video.flv", "selenium-log": "selenium-server.log",
+        "screenshots": ["0000screenshot.png", "0001screenshot.png", "0002screenshot.png",
+        "0003screenshot.png"]}'
+    http_version: 
+  recorded_at: Thu, 23 May 2013 07:06:27 GMT
 recorded_with: VCR 2.4.0

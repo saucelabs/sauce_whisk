@@ -22,7 +22,8 @@ describe Job do
       "video_url" => "http://www.notarealplace.com/somewhere/resource",
       "log_url" => "http://www.underthesea.com/notreally/404",
       "public" => false,
-      "tags" => ["ruby", "awesome", "restful"]
+      "tags" => ["ruby", "awesome", "restful"],
+      "custom_data" => ""
     }}
 
     subject {Job.new(params)}
@@ -62,6 +63,18 @@ describe Job do
           Jobs.should_receive(:save).with(subject)
           subject.save
         end
+      end
+    end
+
+    describe "#screenshots", :vcr => {:cassette_name => "job"} do
+      subject {Jobs.fetch "bd9c43dd6b5549f1b942d1d581d98cac" }
+
+      it "contains all the screenshots for that job" do
+        subject.screenshots.length.should be 4
+      end
+
+      it "contains actual screenshots" do
+        puts subject.screenshots.inspect
       end
     end
 

@@ -10,7 +10,7 @@ class Jobs
   end
 
   def self.all
-    all_jobs = JSON.parse get :job
+    all_jobs = JSON.parse get
     all_jobs.map {|job| Job.new(job)}
   end
 
@@ -32,6 +32,19 @@ class Jobs
     end
     put job.id, fields_to_save.to_json
   end
+
+  def self.fetch(job_id)
+    job_hash = JSON.parse(get job_id)
+    assets = JSON.parse get "#{job_id}/assets"
+    screenshots = assets["screenshots"]
+
+    job_hash.merge!({"screenshot_urls" => screenshots})
+    Job.new job_hash
+  end
+
+  def self.fetch_asset(job_id, asset)
+    asset = get "#{job_id}/assets/#{asset}"
+  end
 end
 
 class Job
@@ -51,6 +64,7 @@ class Job
 
   attr_reader :id, :owner, :browser, :browser_version, :os, :log_url
   attr_reader :error, :creation_time, :start_time, :end_time, :video_url
+  attr_reader :screenshot_urls
 
   tracked_attr_accessor :custom_data, :tags, :name, :visibility, :build, :passed
 
@@ -76,5 +90,15 @@ class Job
 
   def updated_fields
     @updated_fields ||= []
+  end
+
+  def screenshots
+    unless @screenshots
+     @screenshots = screenshot_urls.map do |screenshot|
+        Jobs.fetch_asset id, screenshot
+      end
+    end
+
+    @screenshots
   end
 end

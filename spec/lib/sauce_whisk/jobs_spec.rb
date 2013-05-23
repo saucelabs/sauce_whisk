@@ -62,4 +62,17 @@ describe Jobs do
       assert_requested :put, "https://#{auth}@saucelabs.com/rest/v1/dylanatsauce/jobs/#{job.id}", :body => expected_body, :content_type => "application/json"
     end
   end
+
+  describe "##fetch", :vcr => {:cassette_name => "jobs"} do
+    let(:job) {Jobs.fetch("bd9c43dd6b5549f1b942d1d581d98cac")}
+
+    it "contains the list of screenshots for the job" do
+      job.screenshot_urls.should be_a_kind_of Enumerable
+      job.screenshot_urls.length.should_not be 0
+    end
+
+    it "returns a job when a valid one is fetched" do
+      job.should be_an_instance_of Job
+    end
+  end
 end
