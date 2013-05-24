@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.version       = SauceWhisk::VERSION
   gem.authors       = ["Dylan Lacey"]
   gem.email         = ["github@dylanlacey.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = "A Wrapper for the Sauce Labs REST API."
+  gem.summary       = "Sauce_Whisk lets you mix extra data into your Sauce test results!\nFetch and update Job details, screenshots, videos and logs."
+  gem.homepage      = "http://www.github.com/dylanlacey/sauce_whisk"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
