@@ -24,7 +24,7 @@ http_interactions:
         bmdpbngvMC43LjYy
       !binary "RGF0ZQ==":
       - !binary |-
-        VHVlLCAwNSBNYXIgMjAxMyAwMTo0Mjo0NyBHTVQ=
+        RnJpLCAyNCBNYXkgMjAxMyAwNjowNjozOSBHTVQ=
       !binary "Q29udGVudC1UeXBl":
       - !binary |-
         YXBwbGljYXRpb24vanNvbg==
@@ -45,66 +45,66 @@ http_interactions:
         REVOWQ==
       !binary "U2V0LUNvb2tpZQ==":
       - !binary |-
-        Y3NyZl90b2tlbj02NDA5NDU1YjQ5N2UwYjI3MDI1YWYxNTAxOTNmNWU0ZDsg
-        ZXhwaXJlcz0iVHVlLCAwNS1NYXItMjAxMyAwMTo1NzozMiBHTVQiOyBNYXgt
+        Y3NyZl90b2tlbj01M2I2Nzc4MDk4NjdkZmMyZGRkNjU4MjI4YzYzYTc2Njsg
+        ZXhwaXJlcz0iRnJpLCAyNC1NYXktMjAxMyAwNjoyMzoxOSBHTVQiOyBNYXgt
         QWdlPTYwMDsgUGF0aD0v
       - !binary |-
-        bWV0cmljcz02YzIxODQ3Yzc1ZWJmYzRiYzQ2MTU0ZDVhYjY4NTAzMmMyZmVk
-        OGJmZjk1ODcwZjU4MGIwNDgwMDhmYzVmZTNkZDM4YTRjMDM7IFBhdGg9Lw==
+        bWV0cmljcz0zMTNlYzg5ZmFlMzhmNDQwOGI3MzY1ODEzZjI1MGMyMzk2YWIw
+        Nzk2ZGZmZjI3ODhkODY3NDcyYmJjM2Q4YmIzOTRiMDRjYzg7IFBhdGg9Lw==
       !binary "Q29udGVudC1FbmNvZGluZw==":
       - !binary |-
         Z3ppcA==
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        H4sIAAAAAAAAA12XW86YqQ2GtzLKdS/A2GC6lWoujAGpaxjN3vt8qSr9NIqi
-        HAifsd+T//XXr3/vX//849faM7Xt3ZeZzlvXVNl1m9c9PSN//f2PP/53to4m
-        NnMMk6ZFyoy7SrO1smlGi59n19w9qnpUS+11u9d215RlZ5d6nrO6fY69rJys
-        qtUiWx5NC1FR1/6c7UfG5HLdW/VGbI732SX2kK3751nffHa0JnsMvVqXNinf
-        s3hI6bM898571t7HezX1XWbZbrJaL/ys86l37pxe58zYS+/RiNDepXZrlzrm
-        z7Mt9VrsPTtPqtLmOafSNbWaJbv/PDvaahSQvTVmcXbQt+4hLS+3N3lmMcfR
-        srxZrzr69rTbyuql9yhm43kbTU3zKcm9LrHCmGEGf8sl/vahSau9yZXbtUdQ
-        BiUUn30Oi/r0YZ++17Wx2lU9W9cxKXcIExq9vD3rYnGKX7Hc+t08y7GpNtvW
-        qOX8PHsGeFBqy7rVfXnX2usojR+W+eCh93qHtWm+hjJnsHNC6ZmKZJ4HD3st
-        xqzLlvCrmKecbXvUUm/Z+tSgfZU5pIDJpXaW6+zKdzxX3HKfWewKxu7iq9R7
-        x/BV9keLXaT1XR88gMI2uh1lwqrGN7I62J9twYH9zK0NiWOxeqyjrYbPZkXW
-        uksijjzY6TlsiN46RDTnnPXOK31BI93t5VvZ1X06aKGEVAmX0tdsDJgxdn0x
-        OYCazdt4m5wRMe5dANfnqbHac1bDG40EUqFtpX9du7PanaW3sJfzAi+mxfgg
-        KGXND5DWr0PZup6zrVXwWGLt8fV3rY+Xphq5z5zr5Sb0srr80iX12+IcPsIs
-        xWhHf7BjdwEJ26umaBvpxce5vurwUbQ/s5hlfmKDMMF5NXe9GeAjE7bFi4fV
-        XX2MBBTMTXYgkEMd9OWN0h5NFTAzGcCUfrVEeh/AoOZk3kfOq308LIzLGnMV
-        zxnDaoQdWaNsu0+9bRdww9QGWsMz0b+QqPznNf08mMxSV++WY56iRyoDuKh0
-        68rp8er6p3f3QJiMDywlGNlX6QRQBt5ezpcsh+9LclXtM1FJOTDpwJi3D4ji
-        brOAgUvzHPA6zvEh5/aKBj7aNzLvHUfuNj3gATgM0+pNzrX19CFHnjynGJDH
-        O5CcddsngGXWus5z9la+XWTGokjGNyvqVj7oo50937fZ3b02XbXiURDunhtK
-        zXCk2v/pzgF4t9ZSsDeKnQwMyTvMGOG89anh6rSNB91kFvR1X0f/C9puePSD
-        SfxVswOEvTq8sGmnCW4+a9ao5+nvss/lD/8GtPMTsYtoYvoFWY3X50vxcnx4
-        wTjRq85Z2pqC7p1SxoMHKZLXUY+q+Fv5/J4/Ys6ZKJW9PD7od0X57q5KNqBn
-        oOMWtHMVRPnREjlwS0ab+KZnjz5g5kA00PnjL98UJeufqMOLWhTfZNZICcJH
-        2c/Z3sgX078CGj6fTt6pW4Ya0hnzmfGI5lVhh1nTRoUOziTN9sWcXg7d0fz0
-        SAF/mqcwZtyRTEF3HOF4+vBpDHJmmJwejLJ/1Y4181Ps/fixX+hYzh2oBEZJ
-        egG8ZKQjuD8MeLAOaFBb7LSIdusQdM4BfEs78PrRdeeLIGxjtGhJBQkOFove
-        7jZre94WOHbPHaS9UEaMQk/0FUUmROFFDx7GFQhHSpzwopRFE0f/SiBZ6avr
-        ANHxx0F1qbHxIwvylqJr3Y+/ZyEs0jv1ytSdZE7iEaEo0IkFaV6dRP7Becxe
-        fntWkS6HAEQEOc2et5U4OJwlYpmMWukvIu2EuX4nSfXB2bEW/oUcw+Q2AwMa
-        2+ttKbut52xFf8v5Eu0SGO3xBUH0tzmvtvZkjcuMGkpTII6eQAl3ZwagjwyN
-        Lz86ubPVmcgRh4lJOAfqd4v1so+8HlBIYbBd4h4yYpA1wi4YJwjfTo8fXgRv
-        B9ZfClBvw+NWQhqUrZuWP7wgmINssZPWmZtMkuiNkfSdgvzRqNFstHoY/6Fl
-        5AZkRIE8SfsctOq5t+IMpcCxDdZhNa4M/+NjUcL7p14CTgcy0Woiu9sRp3F8
-        nzVo5+sXvz2r94akMWMs03x7+/AeQwnzP8/+zjqV5pDC8RZxaF+VtYdXNH0z
-        TG4bTOp86NGxaqi0k2hhRyHqm42OYd5QkxiNPiwgXpU3HABFSswHDw3OYMMX
-        oauKdWOs35YDJnOnzAdn+T2kAHf59jfygaw8kFnOAp7xZpjTCTmsbgiVJs3D
-        7Ha0xUsLCenBDvG5G+Z7EV9FRtHyRmsd78DK65M9FyaI9eKBJFCy1/rCCBKU
-        v0NVfbWvsRZ+ol/ZyYzgsTwYrkFLtqn2YHJjm21gEayNXOZkPYSQTlufOP9z
-        9lP6jVL6NtGzaOtELu9uQsAGI8/ZDbUXghTchkSQv73LbTCacPTq7/piDvCd
-        xBD9b0zuvHD1VEBZX632g34F91xRMhQ4YwaUazbd3x0HPH27x+Y2FgceP1fp
-        dbErz373feZWO9aKWdavC3YO9MM2BlBXMpo+bxt0FsgmBnw/wi1ypbBi2Le7
-        x9tfOkpyw31YYbkpWSmhO5YBpxPEP7OwlmwprGa3fFv9Cn7rSz7PRLMfTKJ8
-        SdBhRGVoYWlCAVG+cufgBW8fhnyRpA2m77qJZgnIYu7GHMn3z9uQmGR7/ZSR
-        PNnH7/z9WTNKeJHsp4ZQfpLSFjOWKHEhXVk49xEC/+MXvBhrgcgsVuDXJpRm
-        6t+6O0nDcP7P/wBPGlBcMBEAAA==
+        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
+        B95y0aYKZPbARyabPTP+z/8AL4vSMjARAAA=
     http_version: 
-  recorded_at: Tue, 05 Mar 2013 01:47:31 GMT
+  recorded_at: Fri, 24 May 2013 06:13:22 GMT
 - request:
     method: put
     uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/bd9c43dd6b5549f1b942d1d581d98cac
@@ -128,7 +128,7 @@ http_interactions:
       Server:
       - nginx/0.7.62
       Date:
-      - Tue, 05 Mar 2013 01:42:47 GMT
+      - Fri, 24 May 2013 06:06:41 GMT
       Content-Type:
       - application/json
       Connection:
@@ -140,69 +140,23 @@ http_interactions:
       X-Frame-Options:
       - DENY
       Set-Cookie:
-      - csrf_token=69a827a5d00a30eb6a9fe39004f4d290; expires="Tue, 05-Mar-2013 01:57:33
+      - csrf_token=1fca4050f7e7f15f6136777dca366a74; expires="Fri, 24-May-2013 06:23:21
         GMT"; Max-Age=600; Path=/
-      - metrics=40948e099b20f264e6ab1b6db19a4b284778d256aadacf52f410437eb13327d860640fb8;
+      - metrics=afb450bf034cd6510e7200f0070655a0e3d1d6489531f349e57a418491e14accc2f8033e;
         Path=/
       Content-Length:
-      - '594'
+      - '611'
     body:
       encoding: US-ASCII
       string: ! '{"status": "complete", "commands_not_successful": 2, "name": "Ruby
         Example for Appium", "video_url": "http://saucelabs.com/jobs/bd9c43dd6b5549f1b942d1d581d98cac/video.flv",
-        "tags": [], "start_time": 1362100867, "log_url": "http://saucelabs.com/jobs/bd9c43dd6b5549f1b942d1d581d98cac/selenium-server.log",
-        "creation_time": 1362100864, "custom-data": null, "public": false, "browser_version":
-        "6.0", "end_time": 1362101005, "passed": true, "error": null, "owner": "dylan",
+        "tags": [], "proxied": false, "start_time": 1362100867, "log_url": "http://saucelabs.com/jobs/bd9c43dd6b5549f1b942d1d581d98cac/selenium-server.log",
+        "creation_time": 1362100864, "custom-data": null, "public": null, "browser_version":
+        "6.0", "end_time": 1362101005, "passed": true, "error": null, "owner": "<SAUCE_USERNAME>",
         "build": null, "os": "Mac 10.8", "id": "bd9c43dd6b5549f1b942d1d581d98cac",
         "breakpointed": null, "browser": "iphone"}'
     http_version: 
-  recorded_at: Tue, 05 Mar 2013 01:47:32 GMT
-- request:
-    method: get
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/job
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - ! '*/*; q=0.5, application/xml'
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 404
-      message: Not Found
-    headers:
-      Server:
-      - nginx/0.7.62
-      Date:
-      - Wed, 22 May 2013 12:12:54 GMT
-      Content-Type:
-      - application/json
-      Connection:
-      - keep-alive
-      Pragma:
-      - no-cache
-      Cache-Control:
-      - no-cache
-      X-Frame-Options:
-      - DENY
-      Set-Cookie:
-      - csrf_token=475d1cd5f3dd2ced1dfdba88774e799d; expires="Wed, 22-May-2013 12:29:31
-        GMT"; Max-Age=600; Path=/
-      - metrics=507a1d793515060f8d2e6610af40c80102443b4a1c27471a77f04f6389f26655b03a5ad6;
-        Path=/
-      - metrics=6e5b6721028019310dc186b8fdcc54e61d893a013cb3c9e1c6e541f39c6b94c9a6ee4ff4;
-        Path=/
-      Content-Length:
-      - '23'
-    body:
-      encoding: US-ASCII
-      string: ! '{"errors": "Not Found"}'
-    http_version: 
-  recorded_at: Wed, 22 May 2013 12:19:31 GMT
+  recorded_at: Fri, 24 May 2013 06:13:24 GMT
 - request:
     method: get
     uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/bd9c43dd6b5549f1b942d1d581d98cac
@@ -224,7 +178,7 @@ http_interactions:
       Server:
       - nginx/0.7.62
       Date:
-      - Thu, 23 May 2013 06:59:48 GMT
+      - Fri, 24 May 2013 06:06:42 GMT
       Content-Type:
       - application/json
       Connection:
@@ -236,9 +190,9 @@ http_interactions:
       X-Frame-Options:
       - DENY
       Set-Cookie:
-      - csrf_token=a0cc6d1b1dce7916b6cd0ef1e34298e8; expires="Thu, 23-May-2013 07:16:26
+      - csrf_token=b67fdc8286031ffcc397033717951329; expires="Fri, 24-May-2013 06:23:22
         GMT"; Max-Age=600; Path=/
-      - metrics=dc0a989f97eea604f30361a9e582cac7ebbeb383598b644fd2c64231915ce96769a70da4;
+      - metrics=38ed2c05075ab9be1c87ef087c892c819423094cb9022f8253ad47ce976bacab1f00e111;
         Path=/
       Content-Length:
       - '611'
@@ -252,7 +206,7 @@ http_interactions:
         "build": null, "os": "Mac 10.8", "id": "bd9c43dd6b5549f1b942d1d581d98cac",
         "breakpointed": null, "browser": "iphone"}'
     http_version: 
-  recorded_at: Thu, 23 May 2013 07:06:26 GMT
+  recorded_at: Fri, 24 May 2013 06:13:25 GMT
 - request:
     method: get
     uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/bd9c43dd6b5549f1b942d1d581d98cac/assets
@@ -274,7 +228,7 @@ http_interactions:
       Server:
       - nginx/0.7.62
       Date:
-      - Thu, 23 May 2013 06:59:49 GMT
+      - Fri, 24 May 2013 06:06:44 GMT
       Content-Type:
       - application/json
       Connection:
@@ -286,9 +240,9 @@ http_interactions:
       X-Frame-Options:
       - DENY
       Set-Cookie:
-      - csrf_token=625a03b690f0c41a06cfb7f1e885b97e; expires="Thu, 23-May-2013 07:16:27
+      - csrf_token=a8dd55863c6e34728839548800f5be3f; expires="Fri, 24-May-2013 06:23:23
         GMT"; Max-Age=600; Path=/
-      - metrics=373f55b1eaa471fb18944c540ecc502396b423c483b7474c0a364e00bbd9a95536d06632;
+      - metrics=a8da11c096f8e70948593274782c462cbf1a5460c0f54e86f6bd4d33af778cb31cc1a5d8;
         Path=/
       Content-Length:
       - '191'
@@ -298,5 +252,5 @@ http_interactions:
         "screenshots": ["0000screenshot.png", "0001screenshot.png", "0002screenshot.png",
         "0003screenshot.png"]}'
     http_version: 
-  recorded_at: Thu, 23 May 2013 07:06:27 GMT
-recorded_with: VCR 2.4.0
+  recorded_at: Fri, 24 May 2013 06:13:26 GMT
+recorded_with: VCR 2.5.0

@@ -1,5 +1,6 @@
 require "sauce_whisk/version"
 require "sauce_whisk/jobs"
+require "sauce_whisk/assets"
 require "sauce_whisk/rest_request_builder"
 
 module SauceWhisk
@@ -9,7 +10,6 @@ module SauceWhisk
   end
 
   def self.username
-    puts ENV.inspect
     ENV["SAUCE_USERNAME"]
   end
 

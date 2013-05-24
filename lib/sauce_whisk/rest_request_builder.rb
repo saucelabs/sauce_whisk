@@ -1,11 +1,8 @@
 module RestRequestBuilder
 
   def get(resource_to_fetch=nil)
-    puts "Fetching: #{resource_to_fetch}"
     resource_url = fully_qualified_resource
-    puts "Interim: #{resource_url}"
     resource_url << "/#{resource_to_fetch}" if resource_to_fetch
-    puts "Gonna get me some #{resource_url}"
     RestClient::Request.execute({:method => :get, :url => resource_url}.merge auth_details)
   end
 

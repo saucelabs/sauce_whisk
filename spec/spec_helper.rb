@@ -1,6 +1,10 @@
+require "psych"
 require "sauce_whisk"
 require "webmock/rspec"
 require "vcr"
+
+puts "PSYCH: #{Psych::VERSION}"
+
 
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
@@ -13,7 +17,7 @@ VCR.configure do |config|
   config.filter_sensitive_data("<SAUCE_USERNAME>") { ENV["SAUCE_USERNAME"] }
   config.filter_sensitive_data("<SAUCE_ACCESS_KEY>") { ENV["SAUCE_ACCESS_KEY"] }
 
-  config.debug_logger = STDOUT
+  #config.debug_logger = STDOUT
 end
 
 RSpec.configure do |config|

@@ -39,7 +39,7 @@ class Jobs
     screenshots = assets["screenshots"]
 
     job_hash.merge!({"screenshot_urls" => screenshots})
-    Job.new job_hash
+    Job.new(job_hash)
   end
 
   def self.fetch_asset(job_id, asset)
@@ -95,10 +95,18 @@ class Job
   def screenshots
     unless @screenshots
      @screenshots = screenshot_urls.map do |screenshot|
-        Jobs.fetch_asset id, screenshot
+        Assets.fetch id, screenshot
       end
     end
 
     @screenshots
+  end
+
+  def video
+    unless @video
+      @video = Assets.fetch id, "video.flv", :video
+    end
+
+    @video
   end
 end

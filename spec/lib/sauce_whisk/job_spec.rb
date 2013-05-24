@@ -66,18 +66,6 @@ describe Job do
       end
     end
 
-    describe "#screenshots", :vcr => {:cassette_name => "job"} do
-      subject {Jobs.fetch "bd9c43dd6b5549f1b942d1d581d98cac" }
-
-      it "contains all the screenshots for that job" do
-        subject.screenshots.length.should be 4
-      end
-
-      it "contains actual screenshots" do
-        puts subject.screenshots.inspect
-      end
-    end
-
     describe "parameters" do
       it "lets you set only the parameters which are mutable" do
         [:name, :build, :passed, :tags, :custom_data, :visibility].each do |param|
@@ -97,6 +85,28 @@ describe Job do
 
           subject.send(param).should_not eq "TOTALLYDIFFERENT"
         end
+      end
+    end
+  end
+
+  context "fetched from the API" do
+    subject {Jobs.fetch "bd9c43dd6b5549f1b942d1d581d98cac"}
+
+    describe "#screenshots", :vcr => {:cassette_name => "assets"} do
+      it "contains all the screenshots for that job" do
+        subject.screenshots.length.should be 4
+      end
+
+      it "contains actual screenshots" do
+        subject.screenshots.first.should be_a_kind_of Asset
+        subject.screenshots.first.asset_type.should eq :screenshot
+      end
+    end
+
+    describe "#video", :vcr => {:cassette_name => "assets"} do
+      it "should be a video asset" do
+        subject.video.should be_a_kind_of Asset
+        subject.video.asset_type.should eq :video
       end
     end
   end
