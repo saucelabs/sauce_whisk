@@ -18,6 +18,17 @@ Or install it yourself as:
 
     $ gem install sauce_whisk
 
+## Configuration
+
+You'll need a [Sauce Labs account](http://wwww.saucelabs.com/signup).  They're free to try and, if you're an open source project, [your access is always free](http://saucelabs.com/opensauce).
+
+Once you've got your account, set the following environment variables:
+
+```bash
+SAUCE_USERNAME=Your Sauce Username
+SAUCE_ACCESS_KEY=Your Access Key, found on the lower left of your Account page
+```
+
 ## Usage
     
 ### Marking a Job as Passed
