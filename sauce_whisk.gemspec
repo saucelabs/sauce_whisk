@@ -17,6 +17,8 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
+  gem.license       = "MIT"
+
   gem.add_runtime_dependency     "rest-client"
   gem.add_development_dependency "vcr"
   gem.add_development_dependency "webmock"
