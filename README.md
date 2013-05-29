@@ -69,6 +69,24 @@ job.save
 
 It is not possible to alter any other job properties.
 
+### Assets
+
+There are three types of asset for Sauce Labs jobs: screenshots, video and logs.  Assets are represented as an Asset object, which include the name, asset type and data.
+
+#### Screenshots
+
+```ruby
+  job = Job.fetch job_id
+  screenshots = job.screenshots # An array of Screenshot assets
+```
+
+#### Video
+
+```ruby
+  job = Job.fetch job_id
+  video = job.video # A single Asset, holding the video
+```
+
 ## Contributing
 
 1. Fork it
