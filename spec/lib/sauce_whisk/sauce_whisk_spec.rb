@@ -20,7 +20,7 @@ describe SauceWhisk do
   describe "##pass_job" do
     it "should call #pass on the jobs object" do
       job_id = "0418999"
-      Jobs.should_receive(:pass_job).with(job_id) {true}
+      SauceWhisk::Jobs.should_receive(:pass_job).with(job_id) {true}
       SauceWhisk.pass_job job_id
     end
   end

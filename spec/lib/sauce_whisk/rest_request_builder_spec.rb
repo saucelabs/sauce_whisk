@@ -1,10 +1,10 @@
 require "spec_helper"
 require "rest_client"
 
-describe RestRequestBuilder do
+describe SauceWhisk::RestRequestBuilder do
   let(:dummy_client) { 
       Class.new do 
-        extend RestRequestBuilder
+        extend SauceWhisk::RestRequestBuilder
 
         def self.resource
           "dummy"

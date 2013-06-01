@@ -1,8 +1,8 @@
 require "spec_helper"
 
-describe Job do
-  let(:job) {Job.new}
-  subject {Job.new}
+describe SauceWhisk::Job do
+  let(:job) {SauceWhisk::Job.new}
+  subject {SauceWhisk::Job.new}
 
   it {should respond_to :id}
 
@@ -26,7 +26,7 @@ describe Job do
       "custom_data" => ""
     }}
 
-    subject {Job.new(params)}
+    subject {SauceWhisk::Job.new(params)}
 
     it "sets parameters at init" do
       params.each do |k,v|
@@ -47,20 +47,20 @@ describe Job do
     end
 
     it "has empty updated_fields for new instances" do
-      new_job = Job.new(params)
+      new_job = SauceWhisk::Job.new(params)
       new_job.updated_fields.should eq []
     end
 
     describe "#save" do
-      subject {Job.new(params)}
+      subject {SauceWhisk::Job.new(params)}
 
       context "with changed values" do
         before(:each) do
           subject.name = "New_Name"
         end
 
-        it "calls the save method of the Jobs object" do
-          Jobs.should_receive(:save).with(subject)
+        it "calls the save method of the SauceWhisk::Jobs object" do
+          SauceWhisk::Jobs.should_receive(:save).with(subject)
           subject.save
         end
       end
@@ -90,7 +90,7 @@ describe Job do
   end
 
   context "fetched from the API" do
-    subject {Jobs.fetch "bd9c43dd6b5549f1b942d1d581d98cac"}
+    subject {SauceWhisk::Jobs.fetch "bd9c43dd6b5549f1b942d1d581d98cac"}
 
     describe "#screenshots", :vcr => {:cassette_name => "assets"} do
       it "contains all the screenshots for that job" do
@@ -98,14 +98,14 @@ describe Job do
       end
 
       it "contains actual screenshots" do
-        subject.screenshots.first.should be_a_kind_of Asset
+        subject.screenshots.first.should be_a_kind_of SauceWhisk::Asset
         subject.screenshots.first.asset_type.should eq :screenshot
       end
     end
 
     describe "#video", :vcr => {:cassette_name => "assets"} do
       it "should be a video asset" do
-        subject.video.should be_a_kind_of Asset
+        subject.video.should be_a_kind_of SauceWhisk::Asset
         subject.video.asset_type.should eq :video
       end
     end

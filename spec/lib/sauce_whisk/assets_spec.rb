@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Assets do
+describe SauceWhisk::Assets do
   let(:auth) {"#{ENV["SAUCE_USERNAME"]}:#{ENV["SAUCE_ACCESS_KEY"]}"}
 
   describe "#fetch", :vcr => {:cassette_name => "assets"} do
@@ -8,17 +8,17 @@ describe Assets do
     let(:asset_name)  {"0000screenshot.png"}
 
     it "fetches an asset for the requested job" do
-      Assets.fetch job_id, asset_name
+      SauceWhisk::Assets.fetch job_id, asset_name
 
       assert_requested :get, "https://#{auth}@saucelabs.com/rest/v1/dylanatsauce/jobs/#{job_id}/assets/#{asset_name}"
     end
 
     it "returns an asset" do
-      Assets.fetch(job_id, asset_name).should be_an_instance_of Asset
+      SauceWhisk::Assets.fetch(job_id, asset_name).should be_an_instance_of SauceWhisk::Asset
     end
 
     it "initializes the asset properly" do
-      asset = Assets.fetch job_id, asset_name
+      asset = SauceWhisk::Assets.fetch job_id, asset_name
       asset.name.should eq asset_name
       asset.job.should eq job_id
       asset.asset_type.should eq :screenshot
