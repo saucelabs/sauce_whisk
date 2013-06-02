@@ -87,6 +87,16 @@ There are three types of asset for Sauce Labs jobs: screenshots, video and logs.
   video = job.video # A single Asset, holding the video
 ```
 
+### Logger
+
+You can set a custom logger object, passing anything that responds to puts:
+
+```ruby
+SauceWhisk.logger = my_logger
+```
+
+SauceWhisk.logger defaults to STDOUT.
+
 ## Contributing
 
 1. Fork it

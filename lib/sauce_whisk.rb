@@ -20,4 +20,12 @@ module SauceWhisk
   def self.pass_job(job_id)
     Jobs.pass_job job_id
   end
+
+  def self.logger=(logger)
+    @logger = logger
+  end
+
+  def self.logger
+    @logger||= STDOUT
+  end
 end

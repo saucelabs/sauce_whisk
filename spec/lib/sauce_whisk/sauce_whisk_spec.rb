@@ -24,4 +24,20 @@ describe SauceWhisk do
       SauceWhisk.pass_job job_id
     end
   end
+
+  describe "##logger" do
+    it "accepts a logger object" do
+      dummy_logger = Object.new do
+        def puts(input)
+        end
+      end
+      SauceWhisk.logger = dummy_logger
+      SauceWhisk.logger.should be dummy_logger
+    end
+
+    it "defaults to STDIN" do
+      SauceWhisk.logger = nil
+      SauceWhisk.logger.should be STDOUT
+    end
+  end
 end
