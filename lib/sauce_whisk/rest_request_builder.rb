@@ -7,7 +7,7 @@ module SauceWhisk
       RestClient::Request.execute({:method => :get, :url => resource_url}.merge auth_details)
     end
 
-    def put(resource_id, body)
+    def put(resource_id, body={})
       url = "#{fully_qualified_resource}/#{resource_id}"
       length = body.length
       headers = {"Content-Length" => length}
@@ -15,7 +15,8 @@ module SauceWhisk
           :method => :put,
           :url => url,
           :payload => body,
-          :content_type => "application/json"
+          :content_type => "application/json",
+          :headers => headers
       }
       RestClient::Request.execute(req_params.merge auth_details)
     end

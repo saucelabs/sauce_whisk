@@ -45,6 +45,10 @@ module SauceWhisk
       Job.new(job_hash)
     end
 
+    def self.stop(job_id)
+      put "#{job_id}/stop", {}
+    end
+
     def self.fetch_asset(job_id, asset)
       asset = get "#{job_id}/assets/#{asset}"
     end
@@ -89,6 +93,10 @@ module SauceWhisk
 
     def save
       Jobs.save(self)
+    end
+
+    def stop
+      Jobs.stop id
     end
 
     def updated_fields

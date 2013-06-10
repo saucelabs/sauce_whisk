@@ -75,4 +75,20 @@ describe SauceWhisk::Jobs do
       job.should be_an_instance_of SauceWhisk::Job
     end
   end
+
+  describe "##stop", :vcr => {:cassette_name => "jobs"} do
+    it "calls the API correctly" do
+      SauceWhisk::Jobs.stop "3edc8fe6d52645bf931b1003da65af1f"
+      assert_requested :put, "https://#{auth}@saucelabs.com/rest/v1/dylanatsauce/jobs/3edc8fe6d52645bf931b1003da65af1f/stop", :content_type => "application/json"
+    end
+
+    it "does something interesting when the job is already stopped" do
+      SauceWhisk::Jobs.stop "9591ce8519f043f8b3bea0462923c883"
+    end
+
+    it "does something else interesting when the job does not exist" do
+      SauceWhisk::Jobs.stop "job_id"
+    end
+
+  end
 end

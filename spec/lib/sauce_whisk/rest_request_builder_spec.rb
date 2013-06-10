@@ -40,10 +40,34 @@ describe SauceWhisk::RestRequestBuilder do
   end
 
   describe "#put", :vcr => {:cassette_name => 'jobs'} do
+    let(:expected_url) {"#{SauceWhisk.base_url}/#{dummy_client.resource}/something"}
     it "calls the base URL with the put method" do
-      expected_url = "#{SauceWhisk.base_url}/#{dummy_client.resource}/something"
-      expected_params = {:method => :put, :url => expected_url, :payload => "another_thing", :content_type => "application/json"}.merge mock_auth
-      RestClient::Request.should_receive(:execute).with(expected_params)
+      RestClient::Request.should_receive(:execute).with(hash_including({:url => expected_url}))
+      dummy_client.put "something", "another_thing"
+    end
+
+    it "includes the right content_type" do
+      RestClient::Request.should_receive(:execute).with(hash_including({:content_type => "application/json"}))
+      dummy_client.put "something", "another_thing"
+    end
+
+    it "includes the right method" do
+      RestClient::Request.should_receive(:execute).with(hash_including({:method => :put}))
+      dummy_client.put "something", "another_thing"
+    end
+
+    it "includes the content length" do
+      RestClient::Request.should_receive(:execute).with(hash_including(:headers => {"Content-Length" => 13}))
+      dummy_client.put "something", "another_thing"
+    end
+
+    it "includes authentication details" do
+      RestClient::Request.should_receive(:execute).with(hash_including(mock_auth))
+      dummy_client.put "something", "another_thing"
+    end
+
+    it "sends the payload" do
+      RestClient::Request.should_receive(:execute).with(hash_including({:payload => "another_thing"}))
       dummy_client.put "something", "another_thing"
     end
   end

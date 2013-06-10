@@ -66,6 +66,15 @@ describe SauceWhisk::Job do
       end
     end
 
+    describe "#stop" do
+      subject {SauceWhisk::Job.new(params.merge({"id" => "3edc8fe6d52645bf931b1003da65af1f"}))}
+
+      it "Calls the correct REST API method", :vcr => {:cassette_name => "jobs"} do
+        subject.stop
+        assert_requested :put, "https://#{ENV["SAUCE_USERNAME"]}:#{ENV["SAUCE_ACCESS_KEY"]}@saucelabs.com/rest/v1/dylanatsauce/jobs/#{subject.id}/stop"
+      end
+    end
+
     describe "parameters" do
       it "lets you set only the parameters which are mutable" do
         [:name, :build, :passed, :tags, :custom_data, :visibility].each do |param|

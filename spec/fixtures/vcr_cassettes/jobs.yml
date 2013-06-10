@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       Accept:
-      - ! '*/*; q=0.5, application/xml'
+      - '*/*; q=0.5, application/xml'
       Accept-Encoding:
       - gzip, deflate
       User-Agent:
@@ -16,44 +16,31 @@ http_interactions:
   response:
     status:
       code: 200
-      message: !binary |-
-        T0s=
+      message: OK
     headers:
-      !binary "U2VydmVy":
-      - !binary |-
-        bmdpbngvMC43LjYy
-      !binary "RGF0ZQ==":
-      - !binary |-
-        RnJpLCAyNCBNYXkgMjAxMyAwNjowNjozOSBHTVQ=
-      !binary "Q29udGVudC1UeXBl":
-      - !binary |-
-        YXBwbGljYXRpb24vanNvbg==
-      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
-      - !binary |-
-        Y2h1bmtlZA==
-      !binary "Q29ubmVjdGlvbg==":
-      - !binary |-
-        a2VlcC1hbGl2ZQ==
-      !binary "UHJhZ21h":
-      - !binary |-
-        bm8tY2FjaGU=
-      !binary "Q2FjaGUtQ29udHJvbA==":
-      - !binary |-
-        bm8tY2FjaGU=
-      !binary "WC1GcmFtZS1PcHRpb25z":
-      - !binary |-
-        REVOWQ==
-      !binary "U2V0LUNvb2tpZQ==":
-      - !binary |-
-        Y3NyZl90b2tlbj01M2I2Nzc4MDk4NjdkZmMyZGRkNjU4MjI4YzYzYTc2Njsg
-        ZXhwaXJlcz0iRnJpLCAyNC1NYXktMjAxMyAwNjoyMzoxOSBHTVQiOyBNYXgt
-        QWdlPTYwMDsgUGF0aD0v
-      - !binary |-
-        bWV0cmljcz0zMTNlYzg5ZmFlMzhmNDQwOGI3MzY1ODEzZjI1MGMyMzk2YWIw
-        Nzk2ZGZmZjI3ODhkODY3NDcyYmJjM2Q4YmIzOTRiMDRjYzg7IFBhdGg9Lw==
-      !binary "Q29udGVudC1FbmNvZGluZw==":
-      - !binary |-
-        Z3ppcA==
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Fri, 24 May 2013 06:06:39 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=53b677809867dfc2ddd658228c63a766; expires="Fri, 24-May-2013 06:23:19
+        GMT"; Max-Age=600; Path=/
+      - metrics=313ec89fae38f4408b7365813f250c2396ab0796dfff2788d867472bbc3d8bb394b04cc8;
+        Path=/
+      Content-Encoding:
+      - gzip
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -110,10 +97,10 @@ http_interactions:
     uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/bd9c43dd6b5549f1b942d1d581d98cac
     body:
       encoding: UTF-8
-      string: ! '{"passed":true}'
+      string: '{"passed":true}'
     headers:
       Accept:
-      - ! '*/*; q=0.5, application/xml'
+      - '*/*; q=0.5, application/xml'
       Accept-Encoding:
       - gzip, deflate
       Content-Length:
@@ -148,7 +135,7 @@ http_interactions:
       - '611'
     body:
       encoding: US-ASCII
-      string: ! '{"status": "complete", "commands_not_successful": 2, "name": "Ruby
+      string: '{"status": "complete", "commands_not_successful": 2, "name": "Ruby
         Example for Appium", "video_url": "http://saucelabs.com/jobs/bd9c43dd6b5549f1b942d1d581d98cac/video.flv",
         "tags": [], "proxied": false, "start_time": 1362100867, "log_url": "http://saucelabs.com/jobs/bd9c43dd6b5549f1b942d1d581d98cac/selenium-server.log",
         "creation_time": 1362100864, "custom-data": null, "public": null, "browser_version":
@@ -165,7 +152,7 @@ http_interactions:
       string: ''
     headers:
       Accept:
-      - ! '*/*; q=0.5, application/xml'
+      - '*/*; q=0.5, application/xml'
       Accept-Encoding:
       - gzip, deflate
       User-Agent:
@@ -198,7 +185,7 @@ http_interactions:
       - '611'
     body:
       encoding: US-ASCII
-      string: ! '{"status": "complete", "commands_not_successful": 2, "name": "Ruby
+      string: '{"status": "complete", "commands_not_successful": 2, "name": "Ruby
         Example for Appium", "video_url": "http://saucelabs.com/jobs/bd9c43dd6b5549f1b942d1d581d98cac/video.flv",
         "tags": [], "proxied": false, "start_time": 1362100867, "log_url": "http://saucelabs.com/jobs/bd9c43dd6b5549f1b942d1d581d98cac/selenium-server.log",
         "creation_time": 1362100864, "custom-data": null, "public": null, "browser_version":
@@ -215,7 +202,7 @@ http_interactions:
       string: ''
     headers:
       Accept:
-      - ! '*/*; q=0.5, application/xml'
+      - '*/*; q=0.5, application/xml'
       Accept-Encoding:
       - gzip, deflate
       User-Agent:
@@ -248,9 +235,267 @@ http_interactions:
       - '191'
     body:
       encoding: US-ASCII
-      string: ! '{"sauce-log": "log.json", "video": "video.flv", "selenium-log": "selenium-server.log",
+      string: '{"sauce-log": "log.json", "video": "video.flv", "selenium-log": "selenium-server.log",
         "screenshots": ["0000screenshot.png", "0001screenshot.png", "0002screenshot.png",
         "0003screenshot.png"]}'
     http_version: 
   recorded_at: Fri, 24 May 2013 06:13:26 GMT
+- request:
+    method: put
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/job_id/stop
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Mon, 10 Jun 2013 07:14:49 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=4298b6049c24168640f07d791dcf5b65; expires="Mon, 10-Jun-2013 07:31:53
+        GMT"; Max-Age=600; Path=/
+      - metrics=b0b8f1841b3c8208349be86ea61357059b0e4ed4c26ca98213b74728815a4ec47d432151;
+        Path=/
+      - metrics=f36ba36dd62295ed19dfa7023109af257d3744e6901106f8b3254c599af08d386c3a857e;
+        Path=/
+      Content-Length:
+      - '23'
+    body:
+      encoding: US-ASCII
+      string: '{"errors": "Not Found"}'
+    http_version: 
+  recorded_at: Mon, 10 Jun 2013 07:21:54 GMT
+- request:
+    method: put
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/986bafd435c341b7bf8a1ee995606183/stop
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Mon, 10 Jun 2013 07:30:03 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=6b2be9b2c3e8a2b606b10944adfa767d; expires="Mon, 10-Jun-2013 07:47:08
+        GMT"; Max-Age=600; Path=/
+      - metrics=8a5fd4768016507bd6281762cf9f4056814fa577ae1b658c62a745078c750aa67afeab47;
+        Path=/
+      - metrics=c92deb1233a3ae422dbbbdb2ff820a436485cd867ac5a39655234d99aa91fbfed6336887;
+        Path=/
+      Content-Length:
+      - '23'
+    body:
+      encoding: US-ASCII
+      string: '{"errors": "Not Found"}'
+    http_version: 
+  recorded_at: Mon, 10 Jun 2013 07:37:09 GMT
+- request:
+    method: put
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/3edc8fe6d52645bf931b1003da65af1f/stop
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Mon, 10 Jun 2013 07:31:41 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=35e126296b2dc908d1694a45051b4a4b; expires="Mon, 10-Jun-2013 07:48:45
+        GMT"; Max-Age=600; Path=/
+      - metrics=ac238c38215972b4e2b21e106220620bcda4daf3f066f7410d2f451dba13b5df645fc89d;
+        Path=/
+      Content-Length:
+      - '652'
+    body:
+      encoding: US-ASCII
+      string: '{"status": "complete", "commands_not_successful": 0, "name": "Manual
+        Session at \\011http://www.artindustrial.com", "video_url": "http://saucelabs.com/jobs/3edc8fe6d52645bf931b1003da65af1f/video.flv",
+        "tags": [], "proxied": false, "start_time": 1370848961, "log_url": "http://saucelabs.com/jobs/3edc8fe6d52645bf931b1003da65af1f/selenium-server.log",
+        "creation_time": 1370848961, "custom-data": null, "public": null, "browser_version":
+        "4.0.4", "end_time": 1370849925, "passed": null, "error": "User terminated",
+        "owner": "<SAUCE_USERNAME>", "build": null, "os": "Linux", "id": "3edc8fe6d52645bf931b1003da65af1f",
+        "breakpointed": null, "browser": "android"}'
+    http_version: 
+  recorded_at: Mon, 10 Jun 2013 07:38:46 GMT
+- request:
+    method: put
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/9591ce8519f043f8b3bea0462923c883/stop
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Mon, 10 Jun 2013 07:58:27 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=2d1a8d0e7f5eeb39b148d343fbdbf94a; expires="Mon, 10-Jun-2013 08:15:31
+        GMT"; Max-Age=600; Path=/
+      - metrics=9fe34163bd1c71b54125f30a824b987b8b4293c71041f8b4df454d86a4c89cdf27da352d;
+        Path=/
+      Content-Length:
+      - '619'
+    body:
+      encoding: US-ASCII
+      string: '{"status": "complete", "commands_not_successful": 1, "name": "Wikipedia''s
+        Miso Page fails", "video_url": "http://saucelabs.com/jobs/9591ce8519f043f8b3bea0462923c883/video.flv",
+        "tags": [], "proxied": true, "start_time": 1370846866, "log_url": "http://saucelabs.com/jobs/9591ce8519f043f8b3bea0462923c883/selenium-server.log",
+        "creation_time": 1370846866, "custom-data": null, "public": null, "browser_version":
+        "17.0.1", "end_time": 1370846883, "passed": false, "error": null, "owner":
+        "<SAUCE_USERNAME>", "build": null, "os": "Mac 10.6", "id": "9591ce8519f043f8b3bea0462923c883",
+        "breakpointed": null, "browser": "firefox"}'
+    http_version: 
+  recorded_at: Mon, 10 Jun 2013 08:05:32 GMT
+- request:
+    method: put
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/dsfargeg/stop
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Mon, 10 Jun 2013 08:47:43 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=400011d970af000bde75fc33d3c2fa66; expires="Mon, 10-Jun-2013 09:04:48
+        GMT"; Max-Age=600; Path=/
+      - metrics=65c699bb137a29a1d8b4dc9250854eb35608035468aa780535534c269393f16a7ea3ca35;
+        Path=/
+      - metrics=c18c09599c25a7fba270b5c639dc185240c5cb72c92f89a4e9d547d48c6b0079ca4714b3;
+        Path=/
+      Content-Length:
+      - '23'
+    body:
+      encoding: US-ASCII
+      string: '{"errors": "Not Found"}'
+    http_version: 
+  recorded_at: Mon, 10 Jun 2013 08:54:49 GMT
 recorded_with: VCR 2.5.0
