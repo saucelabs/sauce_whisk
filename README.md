@@ -35,6 +35,7 @@ SAUCE_ACCESS_KEY=Your Access Key, found on the lower left of your Account page
 ```ruby
     SauceWhisk::Jobs.pass_job job_id
     SauceWhisk::Jobs.fail_job job_id
+    SauceWhisk::Jobs.change_status job_id, true_for_passed_false_for_failed
 ```    
     
 ### Creating Job Objects
