@@ -1,0 +1,229 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels/7a4815f52407435581517ffd4d71c3a7
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Tue, 11 Jun 2013 05:19:12 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=987dda6d5a72ac5e15e804c6f81417f; expires="Tue, 11-Jun-2013 05:36:18
+        GMT"; Max-Age=600; Path=/
+      - metrics=8c3aec73d026c2739e78176dc7e48da9da88b13df2efaffa9d5442ca9d3bf56ee75f008c;
+        Path=/
+      Content-Length:
+      - '58'
+    body:
+      encoding: US-ASCII
+      string: '{"result": true, "id": "7a4815f52407435581517ffd4d71c3a7"}'
+    http_version: 
+  recorded_at: Tue, 11 Jun 2013 05:26:22 GMT
+- request:
+    method: get
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels/fcf7b980037b4a37aa5ff19808e46da7
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Tue, 11 Jun 2013 06:29:23 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=cb99c690ba4dec71e689ccc2368aee20; expires="Tue, 11-Jun-2013 06:46:29
+        GMT"; Max-Age=600; Path=/
+      - metrics=5f26b4576e57ec0c75993853df481a41035c26d7768a87c9e90c4212bf075d7cfe42cc17;
+        Path=/
+      Content-Length:
+      - '699'
+    body:
+      encoding: US-ASCII
+      string: '{"status": "terminated", "direct_domains": null, "shutdown_time": null,
+        "ssh_port": 443, "user_shutdown": true, "use_caching_proxy": true, "creation_time":
+        1370924241, "domain_names": ["sauce-connect.proxy"], "shared_tunnel": false,
+        "tunnel_identifier": null, "host": "maki10141.miso.saucelabs.com", "owner":
+        "<SAUCE_USERNAME>", "use_kgp": true, "id": "fcf7b980037b4a37aa5ff19808e46da7",
+        "metadata": {"ScriptRelease": 35, "PythonVersion": "2.5.1", "Platform": "Java-1.7.0_13-Java_HotSpot-TM-_64-Bit_Server_VM,_23.7-b01,_Oracle_Corporation-on-Mac_OS_X-10.8.3-x86_64",
+        "OwnerHost": "127.0.0.1", "Build": "35", "Release": "3.0-r24", "OwnerPorts":
+        ["57539"], "ScriptName": "sauce_connect", "Ports": ["80"]}}'
+    http_version: 
+  recorded_at: Tue, 11 Jun 2013 06:36:33 GMT
+- request:
+    method: get
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Tue, 11 Jun 2013 06:49:07 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=90135ac06149df70abf84010839f0d84; expires="Tue, 11-Jun-2013 07:06:13
+        GMT"; Max-Age=600; Path=/
+      - metrics=74fb9ada210b5a86c395fa69c78b7ece36c584aab137e19870e94bcdb0a2e17bbd96f144;
+        Path=/
+      Content-Length:
+      - '36'
+    body:
+      encoding: US-ASCII
+      string: &1 !ruby/string
+        str: '["5da3256813fd409ba7927004b499a5cf"]'
+        net_http_res: !ruby/object:Net::HTTPOK
+          http_version: '1.0'
+          code: '200'
+          message: OK
+          header:
+            server:
+            - nginx/0.7.62
+            date:
+            - Tue, 11 Jun 2013 06:49:07 GMT
+            content-type:
+            - application/json
+            connection:
+            - keep-alive
+            pragma:
+            - no-cache
+            cache-control:
+            - no-cache
+            x-frame-options:
+            - DENY
+            set-cookie:
+            - csrf_token=90135ac06149df70abf84010839f0d84; expires="Tue, 11-Jun-2013
+              07:06:13 GMT"; Max-Age=600; Path=/
+            - metrics=74fb9ada210b5a86c395fa69c78b7ece36c584aab137e19870e94bcdb0a2e17bbd96f144;
+              Path=/
+            content-length:
+            - '36'
+          body: *1
+          read: true
+          __read_body_previously_called: true
+        args:
+          :method: :get
+          :url: https://saucelabs.com/rest/v1/dylanatsauce/tunnels
+          :user: dylanatsauce
+          :password: 8f5210dd-f0cf-477f-b720-9f721a9679a4
+        code: 200
+    http_version: 
+  recorded_at: Tue, 11 Jun 2013 06:56:16 GMT
+- request:
+    method: get
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels/5da3256813fd409ba7927004b499a5cf
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Tue, 11 Jun 2013 07:03:16 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=501ca123c01fa4ac294d3640990b433f; expires="Tue, 11-Jun-2013 07:20:22
+        GMT"; Max-Age=600; Path=/
+      - metrics=11c55a5a4a201f53c400274f179bc79003c0dc64d853714ac40b489994e546aba7c7f16a;
+        Path=/
+      Content-Length:
+      - '697'
+    body:
+      encoding: US-ASCII
+      string: '{"status": "terminated", "direct_domains": null, "shutdown_time": null,
+        "ssh_port": 443, "user_shutdown": true, "use_caching_proxy": true, "creation_time":
+        1370933412, "domain_names": ["sauce-connect.proxy"], "shared_tunnel": false,
+        "tunnel_identifier": "", "host": "maki10141.miso.saucelabs.com", "owner":
+        "<SAUCE_USERNAME>", "use_kgp": true, "id": "5da3256813fd409ba7927004b499a5cf",
+        "metadata": {"ScriptRelease": 38, "PythonVersion": "2.5.1", "Platform": "Java-1.7.0_13-Java_HotSpot-TM-_64-Bit_Server_VM,_23.7-b01,_Oracle_Corporation-on-Mac_OS_X-10.8.3-x86_64",
+        "OwnerHost": "127.0.0.1", "Build": "38", "Release": "3.0-r25", "OwnerPorts":
+        ["64703"], "ScriptName": "sauce_connect", "Ports": ["80"]}}'
+    http_version: 
+  recorded_at: Tue, 11 Jun 2013 07:10:26 GMT
+recorded_with: VCR 2.5.0

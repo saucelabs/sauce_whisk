@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Tue, 11 Jun 2013 04:14:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=6448c9d779f6621c4baa59707aea63d; expires="Tue, 11-Jun-2013 04:31:05
+        GMT"; Max-Age=600; Path=/
+      - metrics=f7d9eb6e751429503ce76107b06ca1ea52cdc81556b48fbb6e8442cdaf2bd845ea18f402;
+        Path=/
+      Content-Length:
+      - '2'
+    body:
+      encoding: US-ASCII
+      string: '[]'
+    http_version: 
+  recorded_at: Tue, 11 Jun 2013 04:21:09 GMT
+recorded_with: VCR 2.5.0

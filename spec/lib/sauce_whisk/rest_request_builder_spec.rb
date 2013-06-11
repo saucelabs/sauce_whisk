@@ -39,6 +39,16 @@ describe SauceWhisk::RestRequestBuilder do
     end
   end
 
+  describe "#delete", :vcr => {:cassette_name => 'jobs'} do
+    let(:expected_url) {"#{SauceWhisk.base_url}/#{dummy_client.resource}/identifier"}
+
+    it "calls the base URL with the delete method" do
+      expected_params = {:method => :delete, :url => expected_url}.merge mock_auth
+      RestClient::Request.should_receive(:execute).with(expected_params)
+      dummy_client.delete "identifier"
+    end
+  end
+
   describe "#put", :vcr => {:cassette_name => 'jobs'} do
     let(:expected_url) {"#{SauceWhisk.base_url}/#{dummy_client.resource}/something"}
     it "calls the base URL with the put method" do

@@ -21,6 +21,11 @@ module SauceWhisk
       RestClient::Request.execute(req_params.merge auth_details)
     end
 
+    def delete(resource_id)
+      resource_to_delete = fully_qualified_resource << "/#{resource_id}"
+      RestClient::Request.execute({:method => :delete, :url => resource_to_delete}.merge auth_details)
+    end
+
     def auth_details
       {:user => SauceWhisk.username, :password => SauceWhisk.password}
     end
