@@ -11,11 +11,19 @@ module SauceWhisk
   end
 
   def self.username
-    ENV["SAUCE_USERNAME"]
+    if defined? Sauce
+      return Sauce.get_config.username
+    else
+      return ENV["SAUCE_USERNAME"]
+    end
   end
 
   def self.password
-    ENV["SAUCE_ACCESS_KEY"]
+    if defined? Sauce
+      return Sauce.get_config.password
+    else
+      return ENV["SAUCE_ACCESS_KEY"]
+    end
   end
 
   def self.pass_job(job_id)
