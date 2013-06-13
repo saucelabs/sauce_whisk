@@ -1,3 +1,5 @@
+require "json"
+
 module SauceWhisk
   class Sauce
     extend RestRequestBuilder
@@ -11,7 +13,7 @@ module SauceWhisk
     end
 
     def self.service_status
-      get "status"
+      JSON.parse((get "status"), :symbolize_names => true)
     rescue
 
     end
@@ -24,8 +26,12 @@ module SauceWhisk
       end
     end
 
-    def self.test_count
+    def self.total_job_count
       Integer(get "counter")
+    end
+
+    def self.operational?
+      service_status[:service_operational]
     end
   end
 end
