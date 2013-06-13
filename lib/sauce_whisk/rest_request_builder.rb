@@ -31,7 +31,7 @@ module SauceWhisk
     end
 
     def fully_qualified_resource
-      "#{SauceWhisk.base_url}/#{resource}"
+      return (respond_to? :resource) ? "#{SauceWhisk.base_url}/#{resource}" : SauceWhisk.base_url
     end
   end
 end

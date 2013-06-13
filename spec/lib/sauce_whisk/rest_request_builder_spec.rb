@@ -12,10 +12,30 @@ describe SauceWhisk::RestRequestBuilder do
       end 
   }
 
+  let(:dummy_client_without_resource) {
+    Class.new do
+      extend SauceWhisk::RestRequestBuilder
+    end
+  }
+
   let (:mock_auth) {{
     :user => ENV["SAUCE_USERNAME"],
     :password => ENV["SAUCE_ACCESS_KEY"]
   }}
+
+  describe "#fully_qualified_resource" do
+    context "with a resource defined" do
+      it "should end with the resource" do
+        dummy_client.fully_qualified_resource.should eq "#{SauceWhisk.base_url}/#{dummy_client.resource}"
+      end
+    end
+
+    context "without a resource defined" do
+      it "should return the base url" do
+        dummy_client_without_resource.fully_qualified_resource.should eq SauceWhisk.base_url
+      end
+    end
+  end
 
   describe "#auth_details" do
     it "should return the env vars" do

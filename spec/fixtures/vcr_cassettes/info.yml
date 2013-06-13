@@ -1,0 +1,248 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://saucelabs.com/rest/v1/info/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Thu, 13 Jun 2013 06:59:27 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - http://status.saucelabs.com
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=690a48f3be8c52adab676888eb1b85ce; expires="Thu, 13-Jun-2013 07:16:35
+        GMT"; Max-Age=600; Path=/
+      - metrics=f10f2e1bd441f99158046f4bc06cddf3ed1ddbe2dbade3b3ee6e488f89b5c7a8373852fb;
+        Path=/
+      Content-Length:
+      - '119'
+    body:
+      encoding: US-ASCII
+      string: '{"wait_time": 0.4453551912568306, "service_operational": true, "status_message":
+        "Basic service status checks passed."}'
+    http_version: 
+  recorded_at: Thu, 13 Jun 2013 07:06:35 GMT
+- request:
+    method: get
+    uri: https://saucelabs.com/rest/v1/info/counter
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Thu, 13 Jun 2013 06:59:28 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=c80f955ef5ff301f505766ca5990c944; expires="Thu, 13-Jun-2013 07:16:37
+        GMT"; Max-Age=600; Path=/
+      - metrics=de58b9bbb3f6bd5ca2fecf20bd1dc637ee09e155ffd724380e7b4a379552c3efd9dcd80c;
+        Path=/
+      Content-Length:
+      - '8'
+    body:
+      encoding: US-ASCII
+      string: '46115584'
+    http_version: 
+  recorded_at: Thu, 13 Jun 2013 07:06:36 GMT
+- request:
+    method: get
+    uri: https://saucelabs.com/rest/v1/info/browsers/webdriver
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Thu, 13 Jun 2013 06:59:29 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=97d520bfa8882f5ccf1e9a557b6d1132; expires="Thu, 13-Jun-2013 07:16:38
+        GMT"; Max-Age=600; Path=/
+      - metrics=819ca6f9442c18e1518266323e544b0b8b4ad258a608f3c6f9f24340908df18146ad4dcb;
+        Path=/
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA9WcS2+bQBSF/4rldYQYbB7urqraqlKqRuqii6qqiE0SVBss
+        bDepqv73Anlj7nCH3DOBTRZjYubT3OEczsV8/ztd59nlzyzeJNM3k2l6Fq+m
+        J5NpvE0fx7a3Y/WBv5Nil+ZZNT53Zk41vi2Si6QoktXTD/36Ww77fBPvy6Gf
+        5/HyV5Ktqo+uk/NVkZbHVofku2roc7ycKNcJqpHdVV7sG+epx5f5Yf/8//+d
+        TF4wf99xrczfZ8/+Q1pOJb9pAlw8Dh+vgesomkIpOYw5EMO3h4FcjaDE8Oxg
+        BECM0N5qhECMyB5GBMRY6C5TkhALIER5UmuLoVwkiLK1HLffhcLwrGF4SIyZ
+        xbLiu5AeIBaFXCGVXFmUcoXUcmVRzBVSzZVFOVdIPVeRxRVBKrqyJukKqeme
+        RU33kJrulZp+HlgC4at6enaVZ0mTI93ejzYxhnk/bsYwvHvyr/FFXKRNgt3D
+        6DGBcsKBMXzM88t1Mnl3VeSbo8VYPowe7YtaOeb+zFFKsyxyRGygT9k+KbJk
+        P3l/s13nxe0JnlXY/QHJkwOafNVlOFKlFVbB3NNcyBZGhN/SbJVf7yae60at
+        lPxrsgxmZWRm4aL8s/AXNGXUl3LWSsm3NDKUlTkIA1c5KvRLN21rMfk+4cs2
+        KeImWn4/eOQRlBNoKAwlqXO1Gjebu2SdZOlh83KMcnPJWbZuDI+LIVd0gVsV
+        XRS6Gk7hvcUvOnMzVN9Ray4T0ktWng9K41um4atyH5rA8SKbNPyruDmNbOTR
+        CYNMPWRDj04UZI3Jxh6dKMgCCwVvsztBkMmHbCejEwUpLwu7KHyvbY5S9zQs
+        bpXx9DW6UfgpSA8Uyd5GN4qHRJHtb3TD8JOdHjCWBX9MfY5uGKTm170OmzBI
+        1Rfud3TDIJVfuOfRDYPUftG+RzcKUvvr3oc1FHz3w+J+MeiADCi37sRiQxkG
+        aKgcMGrfNGPLAQkMdg5ovl9wAVk7y1gDMooGaWRwARlFg3QyML/cDoO0yzC3
+        3I6CrDFYQNaOgiwwUEDWDoK0ybCArB0lAqLAArJ2FKRJxgVkhOojhRIVkBEo
+        fJPcAwUUkBEo4wzICJhxBmQEDFLxcQEZAYPUfFxARsAgVR8XkBEwSOXHBWQE
+        DFL7UQEZgYLUflRA1o4y0oCMgOFr/6s+nNoJwr8iDzPoa6diQ8k8Ylab6EU5
+        G0cFfqTbU25PzjuDZtVNw0I0AmakIRpJw99afWhAIRpJg3Q7KE9NwCAtNcpR
+        EyjIGkOFaAQKssAwIRoBgrTSqBCNQEEaaVSIRqAgjTQsRHsN2QeFaBQK30j3
+        QMGEaBSKh0RBhWgUzChDNAoGqfiwEI2CQWo+LESjYJCqDwvRKBik8sNCNAoG
+        qf2gEI1CQWo/KEQjUMYZolEwfO0fZPhEYLGhZMKnCtEPZyWn5tUCUU/EF/+Q
+        Ru5lf45Z9d39iD1qnT9fQs3mr9k8svN3+FvHhCCwtgJ83Zd9PYUkg0kVmTIM
+        s5LMKIZYTabdmIpB82yvWTdGiGFAYqglYgOZP6fsi7mU0zQ73LROn/+A8tts
+        VeTp0VU2fhxuMsz1ZTUXQpgbtFRO/2RHZnF9N3ZUSk6k61HWHwshPHwXC8Lc
+        9Ap3UmiQMbVQNBUFZJANUmgGvm6bM8g2TWgGZC3JxiY0A3JbyzZKaIYIyCDb
+        IaEZkPGIkoxHNFrN17keDJIdEQ0D34n3YJBshbA9kzCDbA9EQzGi5oeGAqnV
+        wl0PDQVSrYXbHRoKpF4L9zk0FEjFFm5waCiQmi3a2dAwIDVb+KXBmns7pGp7
+        dlR7nE0Mmoei+fEfsOfe4odoAAA=
+    http_version: 
+  recorded_at: Thu, 13 Jun 2013 07:06:38 GMT
+- request:
+    method: get
+    uri: https://saucelabs.com/rest/v1/info/browsers/webdriver
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Thu, 13 Jun 2013 06:59:31 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=9b8b7868d34576a8f8f113f544c2af78; expires="Thu, 13-Jun-2013 07:16:39
+        GMT"; Max-Age=600; Path=/
+      - metrics=27cc295045be3d9b2b339dcbc3952bc0b065da4fb9d91435868b44fba87221d79249dd4d;
+        Path=/
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+        dlR7nE0Mmoei+fEfsOfe4odoAAA=
+    http_version: 
+  recorded_at: Thu, 13 Jun 2013 07:06:39 GMT
+recorded_with: VCR 2.5.0

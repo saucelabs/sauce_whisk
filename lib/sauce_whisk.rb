@@ -2,7 +2,9 @@ require "sauce_whisk/version"
 require "sauce_whisk/jobs"
 require "sauce_whisk/assets"
 require "sauce_whisk/tunnels"
+require "sauce_whisk/info"
 require "sauce_whisk/rest_request_builder"
+
 
 module SauceWhisk
 
@@ -11,7 +13,7 @@ module SauceWhisk
   end
 
   def self.username
-    if defined? Sauce
+    if defined? ::Sauce
       return Sauce.get_config.username
     else
       return ENV["SAUCE_USERNAME"]
@@ -19,7 +21,7 @@ module SauceWhisk
   end
 
   def self.password
-    if defined? Sauce
+    if defined? ::Sauce
       return Sauce.get_config.password
     else
       return ENV["SAUCE_ACCESS_KEY"]
