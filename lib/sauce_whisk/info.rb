@@ -1,4 +1,5 @@
 require "json"
+require 'sauce_whisk/rest_request_builder'
 
 module SauceWhisk
   class Sauce
