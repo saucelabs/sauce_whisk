@@ -88,6 +88,36 @@ There are three types of asset for Sauce Labs jobs: screenshots, video and logs.
   video = job.video # A single Asset, holding the video
 ```
 
+### Tunnels
+
+Tunnels give information about currently running [Sauce Connect](https://saucelabs.com/docs/connect) tunnels for a given user.
+
+#### Fetching All Active Tunnels
+
+```ruby
+all_tunnels = SauceWhisk::Tunnels.all   # An array of SauceWhisk::Tunnel objects
+all_tunnels_as_json = SauceWhisk::Tunnels.all(:fetch_each => false)  # An array of Tunnel IDs
+```
+
+#### Details for a specific tunnel
+```ruby
+tunnel = SauceWhisk::Tunnels.fetch(tunnel_id)   # An instance of Tunnel
+tunnel.id        # The Tunnel, um, id.
+tunnel.owner     # The Sauce Account responsible for the tunnel -- The Credentials used to open it
+tunnel.status    # Whether or not the tunnel is open
+tunnel.host      # The Sauce Labs machine hosting the other end of the Tunnel
+tunnel.creation_time  # When the tunnel was opened, in Epoch time
+```
+
+#### Stopping a Tunnel
+
+```ruby
+tunnel = SauceWhisk::Tunnels.fetch tunnel_id
+tunnel.stop  # Stops the Tunnel
+
+SauceWhisk::Tunnels.stop tunnel_id   # Stops the tunnel with the given id
+```
+
 ### Logger
 
 You can set a custom logger object, passing anything that responds to puts:
