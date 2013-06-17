@@ -1,9 +1,11 @@
+require "sauce_whisk/rest_request_builder"
 require "sauce_whisk/version"
 require "sauce_whisk/jobs"
 require "sauce_whisk/assets"
 require "sauce_whisk/tunnels"
 require "sauce_whisk/info"
-require "sauce_whisk/rest_request_builder"
+require "sauce_whisk/accounts"
+
 
 
 module SauceWhisk
