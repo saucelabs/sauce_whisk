@@ -86,8 +86,8 @@ describe SauceWhisk::Jobs do
       SauceWhisk::Jobs.stop "9591ce8519f043f8b3bea0462923c883"
     end
 
-    it "does something else interesting when the job does not exist" do
-      SauceWhisk::Jobs.stop "job_id"
+    it "throws a ResourceNotFound error when the job isn't found" do
+       expect {SauceWhisk::Jobs.stop("job_id")}.to raise_exception RestClient::ResourceNotFound
     end
 
   end
