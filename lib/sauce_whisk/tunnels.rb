@@ -8,8 +8,9 @@ module SauceWhisk
       "#{SauceWhisk.username}/tunnels"
     end
 
-    def self.all(fetch_each = false)
+    def self.all(opts = {:fetch_each => true})
       all_tunnels = JSON.parse get
+      fetch_each = opts[:fetch_each]
 
       unless fetch_each
         return all_tunnels

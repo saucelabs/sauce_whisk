@@ -15,18 +15,18 @@ describe SauceWhisk::Tunnels, :vcr => {:cassette_name => "tunnels"} do
     end
 
     context "called without the 'fetch' parameter" do
-      it "returns an array of strings" do
+      it "returns an array of Tunnels" do
         tunnels = SauceWhisk::Tunnels.all
         tunnels.should be_an_instance_of Array
-        tunnels.each {|tunnel| tunnel.should be_an_instance_of String }
+        tunnels.each {|tunnel| tunnel.should be_an_instance_of SauceWhisk::Tunnel}
       end
     end
 
-    context "called with the fetch parameter" do
-      it "returns an array of Tunnels" do
-        tunnels = SauceWhisk::Tunnels.all(:fetch)
+    context "called with the fetch parameter set false" do
+      it "returns an array of strings" do
+        tunnels = SauceWhisk::Tunnels.all(:fetch_each => false)
         tunnels.should be_an_instance_of Array
-        tunnels.each {|tunnel| tunnel.should be_an_instance_of SauceWhisk::Tunnel}
+        tunnels.each {|tunnel| tunnel.should be_an_instance_of String }
       end
     end
   end
