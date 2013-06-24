@@ -1,4 +1,7 @@
 # Major Version 0
+### 0.0.8
+* Correctly read Sauce Config
+
 ### 0.0.6
 * Correct RestClient -- Actually require it
 ### 0.0.5
