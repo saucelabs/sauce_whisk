@@ -16,7 +16,7 @@ module SauceWhisk
 
   def self.username
     if defined? ::Sauce
-      return Sauce.get_config.username
+      return ::Sauce::Config.new[:username]
     else
       return ENV["SAUCE_USERNAME"]
     end
@@ -24,7 +24,7 @@ module SauceWhisk
 
   def self.password
     if defined? ::Sauce
-      return Sauce.get_config.password
+      return ::Sauce::Config.new[:access_key]
     else
       return ENV["SAUCE_ACCESS_KEY"]
     end
