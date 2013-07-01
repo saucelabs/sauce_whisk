@@ -118,6 +118,54 @@ tunnel.stop  # Stops the Tunnel
 SauceWhisk::Tunnels.stop tunnel_id   # Stops the tunnel with the given id
 ```
 
+### Generic Sauce Labs Information
+
+The Sauce class returns non-user-specific info about available platforms, the number of jobs run, and the status of Sauce Labs' infrastructure.
+
+These can be used without authentication.
+
+#### Available Platforms
+
+You can obtain an Array of all available platforms using `SauceWhisk::Sauce.platforms`:
+
+```ruby
+platforms = SauceWhisk::Sauce.platforms        # Fetch all platforms or return cached values
+platforms = SauceWhisk::Sauce.platforms(true)  # Force a fetch of all platforms
+
+platforms.first # => A Hash of platform details:
+ 
+ {"long_name"=>"Firefox",
+ "api_name"=>"firefox",
+ "long_version"=>"20.0.1.",
+ "preferred_version"=>"",
+ "automation_backend"=>"webdriver",
+ "os"=>"Linux",
+ "short_version"=>"20",
+ "scout"=>"webdriver"}
+```
+
+The most important values for a platform are the **os**, **api_name**, **short_version** fields.  These are the values to use for desired_capabilites *os*, *browser* and *browser_version* respectively.
+
+#### Count
+
+```ruby
+all_tests = SauceWhisk::Sauce.total_job_count  # The total number of jobs ever run with Sauce Labs' help
+```
+
+#### Service Status
+
+```ruby
+status = SauceWhisk::Sauce.service_status   # Check the status of Sauce Labs' service
+
+status.inspect # =>
+
+{
+  :wait_time=>0.39880952380952384,                          # Delay between requesting a job and it starting
+  :service_operational=>true,                               # Operational Status -- Boolean
+  :status_message=>"Basic service status checks passed."    # More info when erros occuring
+}
+```
+
 ### Logger
 
 You can set a custom logger object, passing anything that responds to puts:
