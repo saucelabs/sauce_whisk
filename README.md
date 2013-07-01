@@ -88,6 +88,35 @@ There are three types of asset for Sauce Labs jobs: screenshots, video and logs.
   video = job.video # A single Asset, holding the video
 ```
 
+### Accounts
+
+At the moment, it is only possible to query existing accounts using the API gem.
+
+#### Retrieving a specific account
+```ruby
+my_account = SauceWhisk::Accounts.fetch "account_name" # Returns a SauceWhisk::Account object, with its concurrency limit
+my_account = SauceWhisk::Accounts.fetch("account_name", false) # Returns a SauceWhisk::Account object, does not fetch its concurrency limit
+```
+
+`SauceWhisk::Account` objects don't do anything other then store data about the relevant account:
+
+```ruby
+my_account.username             # Sauce Labs Username
+my_account.access_key           # Sauce Labs Access Key (For automated test authentication... Not your password)
+my_account.minutes              # Total number of minutes available
+my_account.total_concurrency    # Number of concurrent jobs allowed
+my_account.mac_concurrency      # Number of concurrent Mac hosted jobs allowed (includes iPad, iPhone, Mac)
+```
+
+#### Retrieving the concurrency limits for an account
+
+If you exceed your concurrency limits, your tests will be queued waiting for a free VM.  This may cause erroneous failures in your test cases, and no-one wants that.
+```ruby
+concurrencies = SauceWhisk::Accounts.concurrency_for "account_name"    # Hash containing both concurrency limits
+mac_concurrency = SauceWhisk::Accounts.concurrency_for "account_name", :mac    # Fixnum of just the Mac limit
+total_concurrency = SauceWhisk::Accounts.concurrency_for "account_name", :total    # Fixnum of the upper concurrency limit
+```
+
 ### Tunnels
 
 Tunnels give information about currently running [Sauce Connect](https://saucelabs.com/docs/connect) tunnels for a given user.
