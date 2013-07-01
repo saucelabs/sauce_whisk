@@ -153,9 +153,9 @@ The Sauce class returns non-user-specific info about available platforms, the nu
 
 These can be used without authentication.
 
-#### Available Platforms
+#### Fetch All Available Platforms
 
-You can obtain an Array of all available platforms using `SauceWhisk::Sauce.platforms`:
+You can obtain an Array of all available webdriver platforms using `SauceWhisk::Sauce.platforms`:
 
 ```ruby
 platforms = SauceWhisk::Sauce.platforms        # Fetch all platforms or return cached values
@@ -163,17 +163,20 @@ platforms = SauceWhisk::Sauce.platforms(true)  # Force a fetch of all platforms
 
 platforms.first # => A Hash of platform details:
  
- {"long_name"=>"Firefox",
- "api_name"=>"firefox",
- "long_version"=>"20.0.1.",
- "preferred_version"=>"",
- "automation_backend"=>"webdriver",
- "os"=>"Linux",
- "short_version"=>"20",
- "scout"=>"webdriver"}
+ {
+    "long_name"=>"Firefox",             # Full name of the platform's browser
+    "api_name"=>"firefox",              # desired_capabilities name of the platform
+    "long_version"=>"20.0.1.",          # Full version number for the platform's browser
+    "preferred_version"=>"",            # Preferred version of the platform's browser (If none is requested)
+    "automation_backend"=>"webdriver",  # Whether this is a Webdriver or Selenium-rc driven platform
+    "os"=>"Linux",                      # desired_capabilities name of the Platform's Operating System  
+    "short_version"=>"20"               # desired_capabilities name of the Platform's Browsers's version
+ }
 ```
 
 The most important values for a platform are the **os**, **api_name**, **short_version** fields.  These are the values to use for desired_capabilites *os*, *browser* and *browser_version* respectively.
+
+The gem does not support retrieval of selenium-rc platforms at the current time
 
 #### Count
 
