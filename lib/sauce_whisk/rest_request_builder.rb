@@ -28,6 +28,22 @@ module SauceWhisk
       RestClient::Request.execute({:method => :delete, :url => resource_to_delete}.merge auth_details)
     end
 
+    def post(resource_parameters)
+      url = fully_qualified_resource
+      length = resource_parameters.length
+      headers = {"Content-Length" => length}
+      req_params = {
+          :method => :post,
+          :url => url,
+          :payload => resource_parameters,
+          :content_type => "application/json",
+          :headers => headers
+      }
+
+      RestClient::Request.execute(req_params.merge auth_details)
+
+    end
+
     def auth_details
       {:user => SauceWhisk.username, :password => SauceWhisk.password}
     end

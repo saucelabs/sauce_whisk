@@ -51,4 +51,13 @@ describe SauceWhisk::Tunnels, :vcr => {:cassette_name => "tunnels"} do
       assert_requested :delete, "https://#{auth}@saucelabs.com/rest/v1/dylanatsauce/tunnels/#{tunnel_id}"
     end
   end
+
+  describe "##open" do
+    it "calls the correct API method" do
+      params = {:tunnel_identifier => "bees", :ssh_port => 9123, :use_caching_proxy => false, :use_kgp => true}
+
+      SauceWhisk::Tunnels.open params
+      assert_requested(:post, "https://#{auth}@saucelabs.com/rest/v1/dylanatsauce/tunnels",:body => params.to_json)
+    end
+  end
 end
