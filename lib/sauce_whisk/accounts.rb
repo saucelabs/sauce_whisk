@@ -3,7 +3,7 @@ module SauceWhisk
     extend SauceWhisk::RestRequestBuilder
 
     def self.fetch(user_id = ENV["SAUCE_USERNAME"], get_concurrency = true)
-      user_parameters = JSON.parse get "users/#{user_id}"
+      user_parameters = JSON.parse (get "users/#{user_id}"), :symbolize_names => true
       concurrencies = get_concurrency ? concurrency_for(user_id) : {}
 
       account_parameters = user_parameters.merge concurrencies
