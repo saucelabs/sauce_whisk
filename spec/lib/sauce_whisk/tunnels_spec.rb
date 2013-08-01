@@ -73,13 +73,13 @@ describe SauceWhisk::Tunnels, :vcr => {:cassette_name => "tunnels"} do
       tunnel.ssh_port.should eq 9123
     end
 
-    context "When asked to wait until running" do
-      it "calls fetch on the opened tunnel" do
-        params = {:tunnel_identifier => "bees", :ssh_port => 9123, :use_caching_proxy => false, :use_kgp => true}
+    context "When asked to wait until running", :vcr => {:cassette_name => 'tunnels_with_wait'} do
+      it "calls fetch on the opened tunnel until the status is running" do
         requested_tunnel = SauceWhisk::Tunnels.open params
         t_id = requested_tunnel.id
 
-        assert_requested assert_requested :get, "https://#{auth}@saucelabs.com/rest/v1/dylanatsauce/tunnels/#{t_id}"
+        # There are 3 failing and 1 passing examples in the fixture
+        assert_requested :get, "https://#{auth}@saucelabs.com/rest/v1/dylanatsauce/tunnels/#{t_id}", :times => 4
       end
     end
   end
