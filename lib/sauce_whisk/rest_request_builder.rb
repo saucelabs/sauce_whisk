@@ -35,10 +35,11 @@ module SauceWhisk
       req_params = {
           :method => :post,
           :url => url,
-          :payload => resource_parameters,
           :content_type => "application/json",
           :headers => headers
       }
+
+      req_params.merge!({:payload => resource_parameters}) if !resource_parameters.nil?
 
       RestClient::Request.execute(req_params.merge auth_details)
 
