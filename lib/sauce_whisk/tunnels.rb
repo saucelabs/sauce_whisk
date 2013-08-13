@@ -23,6 +23,11 @@ module SauceWhisk
       return tunnels
     end
 
+    def self.open(opts)
+      #opts[:tunnel_identifier] = opts.delete :tunnel_id
+      new_tunnel_parameters = JSON.parse post opts.to_json
+    end
+
     def self.stop tunnel_id
       delete tunnel_id
     end
