@@ -10,7 +10,12 @@ describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts"} do
     end
 
     it "returns an Account object" do
-      SauceWhisk::Accounts.fetch(ENV["SAUCE_USERNAME"]).should be_an_instance_of SauceWhisk::Account
+      username = ENV["SAUCE_USERNAME"]
+      account = SauceWhisk::Accounts.fetch(username)
+      account.should be_an_instance_of SauceWhisk::Account
+
+      account.username.should eq username
+      account.access_key.should_not be_nil
     end
 
     it "includes the concurrency by default" do
