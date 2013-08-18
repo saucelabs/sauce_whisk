@@ -44,10 +44,10 @@ There are two ways to create a Job object.
 
 ```ruby
 # Create an 'empty' job (i.e. don't retrieve job details from the API)
-empty_job = Job.new job_id
+empty_job = SauceWhisk::Job.new job_id
 
 # Create a job with details fetched from the API
-fully_detailed_job = Jobs.fetch job_id
+fully_detailed_job = SauceWhisk::Jobs.fetch job_id
 ```
 
 Use the first form when you just want a simple way to push details to the API.  Use the last form when you want to fetch details from the API.
@@ -57,7 +57,7 @@ NB: It's not possible to create a new job on Sauce Labs' infrastructure with the
 ### Updating Job Metadata
 
 ```ruby
-job = Job.new job_id
+job = SauceWhisk::Jobs.fetch job_id
 job.build = "12.3.04-beta"
 job.visibility = "public"
 job.tags = "new_user"
@@ -77,14 +77,14 @@ There are three types of asset for Sauce Labs jobs: screenshots, video and logs.
 #### Screenshots
 
 ```ruby
-  job = Job.fetch job_id
+  job = SauceWhisk::Jobs.fetch job_id
   screenshots = job.screenshots # An array of Screenshot assets
 ```
 
 #### Video
 
 ```ruby
-  job = Job.fetch job_id
+  job = SauceWhisk::Jobs.fetch job_id
   video = job.video # A single Asset, holding the video
 ```
 
