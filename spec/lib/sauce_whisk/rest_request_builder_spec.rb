@@ -71,38 +71,45 @@ describe SauceWhisk::RestRequestBuilder do
 
 begin
   describe "#post", :vcr => {:cassette_name => 'tunnels'} do
-    let(:expected_payload) {{:tunnel_identifier => "KarlMarx"}.to_json}
+    let(:expected_payload) {{:tunnel_identifier => "KarlMarx"}}
     it "calls the base URL" do
       expected_url = "#{SauceWhisk.base_url}/#{dummy_client.resource}"
       RestClient::Request.should_receive(:execute).with(hash_including({:url => expected_url}))
 
-      dummy_client.post expected_payload
+      dummy_client.post(:payload => expected_payload)
     end
 
     it "uses the correct method" do
       RestClient::Request.should_receive(:execute).with(hash_including({:method => :post}))
-      dummy_client.post expected_payload
+      dummy_client.post(:payload => expected_payload)
     end
 
-    it "includes the correct payload" do
-      RestClient::Request.should_receive(:execute).with(hash_including({:payload => expected_payload}))
-      dummy_client.post expected_payload
+    it "includes the correct payload, in JSON" do
+      RestClient::Request.should_receive(:execute).with(hash_including({:payload => expected_payload.to_json}))
+      dummy_client.post(:payload => expected_payload)
     end
 
     it "includes the correct content_type" do
       RestClient::Request.should_receive(:execute).with(hash_including({:content_type => "application/json"}))
-      dummy_client.post expected_payload
+      dummy_client.post(:payload => expected_payload)
     end
 
     it "includes the correct length" do
-      expected_length = expected_payload.length
+      expected_length = expected_payload.to_json.length
       RestClient::Request.should_receive(:execute).with(hash_including({:headers => {"Content-Length" => expected_length}}))
-      dummy_client.post expected_payload
+      dummy_client.post(:payload => expected_payload)
     end
 
     it "includes the authentication parameters" do
       RestClient::Request.should_receive(:execute).with(hash_including(mock_auth))
-      dummy_client.post expected_payload
+      dummy_client.post(:payload => expected_payload)
+    end
+
+    it "allows for base resource additions" do
+      expected_url = "#{SauceWhisk.base_url}/#{dummy_client.resource}/dummy_res"
+      RestClient::Request.should_receive(:execute).with(hash_including({:payload => expected_payload.to_json, :url => expected_url}))
+
+      dummy_client.post(:payload => expected_payload, :resource =>"dummy_res")
     end
   end
 end

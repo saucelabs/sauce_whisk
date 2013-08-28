@@ -81,6 +81,10 @@ describe SauceWhisk::Tunnels, :vcr => {:cassette_name => "tunnels"} do
         # There are 3 failing and 1 passing examples in the fixture
         assert_requested :get, "https://#{auth}@saucelabs.com/rest/v1/dylanatsauce/tunnels/#{t_id}", :times => 4
       end
+
+      it "throws an exception if the timeout is exceeded" do
+        requested_tunnel = SauceWhisk::Tunnels.open params
+      end
     end
   end
 end

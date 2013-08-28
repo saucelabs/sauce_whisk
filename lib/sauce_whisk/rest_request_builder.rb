@@ -28,9 +28,14 @@ module SauceWhisk
       RestClient::Request.execute({:method => :delete, :url => resource_to_delete}.merge auth_details)
     end
 
-    def post(resource_parameters)
+    def post(opts)
+      payload = (opts[:payload].to_json)
+      resource_id = opts[:resource] || nil
+
       url = fully_qualified_resource
-      length = resource_parameters.length
+      url << "/#{resource_id}" if resource_id
+
+      length = payload.length
       headers = {"Content-Length" => length}
       req_params = {
           :method => :post,
@@ -39,7 +44,7 @@ module SauceWhisk
           :headers => headers
       }
 
-      req_params.merge!({:payload => resource_parameters}) if !resource_parameters.nil?
+      req_params.merge!({:payload => payload}) unless payload.nil?
 
       RestClient::Request.execute(req_params.merge auth_details)
 

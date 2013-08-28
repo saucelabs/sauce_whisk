@@ -24,7 +24,7 @@ module SauceWhisk
     end
 
     def self.open(opts, wait_until_ready = true)
-      new_tunnel_parameters = JSON.parse((post opts.to_json), :symbolize_names => true)
+      new_tunnel_parameters = JSON.parse((post :payload => opts), :symbolize_names => true)
       STDERR.puts "PERMS #{new_tunnel_parameters}"
       new_tunnel = fetch new_tunnel_parameters[:id]
 
