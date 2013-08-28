@@ -24,6 +24,17 @@ module SauceWhisk
       end
     end
 
+    def self.create_subaccount(parent_id=ENV["SAUCE_USERNAME"], name, username, email, password)
+      payload = {
+        :username => username,
+        :password => password,
+        :name => name,
+        :email => email
+      }
+
+      post :resource => "users/#{parent_id}", :payload => payload
+    end
+
   end
   class Account
     attr_reader :access_key, :username, :minutes, :total_concurrency, :mac_concurrency

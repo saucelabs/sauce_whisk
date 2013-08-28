@@ -51,4 +51,25 @@ describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts"} do
       SauceWhisk::Accounts.concurrency_for(ENV["SAUCE_USERNAME"], :total).should eq 20
     end
   end
+
+  describe "#create_subaccount" do
+    it "calls the correct url" do
+      params = {
+        :username => "newsub77",
+        :password => "davesdisease",
+        :name => "Manny",
+        :email => "Manny@blackbooks.co.uk"
+      }
+
+      SauceWhisk::Accounts.create_subaccount(ENV["SAUCE_USERNAME"],
+          "Manny", "newsub77", "Manny@blackbooks.co.uk", "davesdisease")
+
+      assert_requested(:post,
+        "https://#{auth}@saucelabs.com/rest/v1/users/#{ENV["SAUCE_USERNAME"]}",
+        :body => params.to_json
+      )
+
+
+    end
+  end
 end

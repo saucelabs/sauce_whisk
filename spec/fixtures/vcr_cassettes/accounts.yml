@@ -89,4 +89,53 @@ http_interactions:
       string: '{"mac_concurrency": 5, "concurrency": 20}'
     http_version: 
   recorded_at: Mon, 17 Jun 2013 12:30:47 GMT
+- request:
+    method: post
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/users/<SAUCE_USERNAME>
+    body:
+      encoding: UTF-8
+      string: '{"username":"newsub77","password":"davesdisease","name":"Manny","email":"Manny@blackbooks.co.uk"}'
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Length:
+      - '97'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Wed, 28 Aug 2013 20:55:46 GMT
+      Content-Type:
+      - application/json
+      Location:
+      - https://saucelabs.com/rest/v1/users/newsub77
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=eab7d96896e5296aee29b037fb5469d9; expires="Wed, 28-Aug-2013 21:14:44
+        GMT"; Max-Age=600; Path=/
+      - metrics=885a220fc548623dd57098d7d59489760cec3b2beaf8245688754773b074267ebb2e8c8e;
+        Path=/
+      Content-Length:
+      - '148'
+    body:
+      encoding: US-ASCII
+      string: '{"access_key": "699d9039-baab-49a8-8830-63d43d9d45ac", "name": null,
+        "subscribed": false, "can_run_manual": true, "minutes": 1122, "id": "newsub77"}'
+    http_version: 
+  recorded_at: Wed, 28 Aug 2013 21:04:45 GMT
 recorded_with: VCR 2.5.0
