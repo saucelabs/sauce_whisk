@@ -53,23 +53,39 @@ describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts"} do
   end
 
   describe "#create_subaccount" do
-    it "calls the correct url" do
-      params = {
-        :username => "newsub77",
-        :password => "davesdisease",
-        :name => "Manny",
-        :email => "Manny@blackbooks.co.uk"
-      }
+    let(:params) {{
+      :username => "newsub77",
+      :password => "davesdisease",
+      :name => "Manny",
+      :email => "Manny@blackbooks.co.uk"
+    }}
 
-      SauceWhisk::Accounts.create_subaccount(ENV["SAUCE_USERNAME"],
+    let(:parent) {SauceWhisk::Account.new(:access_key => 12345, :minutes => 23, :id => ENV["SAUCE_USERNAME"])}
+
+    it "calls the correct url" do
+      SauceWhisk::Accounts.create_subaccount(parent,
           "Manny", "newsub77", "Manny@blackbooks.co.uk", "davesdisease")
 
       assert_requested(:post,
         "https://#{auth}@saucelabs.com/rest/v1/users/#{ENV["SAUCE_USERNAME"]}",
         :body => params.to_json
       )
+    end
 
+    it "returns a Subaccount object" do
+      sub = SauceWhisk::Accounts.create_subaccount(parent, "Manny", "newsub77",
+          "Manny@blackbooks.co.uk", "davesdisease")
 
+      sub.should be_a_kind_of SauceWhisk::Account
+    end
+
+    it "returns a Subaccount, parented to the Parent account" do
+      parent = SauceWhisk::Accounts.fetch ENV["SAUCE_USERNAME"]
+
+      sub = SauceWhisk::Accounts.create_subaccount(parent, "Manny", "newsub77",
+                                                   "Manny@blackbooks.co.uk", "davesdisease")
+
+      sub.parent.should be parent
     end
   end
 end

@@ -24,7 +24,9 @@ module SauceWhisk
       end
     end
 
-    def self.create_subaccount(parent_id=ENV["SAUCE_USERNAME"], name, username, email, password)
+    #TODO what happens if not allowed more subaccounts?
+    #TODO what happens if not a valid parent?
+    def self.create_subaccount(parent, name, username, email, password)
       payload = {
         :username => username,
         :password => password,
@@ -32,10 +34,11 @@ module SauceWhisk
         :email => email
       }
 
-      post :resource => "users/#{parent_id}", :payload => payload
+      response = post :resource => "users/#{parent.username}", :payload => payload
+      new_subaccount = SubAccount.new parent, JSON.parse(response)
     end
-
   end
+
   class Account
     attr_reader :access_key, :username, :minutes, :total_concurrency, :mac_concurrency
     def initialize(options)
@@ -44,6 +47,19 @@ module SauceWhisk
       @minutes = options[:minutes]
       @total_concurrency = options[:total_concurrency]
       @mac_concurrency = options[:mac_concurrency]
+    end
+
+    def add_subaccount(name, username, email, password)
+      SauceWhisk::Accounts.create_subaccount(self, name, username, email, password)
+    end
+  end
+
+  class SubAccount < Account
+    attr_reader :parent
+
+    def initialize(parent, options)
+      @parent = parent
+      super(options)
     end
   end
 end
