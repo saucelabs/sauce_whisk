@@ -101,7 +101,16 @@ describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts", :match_req
       it "should throw SubaccountCreationError" do
         expect{
           SauceWhisk::Accounts.create_subaccount(parent, "Manny", "duplicate",
-                                                 "Manny@blackbooks.co.uk", "davesdisease")
+               "Manny@blackbooks.co.uk", "davesdisease")
+        }.to raise_error SauceWhisk::SubAccountCreationError
+      end
+    end
+
+    context "trying to create a subaccount which causes the tree to be too deep" do
+      it "should throw SubaccountCreationError" do
+        expect{
+          SauceWhisk::Accounts.create_subaccount(parent, "Manny", "deeptree",
+               "Manny@blackbooks.co.uk", "davesdisease")
         }.to raise_error SauceWhisk::SubAccountCreationError
       end
     end

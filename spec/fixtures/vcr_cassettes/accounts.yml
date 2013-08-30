@@ -239,7 +239,7 @@ http_interactions:
     uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/users/<SAUCE_USERNAME>
     body:
       encoding: UTF-8
-      string: '{"username":"newsub7","password":"davesdisease","name":"Manny","email":"Manny@blackbooks.co.uk"}'
+      string: '{"username":"deeptree","password":"davesdisease","name":"Manny","email":"Manny@blackbooks.co.uk"}'
     headers:
       Accept:
       - '*/*; q=0.5, application/xml'
@@ -251,17 +251,15 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 201
-      message: Created
+      code: 400
+      message: Bad request
     headers:
       Server:
       - nginx/0.7.62
       Date:
-      - Thu, 29 Aug 2013 23:37:11 GMT
+      - Thu, 29 Aug 2013 01:14:07 GMT
       Content-Type:
       - application/json
-      Location:
-      - https://saucelabs.com/rest/v1/users/newsub7
       Connection:
       - keep-alive
       Pragma:
@@ -271,16 +269,17 @@ http_interactions:
       X-Frame-Options:
       - DENY
       Set-Cookie:
-      - csrf_token=97eff87c598d533641b72ff9340d3843; expires="Thu, 29-Aug-2013 23:56:11
+      - csrf_token=750f4cdca985d7f7f9fcbbd0bfc58fc3; expires="Thu, 29-Aug-2013 01:33:06
         GMT"; Max-Age=600; Path=/
-      - metrics=fc466ac70ec9a1c7769701a3da48f79bb540016dc20121f8c2df4be8b9677e05944df51a;
+      - metrics=4e602fa8932a373223341b7af992f9b7fa7563dff2c7d1d2eef24680a9be7e752de3233b;
+        Path=/
+      - metrics=a6431e82448e473a873bf07761f858e431227be3f26941e865a24ac88318aed9f4b32dc4;
         Path=/
       Content-Length:
-      - '152'
+      - '53'
     body:
       encoding: US-ASCII
-      string: '{"access_key": "81044453-2ee3-4f26-8604-80704067df3c", "name": null,
-        "subscribed": true, "can_run_manual": true, "minutes": "infinite", "id": "newsub7"}'
-    http_version: 
-  recorded_at: Thu, 29 Aug 2013 23:46:13 GMT
+      string: '{"errors": "Subaccount tree depth is limited to 10."}'
+    http_version:
+  recorded_at: Thu, 29 Aug 2013 01:24:25 GMT
 recorded_with: VCR 2.5.0
