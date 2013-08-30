@@ -1,7 +1,6 @@
 module SauceWhisk
   class AccountError < StandardError; end
   class SubAccountCreationError < AccountError; end
-  class AccountAlreadyExists < AccountError; end
 
   class Accounts
     extend SauceWhisk::RestRequestBuilder

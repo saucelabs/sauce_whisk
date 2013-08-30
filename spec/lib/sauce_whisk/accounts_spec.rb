@@ -96,5 +96,14 @@ describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts", :match_req
         }.to raise_error SauceWhisk::SubAccountCreationError
       end
     end
+
+    context "trying to create a subaccount which already exists" do
+      it "should throw SubaccountCreationError" do
+        expect{
+          SauceWhisk::Accounts.create_subaccount(parent, "Manny", "duplicate",
+                                                 "Manny@blackbooks.co.uk", "davesdisease")
+        }.to raise_error SauceWhisk::SubAccountCreationError
+      end
+    end
   end
 end
