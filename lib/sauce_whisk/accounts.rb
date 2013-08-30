@@ -27,7 +27,6 @@ module SauceWhisk
       end
     end
 
-    #TODO what happens if not allowed more subaccounts?
     #TODO what happens if not a valid parent?
     def self.create_subaccount(parent, name, username, email, password)
       payload = {
