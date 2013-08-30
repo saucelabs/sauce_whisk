@@ -1,6 +1,7 @@
 module SauceWhisk
   class AccountError < StandardError; end
   class SubAccountCreationError < AccountError; end
+  class InvalidAccountError < StandardError; end
 
   class Accounts
     extend SauceWhisk::RestRequestBuilder
@@ -11,6 +12,8 @@ module SauceWhisk
 
       account_parameters = user_parameters.merge concurrencies
       return Account.new(account_parameters)
+    rescue RestClient::ResourceNotFound
+      raise InvalidAccountError, "Account #{user_id} does not exist"
     end
 
     def self.concurrency_for(job_id = ENV["SAUCE_USERNAME"], type = :both)
@@ -40,6 +43,8 @@ module SauceWhisk
       rescue RestClient::BadRequest => e
         decoded_body = JSON.parse e.http_body, :symbolize_names => true
         raise SubAccountCreationError, decoded_body[:errors]
+      rescue RestClient::ResourceNotFound => e
+        raise InvalidAccountError, "Parent account #{parent.username} does not exist"
       end
 
       new_subaccount = SubAccount.new parent, JSON.parse(response)

@@ -30,6 +30,14 @@ describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts", :match_req
       assert_not_requested :get, "https://#{auth}@saucelabs.com/rest/v1/#{ENV["SAUCE_USERNAME"]}/limits"
       account.total_concurrency.should be_nil
     end
+
+    context "with an invalid account" do
+      it "Raises an InvalidAccountError" do
+        expect{
+          SauceWhisk::Accounts.fetch "IDontExist"
+        }.to raise_error SauceWhisk::InvalidAccountError
+      end
+    end
   end
 
   describe "#concurrency_for" do
@@ -112,6 +120,16 @@ describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts", :match_req
           SauceWhisk::Accounts.create_subaccount(parent, "Manny", "deeptree",
                "Manny@blackbooks.co.uk", "davesdisease")
         }.to raise_error SauceWhisk::SubAccountCreationError
+      end
+    end
+
+    context "with a non-existant parent" do
+      let(:parent) {SauceWhisk::Account.new(:access_key => 12345, :minutes => 23, :id =>"nopenotaperson")}
+      it "should throw SubaccountCreationError" do
+        expect{
+          SauceWhisk::Accounts.create_subaccount(parent, "Manny", "deeptree",
+                                                 "Manny@blackbooks.co.uk", "davesdisease")
+        }.to raise_error SauceWhisk::InvalidAccountError
       end
     end
   end

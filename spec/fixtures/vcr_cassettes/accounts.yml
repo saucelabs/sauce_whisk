@@ -280,6 +280,100 @@ http_interactions:
     body:
       encoding: US-ASCII
       string: '{"errors": "Subaccount tree depth is limited to 10."}'
-    http_version:
+    http_version: 
   recorded_at: Thu, 29 Aug 2013 01:24:25 GMT
+- request:
+    method: post
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/users/nopenotaperson
+    body:
+      encoding: UTF-8
+      string: '{"username":"deeptree","password":"davesdisease","name":"Manny","email":"Manny@blackbooks.co.uk"}'
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Length:
+      - '97'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Fri, 30 Aug 2013 01:42:07 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=61a20e3c835c0c8d755d559f06fef7af; expires="Fri, 30-Aug-2013 02:01:08
+        GMT"; Max-Age=600; Path=/
+      - metrics=64e2fb23b34c01d956f2c94b397ad0e8f8da99061432ad554e2147b8abc39f4c0b59ab84;
+        Path=/
+      - metrics=eff66bcc694eb3de5e91eccbd2915a58ad3553ba428c68734d9a4390aa98899f3f6127e4;
+        Path=/
+      Content-Length:
+      - '45'
+    body:
+      encoding: US-ASCII
+      string: '{"error": "That resource could not be found"}'
+    http_version: 
+  recorded_at: Fri, 30 Aug 2013 01:51:08 GMT
+- request:
+    method: get
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/users/IDontExist
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Fri, 30 Aug 2013 18:50:29 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=ab87b5190e3649606fa26185f3bbdcc3; expires="Fri, 30-Aug-2013 19:09:31
+        GMT"; Max-Age=600; Path=/
+      - metrics=83aa4f4693e8f686608e6ff1da43f9dee7720fc9176863ee18574df8b331f23801337a5b;
+        Path=/
+      - metrics=da0d871a67933f3e2a96ec2e9c41b4e1e2c817cc7ae6265e9b054fcbba5bf3c8f83720ad;
+        Path=/
+      Content-Length:
+      - '45'
+    body:
+      encoding: US-ASCII
+      string: '{"error": "That resource could not be found"}'
+    http_version: 
+  recorded_at: Fri, 30 Aug 2013 18:59:31 GMT
 recorded_with: VCR 2.5.0
