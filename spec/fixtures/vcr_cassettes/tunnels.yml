@@ -233,11 +233,99 @@ http_interactions:
       - '352'
     body:
       encoding: US-ASCII
-      string: '{"status": "new", "direct_domains": null, "shutdown_time": null, "ssh_port":
-        9123, "user_shutdown": null, "use_caching_proxy": false, "creation_time":
-        1375173995, "domain_names": null, "shared_tunnel": null, "tunnel_identifier":
-        "KarlMarx", "host": null, "owner": "<SAUCE_USERNAME>", "use_kgp": true, "id":
-        "4824d6b282e04d1184daff5401a52e1e", "metadata": null}'
+      string: &1 !ruby/string
+        str: '{"status": "new", "direct_domains": null, "shutdown_time": null, "ssh_port":
+          9123, "user_shutdown": null, "use_caching_proxy": false, "creation_time":
+          1375173995, "domain_names": null, "shared_tunnel": null, "tunnel_identifier":
+          "KarlMarx", "host": null, "owner": "<SAUCE_USERNAME>", "use_kgp": true,
+          "id": "4824d6b282e04d1184daff5401a52e1e", "metadata": null}'
+        net_http_res: !ruby/object:Net::HTTPOK
+          http_version: '1.0'
+          code: '200'
+          message: OK
+          header:
+            server:
+            - nginx/0.7.62
+            date:
+            - Tue, 30 Jul 2013 08:38:22 GMT
+            content-type:
+            - application/json
+            connection:
+            - keep-alive
+            pragma:
+            - no-cache
+            cache-control:
+            - no-cache
+            x-frame-options:
+            - DENY
+            set-cookie:
+            - csrf_token=3c66b97477a4dedd1255faf05ce90d66; expires="Tue, 30-Jul-2013
+              08:56:35 GMT"; Max-Age=600; Path=/
+            - metrics=034bd00d05345d3992282b0f28e816878971ff1a86e9ab91ce174a2e89dcab18527fa539;
+              Path=/
+            content-length:
+            - '352'
+          body: *1
+          read: true
+          __read_body_previously_called: true
+        args:
+          :method: :post
+          :url: https://saucelabs.com/rest/v1/dylanatsauce/tunnels
+          :content_type: application/json
+          :headers:
+            Content-Length: 85
+          :payload: '{"tunnel_identifier":"bees","ssh_port":9123,"use_caching_proxy":false,"use_kgp":true}'
+          :user: dylanatsauce
+          :password: 8f5210dd-f0cf-477f-b720-9f721a9679a4
+        code: 200
     http_version: 
   recorded_at: Tue, 30 Jul 2013 08:46:35 GMT
+- request:
+    method: get
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels/4824d6b282e04d1184daff5401a52e1e
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Thu, 01 Aug 2013 03:20:06 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=752c68b4d3f9188498845b26a9938b1d; expires="Thu, 01-Aug-2013 03:38:25
+        GMT"; Max-Age=600; Path=/
+      - metrics=6b0e2bf3f0246ea3a0837eab992cb753bf68300f3484e2ba8e39494d95d2c9408df53458;
+        Path=/
+      Content-Length:
+      - '385'
+    body:
+      encoding: US-ASCII
+      string: '{"status": "terminated", "direct_domains": null, "shutdown_time": null,
+        "ssh_port": 9123, "user_shutdown": true, "use_caching_proxy": false, "creation_time":
+        1375173995, "domain_names": null, "shared_tunnel": null, "tunnel_identifier":
+        "bees", "host": "maki11122.miso.saucelabs.com", "owner": "<SAUCE_USERNAME>",
+        "use_kgp": true, "id": "4824d6b282e04d1184daff5401a52e1e", "metadata": null}'
+    http_version: 
+  recorded_at: Thu, 01 Aug 2013 03:28:18 GMT
 recorded_with: VCR 2.5.0

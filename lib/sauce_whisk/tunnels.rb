@@ -23,9 +23,17 @@ module SauceWhisk
       return tunnels
     end
 
-    def self.open(opts)
-      #opts[:tunnel_identifier] = opts.delete :tunnel_id
-      new_tunnel_parameters = JSON.parse post opts.to_json
+    def self.open(opts, wait_until_ready = true)
+      new_tunnel_parameters = JSON.parse((post :payload => opts), :symbolize_names => true)
+      STDERR.puts "PERMS #{new_tunnel_parameters}"
+      new_tunnel = fetch new_tunnel_parameters[:id]
+
+      while(["starting", "booting"].include? new_tunnel.status)
+
+        new_tunnel = fetch new_tunnel_parameters[:id]
+      end
+
+      return new_tunnel
     end
 
     def self.stop tunnel_id
@@ -33,13 +41,16 @@ module SauceWhisk
     end
 
     def self.fetch tunnel_id
-      tunnel_parameters = JSON.parse get tunnel_id
+      unless tunnel_id
+        raise ArgumentError, "Can't fetch a tunnel without an id (you provided blank or nil)"
+      end
+      tunnel_parameters = JSON.parse(get(tunnel_id), :symbolize_names => true)
       Tunnel.new tunnel_parameters
     end
   end
 
   class Tunnel
-    attr_reader :id, :owner, :status, :host, :creation_time
+    attr_reader :id, :owner, :status, :host, :creation_time, :ssh_port
 
     def initialize(params)
       params.each do |param, val|

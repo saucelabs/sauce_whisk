@@ -41,6 +41,11 @@ describe SauceWhisk::Tunnels, :vcr => {:cassette_name => "tunnels"} do
     it "returns instances of Tunnel" do
       tunnel = SauceWhisk::Tunnels.fetch job_id
       tunnel.should be_an_instance_of SauceWhisk::Tunnel
+      STDERR.puts "Tunnel port #{tunnel.ssh_port} #{tunnel.ssh_port.class}"
+    end
+
+    it "raises an exception with called without an id" do
+      expect {SauceWhisk::Tunnels.fetch(nil)}.to raise_exception ArgumentError
     end
   end
 
@@ -53,11 +58,33 @@ describe SauceWhisk::Tunnels, :vcr => {:cassette_name => "tunnels"} do
   end
 
   describe "##open" do
+    let(:params) {{:tunnel_identifier => "bees", :ssh_port => 9123, :use_caching_proxy => false, :use_kgp => true}}
     it "calls the correct API method" do
-      params = {:tunnel_identifier => "bees", :ssh_port => 9123, :use_caching_proxy => false, :use_kgp => true}
-
       SauceWhisk::Tunnels.open params
       assert_requested(:post, "https://#{auth}@saucelabs.com/rest/v1/dylanatsauce/tunnels",:body => params.to_json)
+    end
+
+    it "returns an instance of tunnel" do
+      tunnel = SauceWhisk::Tunnels.open params
+      tunnel.should be_an_instance_of SauceWhisk::Tunnel
+
+      # These aren't magic, they're taken from the tunnels fixture.  <3 VCR.
+      tunnel.id.should eq "4824d6b282e04d1184daff5401a52e1e"
+      tunnel.ssh_port.should eq 9123
+    end
+
+    context "When asked to wait until running", :vcr => {:cassette_name => 'tunnels_with_wait'} do
+      it "calls fetch on the opened tunnel until the status is running" do
+        requested_tunnel = SauceWhisk::Tunnels.open params
+        t_id = requested_tunnel.id
+
+        # There are 3 failing and 1 passing examples in the fixture
+        assert_requested :get, "https://#{auth}@saucelabs.com/rest/v1/dylanatsauce/tunnels/#{t_id}", :times => 4
+      end
+
+      it "throws an exception if the timeout is exceeded" do
+        requested_tunnel = SauceWhisk::Tunnels.open params
+      end
     end
   end
 end
