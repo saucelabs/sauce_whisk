@@ -1,4 +1,8 @@
 module SauceWhisk
+  class AccountError < StandardError; end
+  class SubAccountCreationError < AccountError; end
+  class AccountAlreadyExists < AccountError; end
+
   class Accounts
     extend SauceWhisk::RestRequestBuilder
 
@@ -33,8 +37,13 @@ module SauceWhisk
         :name => name,
         :email => email
       }
+      begin
+        response = post :resource => "users/#{parent.username}", :payload => payload
+      rescue RestClient::BadRequest => e
+        decoded_body = JSON.parse e.http_body, :symbolize_names => true
+        raise SubAccountCreationError, decoded_body[:errors]
+      end
 
-      response = post :resource => "users/#{parent.username}", :payload => payload
       new_subaccount = SubAccount.new parent, JSON.parse(response)
     end
   end

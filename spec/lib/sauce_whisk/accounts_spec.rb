@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts"} do
+describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts", :match_requests_on => [:uri, :body]} do
   let(:auth) {"#{ENV["SAUCE_USERNAME"]}:#{ENV["SAUCE_ACCESS_KEY"]}"}
 
   describe "#fetch" do
@@ -86,6 +86,15 @@ describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts"} do
                                                    "Manny@blackbooks.co.uk", "davesdisease")
 
       sub.parent.should be parent
+    end
+
+    context "trying to create too many subaccounts" do
+      it "should throw SubaccountCreationError" do
+       expect{
+          SauceWhisk::Accounts.create_subaccount(parent, "Manny", "toomany",
+              "Manny@blackbooks.co.uk", "davesdisease")
+        }.to raise_error SauceWhisk::SubAccountCreationError
+      end
     end
   end
 end
