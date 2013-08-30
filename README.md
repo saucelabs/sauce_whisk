@@ -90,7 +90,7 @@ There are three types of asset for Sauce Labs jobs: screenshots, video and logs.
 
 ### Accounts
 
-At the moment, it is only possible to query existing accounts using the API gem.
+At the moment, it is only possible to query existing accounts, and create subaccounts.
 
 #### Retrieving a specific account
 ```ruby
@@ -98,7 +98,7 @@ my_account = SauceWhisk::Accounts.fetch "account_name" # Returns a SauceWhisk::A
 my_account = SauceWhisk::Accounts.fetch("account_name", false) # Returns a SauceWhisk::Account object, does not fetch its concurrency limit
 ```
 
-`SauceWhisk::Account` objects don't do anything other then store data about the relevant account:
+`SauceWhisk::Account` objects store data about the relevant account:
 
 ```ruby
 my_account.username             # Sauce Labs Username
@@ -115,6 +115,19 @@ If you exceed your concurrency limits, your tests will be queued waiting for a f
 concurrencies = SauceWhisk::Accounts.concurrency_for "account_name"    # Hash containing both concurrency limits
 mac_concurrency = SauceWhisk::Accounts.concurrency_for "account_name", :mac    # Fixnum of just the Mac limit
 total_concurrency = SauceWhisk::Accounts.concurrency_for "account_name", :total    # Fixnum of the upper concurrency limit
+```
+
+#### Creating subaccounts
+
+```ruby
+parent = SauceWhisk::Accounts.fetch "account_name"
+
+subaccount = parent.add_subaccount("User", "Username", "User@email.com", "Password") # New SauceWhisk::SubAccount
+```
+
+SubAccounts are a subclass of Account, with an accessor for their parent object.
+```ruby
+subaccount.parent == parent #=>true
 ```
 
 ### Tunnels
