@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts"} do
+describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts", :match_requests_on => [:uri, :body]} do
   let(:auth) {"#{ENV["SAUCE_USERNAME"]}:#{ENV["SAUCE_ACCESS_KEY"]}"}
 
   describe "#fetch" do
@@ -30,6 +30,14 @@ describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts"} do
       assert_not_requested :get, "https://#{auth}@saucelabs.com/rest/v1/#{ENV["SAUCE_USERNAME"]}/limits"
       account.total_concurrency.should be_nil
     end
+
+    context "with an invalid account" do
+      it "Raises an InvalidAccountError" do
+        expect{
+          SauceWhisk::Accounts.fetch "IDontExist"
+        }.to raise_error SauceWhisk::InvalidAccountError
+      end
+    end
   end
 
   describe "#concurrency_for" do
@@ -49,6 +57,80 @@ describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts"} do
 
     it "returns just the total as an integer when requested" do
       SauceWhisk::Accounts.concurrency_for(ENV["SAUCE_USERNAME"], :total).should eq 20
+    end
+  end
+
+  describe "#create_subaccount" do
+    let(:params) {{
+      :username => "newsub77",
+      :password => "davesdisease",
+      :name => "Manny",
+      :email => "Manny@blackbooks.co.uk"
+    }}
+
+    let(:parent) {SauceWhisk::Account.new(:access_key => 12345, :minutes => 23, :id => ENV["SAUCE_USERNAME"])}
+
+    it "calls the correct url" do
+      SauceWhisk::Accounts.create_subaccount(parent,
+          "Manny", "newsub77", "Manny@blackbooks.co.uk", "davesdisease")
+
+      assert_requested(:post,
+        "https://#{auth}@saucelabs.com/rest/v1/users/#{ENV["SAUCE_USERNAME"]}",
+        :body => params.to_json
+      )
+    end
+
+    it "returns a Subaccount object" do
+      sub = SauceWhisk::Accounts.create_subaccount(parent, "Manny", "newsub77",
+          "Manny@blackbooks.co.uk", "davesdisease")
+
+      sub.should be_a_kind_of SauceWhisk::Account
+    end
+
+    it "returns a Subaccount, parented to the Parent account" do
+      parent = SauceWhisk::Accounts.fetch ENV["SAUCE_USERNAME"]
+
+      sub = SauceWhisk::Accounts.create_subaccount(parent, "Manny", "newsub77",
+                                                   "Manny@blackbooks.co.uk", "davesdisease")
+
+      sub.parent.should be parent
+    end
+
+    context "trying to create too many subaccounts" do
+      it "should throw SubaccountCreationError" do
+       expect{
+          SauceWhisk::Accounts.create_subaccount(parent, "Manny", "toomany",
+              "Manny@blackbooks.co.uk", "davesdisease")
+        }.to raise_error SauceWhisk::SubAccountCreationError
+      end
+    end
+
+    context "trying to create a subaccount which already exists" do
+      it "should throw SubaccountCreationError" do
+        expect{
+          SauceWhisk::Accounts.create_subaccount(parent, "Manny", "duplicate",
+               "Manny@blackbooks.co.uk", "davesdisease")
+        }.to raise_error SauceWhisk::SubAccountCreationError
+      end
+    end
+
+    context "trying to create a subaccount which causes the tree to be too deep" do
+      it "should throw SubaccountCreationError" do
+        expect{
+          SauceWhisk::Accounts.create_subaccount(parent, "Manny", "deeptree",
+               "Manny@blackbooks.co.uk", "davesdisease")
+        }.to raise_error SauceWhisk::SubAccountCreationError
+      end
+    end
+
+    context "with a non-existant parent" do
+      let(:parent) {SauceWhisk::Account.new(:access_key => 12345, :minutes => 23, :id =>"nopenotaperson")}
+      it "should throw SubaccountCreationError" do
+        expect{
+          SauceWhisk::Accounts.create_subaccount(parent, "Manny", "deeptree",
+                                                 "Manny@blackbooks.co.uk", "davesdisease")
+        }.to raise_error SauceWhisk::InvalidAccountError
+      end
     end
   end
 end
