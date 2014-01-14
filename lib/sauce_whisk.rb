@@ -30,6 +30,14 @@ module SauceWhisk
     end
   end
 
+  def self.asset_fetch_retries
+    if defined? ::Sauce
+      return ::Sauce::Config.new[:asset_fetch_retries]
+    else
+      return ENV["SAUCE_ASSET_FETCH_RETRIES"]
+    end
+  end
+
   def self.pass_job(job_id)
     Jobs.pass_job job_id
   end
