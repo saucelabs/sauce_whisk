@@ -31,11 +31,16 @@ module SauceWhisk
   end
 
   def self.asset_fetch_retries
-    if defined? ::Sauce
-      return ::Sauce::Config.new[:asset_fetch_retries]
-    else
-      return ENV["SAUCE_ASSET_FETCH_RETRIES"]
+    if not @asset_fetch_retries
+      if defined? ::Sauce
+        @asset_fetch_retries = ::Sauce::Config.new[:asset_fetch_retries]
+      else
+        @asset_fetch_retries = ENV["SAUCE_ASSET_FETCH_RETRIES"]
+      end
     end
+
+    return @asset_fetch_retries.to_i if @asset_fetch_retries
+    return 1
   end
 
   def self.pass_job(job_id)

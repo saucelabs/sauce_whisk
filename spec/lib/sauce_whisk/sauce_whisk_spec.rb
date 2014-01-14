@@ -43,6 +43,7 @@ describe SauceWhisk do
 
   describe "##retries" do
     it "tries to read from Sauce.config" do
+      SauceWhisk.instance_variable_set(:@asset_fetch_retries, nil)
       mock_config = Class.new(Hash) do
         def initialize
           self.store(:asset_fetch_retries, 3)
