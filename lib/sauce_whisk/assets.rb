@@ -7,8 +7,16 @@ module SauceWhisk
     end
 
     def self.fetch(job_id, asset, type=nil)
+      attempts ||= 2
       data = get "#{job_id}/assets/#{asset}"
       Asset.new({:name => asset, :data => data, :job_id => job_id, :type => type})
+    rescue RestClient::ResourceNotFound => e
+      if attempts > 1
+        attempts -= 1
+        retry
+      else
+        raise e
+      end
     end
   end
 
