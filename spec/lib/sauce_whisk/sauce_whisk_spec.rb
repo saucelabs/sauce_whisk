@@ -40,4 +40,17 @@ describe SauceWhisk do
       SauceWhisk.logger.should be STDOUT
     end
   end
+
+  describe "##retries" do
+    it "tries to read from Sauce.config" do
+      mock_config = Class.new(Hash) do
+        def initialize
+          self.store(:asset_fetch_retries, 3)
+        end
+      end
+
+      stub_const "::Sauce::Config", mock_config
+      SauceWhisk.asset_fetch_retries.should equal 3
+    end
+  end
 end
