@@ -14,6 +14,7 @@ module SauceWhisk
     rescue RestClient::ResourceNotFound => e
       if attempts <= retries
         attempts += 1
+        sleep(5)
         retry
       else
         raise e
