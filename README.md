@@ -30,17 +30,17 @@ SAUCE_ACCESS_KEY=Your Access Key, found on the lower left of your Account page
 ```
 
 ## Usage
-    
+
 ### Marking jobs passed or failed
 ```ruby
     SauceWhisk::Jobs.pass_job job_id
     SauceWhisk::Jobs.fail_job job_id
     SauceWhisk::Jobs.change_status job_id, true_for_passed_false_for_failed
-```    
-    
+```
+
 ### Creating Job Objects
 
-There are two ways to create a Job object.  
+There are two ways to create a Job object.
 
 ```ruby
 # Create an 'empty' job (i.e. don't retrieve job details from the API)
@@ -175,14 +175,14 @@ platforms = SauceWhisk::Sauce.platforms        # Fetch all platforms or return c
 platforms = SauceWhisk::Sauce.platforms(true)  # Force a fetch of all platforms
 
 platforms.first # => A Hash of platform details:
- 
+
  {
     "long_name"=>"Firefox",             # Full name of the platform's browser
     "api_name"=>"firefox",              # desired_capabilities name of the platform
     "long_version"=>"20.0.1.",          # Full version number for the platform's browser
     "preferred_version"=>"",            # Preferred version of the platform's browser (If none is requested)
     "automation_backend"=>"webdriver",  # Whether this is a Webdriver or Selenium-rc driven platform
-    "os"=>"Linux",                      # desired_capabilities name of the Platform's Operating System  
+    "os"=>"Linux",                      # desired_capabilities name of the Platform's Operating System
     "short_version"=>"20"               # desired_capabilities name of the Platform's Browsers's version
  }
 ```
@@ -228,3 +228,5 @@ SauceWhisk.logger defaults to STDOUT.
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/saucelabs/sauce_whisk/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
