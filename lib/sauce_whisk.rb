@@ -41,4 +41,11 @@ module SauceWhisk
   def self.logger
     @logger||= STDOUT
   end
+
+  def self.public_link(job_id)
+    key        = "#{self.username}:#{self.password}"
+    auth_token = OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('md5'), key, job_id)
+
+    "https://saucelabs.com/jobs/#{job_id}?auth=#{auth_token}"
+  end
 end
