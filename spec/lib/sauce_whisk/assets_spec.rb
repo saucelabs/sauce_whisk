@@ -23,5 +23,23 @@ describe SauceWhisk::Assets do
       asset.job.should eq job_id
       asset.asset_type.should eq :screenshot
     end
+
+    context "for an invalid asset" do
+      let(:invalid_job_id) {"aaaaaaaaaaaaaaaa"}
+
+      it "returns a RestClient::ResourceNotFound Exception" do
+        expect {
+          SauceWhisk::Assets.fetch invalid_job_id, asset_name
+        }.to raise_error RestClient::ResourceNotFound
+      end
+    end
+
+    context "for an asset that's not available immediately" do
+      let(:slow_job_id) {"n0th3r3y3t"}
+
+      it "returns the asset" do
+        SauceWhisk::Assets.fetch(slow_job_id, asset_name).should be_an_instance_of SauceWhisk::Asset
+      end
+    end
   end
 end

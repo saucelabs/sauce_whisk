@@ -41,7 +41,6 @@ describe SauceWhisk::Tunnels, :vcr => {:cassette_name => "tunnels"} do
     it "returns instances of Tunnel" do
       tunnel = SauceWhisk::Tunnels.fetch job_id
       tunnel.should be_an_instance_of SauceWhisk::Tunnel
-      STDERR.puts "Tunnel port #{tunnel.ssh_port} #{tunnel.ssh_port.class}"
     end
 
     it "raises an exception with called without an id" do
