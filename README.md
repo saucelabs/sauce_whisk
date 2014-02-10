@@ -22,7 +22,29 @@ Or install it yourself as:
 
 You'll need a [Sauce Labs account](http://wwww.saucelabs.com/signup).  They're free to try and, if you're an open source project, [your access is always free](http://saucelabs.com/opensauce).
 
-Once you've got your account, set the following environment variables:
+Once you've got your account, there are three ways to configure SauceWhisk.  The gem tries each of the following locations in turn.
+
+### The Sauce gem
+If you have the Sauce gem required, the SauceWhisk gem will try to read its configuration from the Sauce gem's configuration.
+
+### ondemand.yml
+If you have an ondemand.yml, the SauceWhisk gem will try to read its configuration from that file.  The locations the gem looks for a ondemand.yml are, in order:
+
+1. `./ondemand.yml` (The current directory)
+2. `./config/ondemand.yml` (The config directory under the current directory)
+3. `$GEM_LOCATION/../ondemand.yml` (The directory of the file which includes `sauce_whisk`
+4. `~/.sauce/ondemand.yml` (The .sauce directory in the user's home directory)
+
+#### Sample ondemand.yml
+```yaml
+username: Your Sauce Username
+access_key: Your Access Key, found on the lower left of your Account page
+asset_fetch_retry: 2
+```
+
+### Environment variables
+This is the preferred way.  Environment variable are available to all applications that need them, won't get accidentally checked into a repo and don't need to be edited for each team member.
+
 
 ```bash
 SAUCE_USERNAME=Your Sauce Username
