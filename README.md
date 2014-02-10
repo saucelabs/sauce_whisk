@@ -22,12 +22,21 @@ Or install it yourself as:
 
 You'll need a [Sauce Labs account](http://wwww.saucelabs.com/signup).  They're free to try and, if you're an open source project, [your access is always free](http://saucelabs.com/opensauce).
 
-Once you've got your account, there are three ways to configure SauceWhisk.  The gem tries each of the following locations in turn.
+### Values
+| Value | ENV Variable | Meaning |
+|-------|--------------|---------|
+|:username | SAUCE_USERNAME | Your Sauce Labs Username |
+|:access\_key | SAUCE\_ACCESS\_KEY| Your Access Key, found on the lower left of your Account page (Not your password!) |
+|:asset\_fetch\_retries | SAUCE\_ASSET\_FETCH\_RETRY | Number of times to retry fetching assets | 
 
-### The Sauce gem
+
+### Locations
+There are three ways to configure SauceWhisk.  The gem tries each of the following locations in turn.
+
+#### The Sauce gem
 If you have the Sauce gem required, the SauceWhisk gem will try to read its configuration from the Sauce gem's configuration.
 
-### ondemand.yml
+#### ondemand.yml
 If you have an ondemand.yml, the SauceWhisk gem will try to read its configuration from that file.  The locations the gem looks for a ondemand.yml are, in order:
 
 1. `./ondemand.yml` (The current directory)
@@ -35,16 +44,10 @@ If you have an ondemand.yml, the SauceWhisk gem will try to read its configurati
 3. `$GEM_LOCATION/../ondemand.yml` (The directory of the file which includes `sauce_whisk`
 4. `~/.sauce/ondemand.yml` (The .sauce directory in the user's home directory)
 
-#### Sample ondemand.yml
-```yaml
-username: Your Sauce Username
-access_key: Your Access Key, found on the lower left of your Account page
-asset_fetch_retry: 2
-```
+The keys are the same as those in the 'value' table, above.
 
-### Environment variables
+#### Environment variables
 This is the preferred way.  Environment variable are available to all applications that need them, won't get accidentally checked into a repo and don't need to be edited for each team member.
-
 
 ```bash
 SAUCE_USERNAME=Your Sauce Username
@@ -181,6 +184,10 @@ tunnel.stop  # Stops the Tunnel
 
 SauceWhisk::Tunnels.stop tunnel_id   # Stops the tunnel with the given id
 ```
+### Retrying fetching of assets
+Occasionally, assets won't be available immediately after the job is finished.  The gem will automatically retry fetching them.
+
+You can configure how many times the gem retries by configuring 'asset\_fetch\_retries` to your desired number of retries.
 
 ### Generic Sauce Labs Information
 
