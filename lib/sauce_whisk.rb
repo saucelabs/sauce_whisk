@@ -16,31 +16,17 @@ module SauceWhisk
   end
 
   def self.username
-    if defined? ::Sauce
-      return ::Sauce::Config.new[:username]
-    else
-      return self.from_yml(:username) || ENV["SAUCE_USERNAME"]
-    end
+    return self.load_first_found(:username)
   end
 
   def self.password
-    if defined? ::Sauce
-      return ::Sauce::Config.new[:access_key]
-    else
-      return self.from_yml(:access_key) || ENV["SAUCE_ACCESS_KEY"]
-    end
+    return self.load_first_found(:access_key)
   end
 
   def self.asset_fetch_retries
-    if not @asset_fetch_retries
-      if defined? ::Sauce
-        @asset_fetch_retries = ::Sauce::Config.new[:asset_fetch_retries]
-      else
-        @asset_fetch_retries = ENV["SAUCE_ASSET_FETCH_RETRIES"]
-      end
-    end
+    retries = self.load_first_found(:asset_fetch_retries)
 
-    return @asset_fetch_retries.to_i if @asset_fetch_retries
+    return retries.to_i if retries
     return 1
   end
 
@@ -85,4 +71,15 @@ module SauceWhisk
 
     return {}
   end
-end
+
+  def self.load_first_found(key)
+    value = ::Sauce::Config.new[key] if defined? ::Sauce
+    value = self.from_yml(key) unless value
+    unless value
+      env_key = "SAUCE_#{key.to_s.upcase}" 
+      value = ENV[env_key]
+    end
+    
+    return value
+  end
+end 
