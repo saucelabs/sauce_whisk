@@ -52,11 +52,15 @@ module SauceWhisk
   end
 
   class Account
-    attr_reader :access_key, :username, :minutes, :total_concurrency, :mac_concurrency
+    attr_reader :access_key, :username, :total_concurrency, :mac_concurrency
+    attr_reader :minutes, :mac_minutes, :manual_minutes, :mac_manual_minutes
     def initialize(options)
       @access_key = options[:access_key]
       @username = options[:id]
       @minutes = options[:minutes]
+      @mac_minutes = options[:mac_minutes]
+      @manual_minutes = options[:manual_minutes]
+      @mac_manual_minutes = options[:mac_manual_minutes]
       @total_concurrency = options[:total_concurrency]
       @mac_concurrency = options[:mac_concurrency]
     end
