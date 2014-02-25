@@ -6,12 +6,18 @@ describe SauceWhisk::Account do
       options = {
           :access_key => 12345,
           :minutes => 23,
+          :mac_minutes => 11,
+          :manual_minutes => 4,
+          :mac_manual_minutes => 87,
           :id => "someone"
       }
 
       test_account = SauceWhisk::Account.new options
       test_account.access_key.should eq 12345
       test_account.minutes.should eq 23
+      test_account.mac_minutes.should eq 11
+      test_account.manual_minutes.should eq 4
+      test_account.mac_manual_minutes.should eq 87
       test_account.username.should eq "someone"
     end
 
