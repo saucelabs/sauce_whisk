@@ -128,10 +128,15 @@ my_account = SauceWhisk::Accounts.fetch("account_name", false) # Returns a Sauce
 ```ruby
 my_account.username             # Sauce Labs Username
 my_account.access_key           # Sauce Labs Access Key (For automated test authentication... Not your password)
-my_account.minutes              # Total number of minutes available
+my_account.minutes              # Automated minutes available for Windows, Android, Linux
+my_account.manual_minutes       # Manual minutes available for Windows, Android, Linux
+my_account.mac_minutes          # Automated minutes available for Mac, iOS
+my_account.mac_manual_minutes   # Manual minutes available for Mac, iOS
 my_account.total_concurrency    # Number of concurrent jobs allowed
 my_account.mac_concurrency      # Number of concurrent Mac hosted jobs allowed (includes iPad, iPhone, Mac)
 ```
+
+NB: Minutes counts can be strings
 
 #### Retrieving the concurrency limits for an account
 
