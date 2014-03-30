@@ -2,7 +2,7 @@
 
 SauceWhisk provides an "ActiveRecord" style client for the [Sauce Labs](http://www.saucelabs.com) RESTful API.  If you're not using the [Sauce Gem](https://rubygems.org/gems/sauce) and you want a nice way to interact with our API, give this a try.
 
-[![Build Status](https://travis-ci.org/DylanLacey/sauce_whisk.png)](https://travis-ci.org/DylanLacey/sauce_whisk)
+[![Build Status](https://travis-ci.org/saucelabs/sauce_whisk.svg?branch=v0.0.12)](https://travis-ci.org/saucelabs/sauce_whisk)
 
 ## Installation
 
