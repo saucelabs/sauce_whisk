@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/storage/<SAUCE_USERNAME>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/0.7.62
+      Date:
+      - Sat, 29 Mar 2014 23:50:52 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '493'
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Frame-Options:
+      - DENY
+      Set-Cookie:
+      - csrf_token=fed54bee6a2bf22dee60aac2da8b31f2; expires="Sun, 30-Mar-2014 00:00:52
+        GMT"; Max-Age=600; Path=/
+      - metrics=974bf180a3b44fef145643d9e5ba3d14a8ba13903a6e72303142445a86006cd55cb03290;
+        Path=/
+    body:
+      encoding: UTF-8
+      string: '{"files": [{"size": 4, "mtime": 1396136952.426505, "name": "temp.apk20140329-19108-1usvvg1",
+        "md5": "8d777f385d3dfec8815d20f7496026dc"}, {"size": 3084871, "mtime": 1396061123.5402322,
+        "name": "api.apk", "md5": "97abfd70c91d78110499fab2c4ac1cf5"}, {"size": 364743,
+        "mtime": 1396135230.241059, "name": "UICatalog6.1.app.zip", "md5": "e59c57d7406118dc6160cd8caa2a7cc5"},
+        {"size": 4, "mtime": 1396136951.9545088, "name": "temp.apk20140329-19108-e6ddx",
+        "md5": "8d777f385d3dfec8815d20f7496026dc"}]}'
+    http_version: 
+  recorded_at: Sat, 29 Mar 2014 23:50:52 GMT
+recorded_with: VCR 2.9.0

@@ -255,6 +255,32 @@ SauceWhisk.logger = my_logger
 
 SauceWhisk.logger defaults to STDOUT.
 
+### Storage
+
+Create a new [storage object](http://saucelabs.com/docs/rest#storage):
+
+```ruby
+storage = SauceWhisk::Storage.new username: 'my_user_name', key: '00', debug: true
+```
+
+If the environment variables SAUCE_USERNAME and SAUCE_ACCESS_KEY are set then:
+
+```ruby
+storage = SauceStorage.new debug: true
+```
+
+List all files in storage.
+
+```ruby
+storage.files
+```
+
+Upload a file.
+
+```ruby
+storage.upload '/tmp/sauce/test.zip'
+```
+
 ## Contributing
 
 1. Fork the [sauce-labs version](https://github.com/saucelabs/sauce_whisk) of this repository

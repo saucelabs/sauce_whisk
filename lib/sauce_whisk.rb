@@ -5,6 +5,7 @@ require "sauce_whisk/assets"
 require "sauce_whisk/tunnels"
 require "sauce_whisk/info"
 require "sauce_whisk/accounts"
+require "sauce_whisk/storage"
 
 require 'yaml'
 
