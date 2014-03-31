@@ -270,13 +270,13 @@ http_interactions:
           __read_body_previously_called: true
         args:
           :method: :post
-          :url: https://saucelabs.com/rest/v1/dylanatsauce/tunnels
+          :url: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels
           :content_type: application/json
           :headers:
             Content-Length: 85
           :payload: '{"tunnel_identifier":"bees","ssh_port":9123,"use_caching_proxy":false,"use_kgp":true}'
-          :user: dylanatsauce
-          :password: 8f5210dd-f0cf-477f-b720-9f721a9679a4
+          :user: <SAUCE_USERNAME>
+          :password: <SAUCE_ACCESS_KEY>
         code: 200
     http_version: 
   recorded_at: Tue, 30 Jul 2013 08:46:35 GMT

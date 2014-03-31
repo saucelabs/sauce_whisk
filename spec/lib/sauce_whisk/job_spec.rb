@@ -2,6 +2,7 @@ require "spec_helper"
 
 describe SauceWhisk::Job do
   let(:job) {SauceWhisk::Job.new}
+  let(:user) {ENV["SAUCE_USERNAME"]}
   subject {SauceWhisk::Job.new}
 
   it {should respond_to :id}
@@ -71,7 +72,7 @@ describe SauceWhisk::Job do
 
       it "Calls the correct REST API method", :vcr => {:cassette_name => "jobs"} do
         subject.stop
-        assert_requested :put, "https://#{ENV["SAUCE_USERNAME"]}:#{ENV["SAUCE_ACCESS_KEY"]}@saucelabs.com/rest/v1/dylanatsauce/jobs/#{subject.id}/stop"
+        assert_requested :put, "https://#{user}:#{ENV["SAUCE_ACCESS_KEY"]}@saucelabs.com/rest/v1/#{user}/jobs/#{subject.id}/stop"
       end
     end
 
