@@ -1,4 +1,10 @@
 # Major Version 0
+### 0.0.13
+* Sauce storage support added (Thanks @bootstraponline)
+* Various gem build quality fixes (Thanks @bootstraponline)
+### 0.0.12
+* Added additional minute types
+
 ### 0.0.8
 * Correctly read Sauce Config
 
