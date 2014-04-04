@@ -49,6 +49,10 @@ module SauceWhisk
       put "#{job_id}/stop", {}
     end
 
+    def self.delete_job(job_id)
+      delete "#{job_id}"
+    end
+
     def self.fetch_asset(job_id, asset)
       asset = get "#{job_id}/assets/#{asset}"
     end
@@ -97,6 +101,10 @@ module SauceWhisk
 
     def stop
       Jobs.stop id
+    end
+
+    def delete
+      Jobs.delete_job id
     end
 
     def updated_fields
