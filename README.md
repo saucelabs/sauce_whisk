@@ -268,7 +268,7 @@ storage = SauceWhisk::Storage.new username: 'my_user_name', key: '00', debug: tr
 If the environment variables SAUCE_USERNAME and SAUCE_ACCESS_KEY are set then:
 
 ```ruby
-storage = SauceStorage.new debug: true
+storage = SauceWhisk::Storage.new debug: true
 ```
 
 List all files in storage.
