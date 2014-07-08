@@ -6,11 +6,11 @@ describe "a subaccount" do
 
   it "is an Account object" do
     sub = SauceWhisk::SubAccount.new(parent, params)
-    sub.should be_a_kind_of SauceWhisk::Account
+    expect( sub ).to be_a_kind_of SauceWhisk::Account
   end
 
   it "takes a parent as a parameter" do
     sub = SauceWhisk::SubAccount.new(parent, params)
-    sub.parent.should be parent
+    expect( sub.parent ).to be parent
   end
 end

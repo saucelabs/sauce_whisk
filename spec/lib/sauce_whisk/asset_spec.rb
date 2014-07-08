@@ -15,25 +15,25 @@ describe SauceWhisk::Asset do
     end
 
     it "should store the name" do
-      @asset.name.should eq name
+      expect( @asset.name ).to eq name
     end
 
     it "should store the data" do
-      @asset.data.should eq data
+      expect( @asset.data ).to eq data
     end
 
     it "should store the type" do
-      @asset.asset_type.should eq type
+      expect( @asset.asset_type ).to eq type
     end
 
     it "should store the job_id" do
-      @asset.job.should eq job_id
+      expect( @asset.job ).to eq job_id
     end
   end
 
   describe "#type" do
     it "should default to screenshot" do
-      SauceWhisk::Asset.new.asset_type.should eq :screenshot
+      expect( SauceWhisk::Asset.new.asset_type ).to eq :screenshot
     end
   end
 end

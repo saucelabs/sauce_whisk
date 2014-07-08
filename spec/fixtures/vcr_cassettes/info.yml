@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       Accept:
-      - '*/*; q=0.5, application/xml'
+      - "*/*; q=0.5, application/xml"
       Accept-Encoding:
       - gzip, deflate
       User-Agent:
@@ -55,7 +55,7 @@ http_interactions:
       string: ''
     headers:
       Accept:
-      - '*/*; q=0.5, application/xml'
+      - "*/*; q=0.5, application/xml"
       Accept-Encoding:
       - gzip, deflate
       User-Agent:
@@ -99,7 +99,7 @@ http_interactions:
       string: ''
     headers:
       Accept:
-      - '*/*; q=0.5, application/xml'
+      - "*/*; q=0.5, application/xml"
       Accept-Encoding:
       - gzip, deflate
       User-Agent:
@@ -176,7 +176,7 @@ http_interactions:
       string: ''
     headers:
       Accept:
-      - '*/*; q=0.5, application/xml'
+      - "*/*; q=0.5, application/xml"
       Accept-Encoding:
       - gzip, deflate
       User-Agent:
@@ -245,4 +245,130 @@ http_interactions:
         dlR7nE0Mmoei+fEfsOfe4odoAAA=
     http_version: 
   recorded_at: Thu, 13 Jun 2013 07:06:39 GMT
-recorded_with: VCR 2.5.0
+- request:
+    method: get
+    uri: https://saucelabs.com/rest/v1/info/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 08 Jul 2014 04:26:38 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - http://status.saucelabs.com
+      X-Backend:
+      - mix
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAy2MSw6CQAxA956i6ZoQhBlFllxk0gyNNoqQaYEF4e5CcP0+
+        Ky4kFkx6xgaK/Obu/vrwdVk676qizgCV0yyRwzByIpPhS59dtTTxAY1s0tCz
+        Kj2PBbakEuEfwckhvji+FUZS5S7H7fIDE3jQhHgAAAA=
+    http_version: 
+  recorded_at: Tue, 08 Jul 2014 04:26:32 GMT
+- request:
+    method: get
+    uri: https://saucelabs.com/rest/v1/info/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 08 Jul 2014 04:33:38 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - http://status.saucelabs.com
+      X-Backend:
+      - mix
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAy2MzQ6CMAyA7zxF0zMhCwwQj7zI0owGGkTI2unB+O5K9Pz9
+        vPBJYsFkY7yCq9rGXfrOD97VzeC8LwGV00Mih/3gRCb7nW5f1VLmExpZ1rCx
+        Ks3nAkdSifCP4MchLhxXhYNUearwXXwASBpagngAAAA=
+    http_version: 
+  recorded_at: Tue, 08 Jul 2014 04:33:32 GMT
+- request:
+    method: get
+    uri: https://saucelabs.com/rest/v1/info/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 08 Jul 2014 04:33:51 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - http://status.saucelabs.com
+      X-Backend:
+      - mix
+      Content-Encoding:
+      - gzip
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAy2MSw6CQAxA956i6doQ+UxwXHKRSTM20iBCph1YEO4uRNfv
+        s+FKYsFkZHzArXCVr3zja9e48l635RVQOS0SOUwzJzKZPvQ+VEuZT2hkWcPI
+        qvQ6F9iRSoR/BD8Osec4KMykys8C98sXaUzMpHgAAAA=
+    http_version: 
+  recorded_at: Tue, 08 Jul 2014 04:33:44 GMT
+recorded_with: VCR 2.9.2

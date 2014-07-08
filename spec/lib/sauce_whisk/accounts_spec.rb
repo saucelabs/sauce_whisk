@@ -12,23 +12,23 @@ describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts", :match_req
     it "returns an Account object" do
       username = ENV["SAUCE_USERNAME"]
       account = SauceWhisk::Accounts.fetch(username)
-      account.should be_an_instance_of SauceWhisk::Account
+      expect( account ).to be_an_instance_of SauceWhisk::Account
 
-      account.username.should eq username
-      account.access_key.should_not be_nil
+      expect( account.username) .to eq username
+      expect( account.access_key ).to_not be_nil
     end
 
     it "includes the concurrency by default" do
       account = SauceWhisk::Accounts.fetch ENV["SAUCE_USERNAME"]
       assert_requested :get, "https://#{auth}@saucelabs.com/rest/v1/#{ENV["SAUCE_USERNAME"]}/limits"
-      account.total_concurrency.should eq 20
-      account.mac_concurrency.should eq 5
+      expect( account.total_concurrency ).to eq 20
+      expect( account.mac_concurrency ).to eq 5
     end
 
     it "should not include concurrency when conservative is set to false" do
       account = SauceWhisk::Accounts.fetch(ENV["SAUCE_USERNAME"], false)
       assert_not_requested :get, "https://#{auth}@saucelabs.com/rest/v1/#{ENV["SAUCE_USERNAME"]}/limits"
-      account.total_concurrency.should be_nil
+      expect( account.total_concurrency ).to be_nil
     end
 
     context "with an invalid account" do
@@ -84,7 +84,7 @@ describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts", :match_req
       sub = SauceWhisk::Accounts.create_subaccount(parent, "Manny", "newsub77",
           "Manny@blackbooks.co.uk", "davesdisease")
 
-      sub.should be_a_kind_of SauceWhisk::Account
+      expect( sub ).to be_a_kind_of SauceWhisk::Account
     end
 
     it "returns a Subaccount, parented to the Parent account" do
@@ -93,7 +93,7 @@ describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts", :match_req
       sub = SauceWhisk::Accounts.create_subaccount(parent, "Manny", "newsub77",
                                                    "Manny@blackbooks.co.uk", "davesdisease")
 
-      sub.parent.should be parent
+      expect( sub.parent ).to be parent
     end
 
     context "trying to create too many subaccounts" do

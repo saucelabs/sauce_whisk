@@ -12,22 +12,22 @@ describe SauceWhisk::Tunnels, :vcr => {:cassette_name => "tunnels"} do
 
     it "returns nothing when no tunnels are found", :vcr => {:cassette_name => "no_tunnels", :exclusive => true} do
       tunnels = SauceWhisk::Tunnels.all
-      tunnels.should eq []
+      expect( tunnels ).to eq []
     end
 
     context "called without the 'fetch' parameter" do
       it "returns an array of Tunnels" do
         tunnels = SauceWhisk::Tunnels.all
-        tunnels.should be_an_instance_of Array
-        tunnels.each {|tunnel| tunnel.should be_an_instance_of SauceWhisk::Tunnel}
+        expect( tunnels ).to be_an_instance_of Array
+        tunnels.each {|tunnel| expect( tunnel ).to be_an_instance_of SauceWhisk::Tunnel}
       end
     end
 
     context "called with the fetch parameter set false" do
       it "returns an array of strings" do
         tunnels = SauceWhisk::Tunnels.all(:fetch_each => false)
-        tunnels.should be_an_instance_of Array
-        tunnels.each {|tunnel| tunnel.should be_an_instance_of String }
+        expect( tunnels ).to be_an_instance_of Array
+        tunnels.each {|tunnel| expect( tunnel ).to be_an_instance_of String }
       end
     end
   end
@@ -41,7 +41,7 @@ describe SauceWhisk::Tunnels, :vcr => {:cassette_name => "tunnels"} do
 
     it "returns instances of Tunnel" do
       tunnel = SauceWhisk::Tunnels.fetch job_id
-      tunnel.should be_an_instance_of SauceWhisk::Tunnel
+      expect( tunnel ).to be_an_instance_of SauceWhisk::Tunnel
     end
 
     it "raises an exception with called without an id" do
@@ -66,11 +66,11 @@ describe SauceWhisk::Tunnels, :vcr => {:cassette_name => "tunnels"} do
 
     it "returns an instance of tunnel" do
       tunnel = SauceWhisk::Tunnels.open params
-      tunnel.should be_an_instance_of SauceWhisk::Tunnel
+      expect( tunnel ).to be_an_instance_of SauceWhisk::Tunnel
 
       # These aren't magic, they're taken from the tunnels fixture.  <3 VCR.
-      tunnel.id.should eq "4824d6b282e04d1184daff5401a52e1e"
-      tunnel.ssh_port.should eq 9123
+      expect( tunnel.id ).to eq "4824d6b282e04d1184daff5401a52e1e"
+      expect( tunnel.ssh_port ).to eq 9123
     end
 
     context "When asked to wait until running", :vcr => {:cassette_name => 'tunnels_with_wait'} do

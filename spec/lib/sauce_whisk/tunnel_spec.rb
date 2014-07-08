@@ -12,18 +12,18 @@ describe SauceWhisk::Tunnel do
   describe "#new" do
     it "sets all parameters passed in" do
       tunnel = SauceWhisk::Tunnel.new params
-      tunnel.id.should eq "tunnel_id"
-      tunnel.owner.should eq "test_user"
-      tunnel.status.should eq "open"
-      tunnel.host.should eq "yacko.wacko.dot"
-      tunnel.creation_time.should eq params[:creation_time]
+      expect( tunnel.id ).to eq "tunnel_id"
+      expect( tunnel.owner ).to eq "test_user"
+      expect( tunnel.status ).to eq "open"
+      expect( tunnel.host ).to eq "yacko.wacko.dot"
+      expect( tunnel.creation_time ).to eq params[:creation_time]
     end
   end
 
   describe "#stop" do
     it "calls the Repository class" do
       tunnel = SauceWhisk::Tunnel.new params
-      SauceWhisk::Tunnels.should_receive(:stop).with("tunnel_id")
+      expect( SauceWhisk::Tunnels ).to receive(:stop).with("tunnel_id")
 
       tunnel.stop
     end

@@ -37,19 +37,19 @@ describe SauceWhisk::Job do
 
     it "tracks changes to methods" do
       subject.name = "ANewName"
-      subject.updated_fields.should include :name
+      expect( subject.updated_fields ).to include :name
 
       subject.visibility = true
-      subject.updated_fields.should include :visibility
+      expect( subject.updated_fields ).to include :visibility
     end
 
     it "does not track unchanged methods" do
-      subject.updated_fields.should_not include :build
+      expect( subject.updated_fields ).to_not include :build
     end
 
     it "has empty updated_fields for new instances" do
       new_job = SauceWhisk::Job.new(params)
-      new_job.updated_fields.should eq []
+      expect( new_job.updated_fields ).to eq []
     end
 
     describe "#save" do
@@ -61,7 +61,7 @@ describe SauceWhisk::Job do
         end
 
         it "calls the save method of the SauceWhisk::Jobs object" do
-          SauceWhisk::Jobs.should_receive(:save).with(subject)
+          expect( SauceWhisk::Jobs ).to receive(:save).with(subject)
           subject.save
         end
       end
@@ -93,7 +93,7 @@ describe SauceWhisk::Job do
             subject.send("#{param}=", "TOTALLYDIFFERENT")
           }.to raise_exception
 
-          subject.send(param).should_not eq "TOTALLYDIFFERENT"
+          expect( subject.send(param) ).not_to eq "TOTALLYDIFFERENT"
         end
       end
     end
@@ -104,19 +104,19 @@ describe SauceWhisk::Job do
 
     describe "#screenshots", :vcr => {:cassette_name => "assets"} do
       it "contains all the screenshots for that job" do
-        subject.screenshots.length.should be 4
+        expect( subject.screenshots.length ).to be 4
       end
 
       it "contains actual screenshots" do
-        subject.screenshots.first.should be_a_kind_of SauceWhisk::Asset
-        subject.screenshots.first.asset_type.should eq :screenshot
+        expect( subject.screenshots.first ).to be_a_kind_of SauceWhisk::Asset
+        expect( subject.screenshots.first.asset_type ).to eq :screenshot
       end
     end
 
     describe "#video", :vcr => {:cassette_name => "assets"} do
       it "should be a video asset" do
-        subject.video.should be_a_kind_of SauceWhisk::Asset
-        subject.video.asset_type.should eq :video
+        expect( subject.video ).to be_a_kind_of SauceWhisk::Asset
+        expect( subject.video.asset_type ).to eq :video
       end
     end
   end
