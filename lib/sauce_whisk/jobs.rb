@@ -125,6 +125,10 @@ module SauceWhisk
       Jobs.delete_job id
     end
 
+    def has_all_asset_names?
+      !screenshot_urls.nil?
+    end
+
     def updated_fields
       @updated_fields ||= []
     end

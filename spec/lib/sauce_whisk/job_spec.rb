@@ -99,24 +99,38 @@ describe SauceWhisk::Job do
     end
   end
 
-  context "fetched from the API" do
-    subject {SauceWhisk::Jobs.fetch "bd9c43dd6b5549f1b942d1d581d98cac"}
+  context "fetched from the API", :vcr => {:cassette_name => "assets"} do
+    context "with all asset details" do
+      subject {SauceWhisk::Jobs.fetch "bd9c43dd6b5549f1b942d1d581d98cac"}
 
-    describe "#screenshots", :vcr => {:cassette_name => "assets"} do
-      it "contains all the screenshots for that job" do
-        expect( subject.screenshots.length ).to be 4
+      it "will set has_all_asset_names true" do
+        expect( subject.has_all_asset_names? ).to be true
       end
 
-      it "contains actual screenshots" do
-        expect( subject.screenshots.first ).to be_a_kind_of SauceWhisk::Asset
-        expect( subject.screenshots.first.asset_type ).to eq :screenshot
+      describe "#screenshots" do
+        it "contains all the screenshots for that job" do
+          expect( subject.screenshots.length ).to be 4
+        end
+
+        it "contains actual screenshots" do
+          expect( subject.screenshots.first ).to be_a_kind_of SauceWhisk::Asset
+          expect( subject.screenshots.first.asset_type ).to eq :screenshot
+        end
+      end
+
+      describe "#video", :vcr => {:cassette_name => "assets"} do
+        it "should be a video asset" do
+          expect( subject.video ).to be_a_kind_of SauceWhisk::Asset
+          expect( subject.video.asset_type ).to eq :video
+        end
       end
     end
 
-    describe "#video", :vcr => {:cassette_name => "assets"} do
-      it "should be a video asset" do
-        expect( subject.video ).to be_a_kind_of SauceWhisk::Asset
-        expect( subject.video.asset_type ).to eq :video
+    context "without asset details" do
+      subject {SauceWhisk::Jobs.fetch "1ca64b180cfa40e0a4aee5a4a482f271" }
+
+      it "will set has_all_asset_names false" do
+        expect( subject.has_all_asset_names? ).to be false
       end
     end
   end
