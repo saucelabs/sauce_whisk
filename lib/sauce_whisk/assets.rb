@@ -1,6 +1,10 @@
 module SauceWhisk
   class Assets
     extend RestRequestBuilder
+    class << self
+      alias_method :rest_delete, :delete
+    end
+
     def self.resource
       "#{SauceWhisk.username}/jobs"
     end
@@ -19,13 +23,13 @@ module SauceWhisk
       else
         raise e
       end
-      end
+    end
 
     def self.delete(job_id)
       retries ||= SauceWhisk.asset_fetch_retries
       attempts ||= 1
 
-      data = delete "#{job_id}/assets/"
+      data = rest_delete "#{job_id}/assets/"
       Asset.new({:data => data,:job_id => job_id})
     rescue RestClient::ResourceNotFound => e
       if attempts <= retries
