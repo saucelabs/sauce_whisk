@@ -6,7 +6,7 @@ module SauceWhisk
     def get(resource_to_fetch=nil)
       resource_url = fully_qualified_resource
       resource_url << "/#{resource_to_fetch}" if resource_to_fetch
-      RestClient::Request.execute({:method => :get, :url => resource_url}.merge auth_details)
+      make_request({:method => :get, :url => resource_url}.merge auth_details)
     end
 
     def put(resource_id, body={})
@@ -20,12 +20,12 @@ module SauceWhisk
           :content_type => "application/json",
           :headers => headers
       }
-      RestClient::Request.execute(req_params.merge auth_details)
+      make_request(req_params.merge auth_details)
     end
 
     def delete(resource_id)
       resource_to_delete = fully_qualified_resource << "/#{resource_id}"
-      RestClient::Request.execute({:method => :delete, :url => resource_to_delete}.merge auth_details)
+      make_request({:method => :delete, :url => resource_to_delete}.merge auth_details)
     end
 
     def post(opts)
@@ -46,8 +46,23 @@ module SauceWhisk
 
       req_params.merge!({:payload => payload}) unless payload.nil?
 
-      RestClient::Request.execute(req_params.merge auth_details)
+      make_request(req_params.merge auth_details)
+    end
 
+    def make_request(req_params)
+      SauceWhisk.logger.debug "Performing Request: \n#{req_params}"
+      request_from_rest_client req_params
+    end
+
+    def request_from_rest_client(req_params)
+      tries ||= SauceWhisk.rest_retries
+      RestClient::Request.execute(req_params)
+    rescue RestClient::ResourceNotFound => e
+      if (tries -= 1) > 0
+        retry
+      else
+        raise e
+      end    
     end
 
     def auth_details

@@ -43,6 +43,29 @@ describe SauceWhisk::RestRequestBuilder do
     end
   end
 
+  describe "#make_request" do
+    before :all do
+      VCR.insert_cassette 'rest_request_retry', :record => :new_episodes
+    end
+
+    after :all do
+      VCR.eject_cassette
+    end
+
+    it "should retry 404'd methods n times" do
+      expected_url = "#{SauceWhisk.base_url}/#{dummy_client.resource}"
+      expected_params = {:method => :get, :url => expected_url}.merge mock_auth
+      times = 0
+      expect( RestClient::Request ).to receive(:execute) do |arg|
+        expect(arg).to eq expected_params
+          raise RestClient::ResourceNotFound.new if(times >= SauceWhisk.rest_retries)
+        times += 1
+      end    
+      dummy_client.get
+    end
+
+  end
+
   describe "#get" do
     before :all do
       VCR.insert_cassette 'rest_request', :record => :new_episodes
