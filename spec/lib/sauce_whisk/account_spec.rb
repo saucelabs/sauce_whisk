@@ -13,12 +13,12 @@ describe SauceWhisk::Account do
       }
 
       test_account = SauceWhisk::Account.new options
-      test_account.access_key.should eq 12345
-      test_account.minutes.should eq 23
-      test_account.mac_minutes.should eq 11
-      test_account.manual_minutes.should eq 4
-      test_account.mac_manual_minutes.should eq 87
-      test_account.username.should eq "someone"
+      expect( test_account.access_key ).to eq 12345
+      expect( test_account.minutes ).to eq 23
+      expect( test_account.mac_minutes ).to eq 11
+      expect( test_account.manual_minutes ).to eq 4
+      expect( test_account.mac_manual_minutes ).to eq 87
+      expect( test_account.username ).to eq "someone"
     end
 
     it "sets concurrency figures" do
@@ -28,8 +28,8 @@ describe SauceWhisk::Account do
       }
 
       test_account = SauceWhisk::Account.new concurrencies
-      test_account.mac_concurrency.should eq 23
-      test_account.total_concurrency.should eq 100
+      expect( test_account.mac_concurrency ).to eq 23
+      expect( test_account.total_concurrency ).to eq 100
     end
   end
 

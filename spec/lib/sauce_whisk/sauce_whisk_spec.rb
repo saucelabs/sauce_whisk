@@ -20,7 +20,7 @@ describe SauceWhisk do
   describe "##pass_job" do
     it "should call #pass on the jobs object" do
       job_id = "0418999"
-      SauceWhisk::Jobs.should_receive(:pass_job).with(job_id) {true}
+      expect( SauceWhisk::Jobs ).to receive(:pass_job).with(job_id) {true}
       SauceWhisk.pass_job job_id
     end
   end
@@ -32,16 +32,16 @@ describe SauceWhisk do
         end
       end
       SauceWhisk.logger = dummy_logger
-      SauceWhisk.logger.should be dummy_logger
+      expect( SauceWhisk.logger ).to be dummy_logger
     end
 
-    it "defaults to STDIN" do
+    it "defaults to STDOUT" do
       SauceWhisk.logger = nil
-      SauceWhisk.logger.should be STDOUT
+      expect( SauceWhisk.logger ).to be_a_kind_of Logger
     end
   end
 
-  describe "##retries" do
+  describe "##asset_fetch_retries" do
     it "tries to read from Sauce.config" do
       SauceWhisk.instance_variable_set(:@asset_fetch_retries, nil)
       mock_config = Class.new(Hash) do
@@ -51,7 +51,26 @@ describe SauceWhisk do
       end
 
       stub_const "::Sauce::Config", mock_config
-      SauceWhisk.asset_fetch_retries.should equal 3
+      expect( SauceWhisk.asset_fetch_retries ).to equal 3
+    end
+  end
+
+  describe "##rest_retries" do
+    it "defaults to 1" do
+      SauceWhisk.instance_variable_set(:@rest_retries, nil)
+      expect( SauceWhisk.rest_retries ).to equal 1
+    end
+
+    it "tries to read from Sauce.config" do
+      SauceWhisk.instance_variable_set(:@rest_retries, nil)
+      mock_config = Class.new(Hash) do
+        def initialize
+          self.store(:rest_retries, 3)
+        end
+      end
+
+      stub_const "::Sauce::Config", mock_config
+      expect( SauceWhisk.rest_retries ).to equal 3
     end
   end
 end

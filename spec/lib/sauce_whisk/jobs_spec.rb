@@ -6,12 +6,12 @@ describe SauceWhisk::Jobs do
   describe "#all", :vcr => {:cassette_name => 'jobs'} do
 
     it "should return an enumerable" do
-      SauceWhisk::Jobs.all.should be_an Enumerable
+      expect( SauceWhisk::Jobs.all ).to be_an Enumerable
     end
 
     it "should return a set of jobs" do
       jobs_found = SauceWhisk::Jobs.all
-      jobs_found.each {|job| job.should be_a SauceWhisk::Job}
+      jobs_found.each {|job| expect( job ).to be_a SauceWhisk::Job}
     end
   end
 
@@ -31,7 +31,7 @@ describe SauceWhisk::Jobs do
   describe "##pass_job" do
     it "Calls the API and passes the given job" do
       job_id = "rerfreferf"
-      SauceWhisk::Jobs.should_receive(:change_status).with(job_id, true) {}
+      expect( SauceWhisk::Jobs ).to receive(:change_status).with(job_id, true) {}
 
       SauceWhisk::Jobs.pass_job job_id
     end
@@ -40,7 +40,7 @@ describe SauceWhisk::Jobs do
   describe "##fail_job" do
     it "Calls change_status to fail the job" do
       job_id = "rcercer"
-      SauceWhisk::Jobs.should_receive(:change_status).with(job_id, false) {}
+      expect( SauceWhisk::Jobs ).to receive(:change_status).with(job_id, false) {}
 
       SauceWhisk::Jobs.fail_job job_id
     end
@@ -68,12 +68,12 @@ describe SauceWhisk::Jobs do
     let(:job) {SauceWhisk::Jobs.fetch("bd9c43dd6b5549f1b942d1d581d98cac")}
 
     it "contains the list of screenshots for the job" do
-      job.screenshot_urls.should be_a_kind_of Enumerable
-      job.screenshot_urls.length.should_not be 0
+      expect( job.screenshot_urls ).to be_a_kind_of Enumerable
+      expect( job.screenshot_urls.length ).to_not be 0
     end
 
     it "returns a job when a valid one is fetched" do
-      job.should be_an_instance_of SauceWhisk::Job
+      expect( job ).to be_an_instance_of SauceWhisk::Job
     end
   end
 

@@ -20,9 +20,9 @@ describe SauceWhisk::Assets do
 
     it "initializes the asset properly" do
       asset = SauceWhisk::Assets.fetch job_id, asset_name
-      asset.name.should eq asset_name
-      asset.job.should eq job_id
-      asset.asset_type.should eq :screenshot
+      expect( asset.name ).to eq asset_name
+      expect( asset.job ).to eq job_id
+      expect( asset.asset_type ).to eq :screenshot
     end
 
     context "for an invalid asset" do
