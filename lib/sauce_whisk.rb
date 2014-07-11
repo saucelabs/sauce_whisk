@@ -8,6 +8,7 @@ require "sauce_whisk/accounts"
 require "sauce_whisk/storage"
 
 require 'yaml'
+require 'logger'
 
 
 module SauceWhisk
@@ -31,6 +32,13 @@ module SauceWhisk
     return 1
   end
 
+  def self.rest_retries
+    retries = self.load_first_found(:rest_retries)
+
+    return retries.to_i if retries
+    return 1
+  end
+
   def self.pass_job(job_id)
     Jobs.pass_job job_id
   end
@@ -40,7 +48,7 @@ module SauceWhisk
   end
 
   def self.logger
-    @logger||= STDOUT
+    @logger||= ::Logger.new(STDOUT)
   end
 
   def self.public_link(job_id)
