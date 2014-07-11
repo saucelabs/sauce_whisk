@@ -91,4 +91,7 @@ module SauceWhisk
     
     return value
   end
+
+  class JobNotComplete < StandardError
+  end
 end 
