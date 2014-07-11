@@ -21,7 +21,7 @@ module SauceWhisk
       end
       end
 
-    def self.delete_asset(job_id)
+    def self.delete(job_id)
       retries ||= SauceWhisk.asset_fetch_retries
       attempts ||= 1
 
