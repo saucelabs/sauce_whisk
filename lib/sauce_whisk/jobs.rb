@@ -38,11 +38,19 @@ module SauceWhisk
 
     def self.fetch(job_id)
       job_hash = JSON.parse(get job_id)
-      assets = JSON.parse get "#{job_id}/assets"
-      screenshots = assets["screenshots"]
+      assets = job_assets job_id
+      job_hash.merge! assets
+    rescue SauceWhisk::JobNotComplete
+      # Always succeed
+    ensure
+      return Job.new(job_hash)
+    end
 
-      job_hash.merge!({"screenshot_urls" => screenshots})
-      Job.new(job_hash)
+    def self.fetch!(job_id)
+      job_hash = JSON.parse(get job_id)
+      assets = job_assets job_id
+      job_hash.merge! assets
+      Job.new job_hash
     end
 
     def self.stop(job_id)
@@ -55,6 +63,16 @@ module SauceWhisk
 
     def self.fetch_asset(job_id, asset)
       asset = get "#{job_id}/assets/#{asset}"
+    end
+    
+    def self.job_assets(job_id)
+      assets = JSON.parse get "#{job_id}/assets"
+      screenshots = assets["screenshots"]
+
+      {"screenshot_urls" => screenshots}
+    rescue RestClient::BadRequest
+      STDERR.puts "BAD REQUEST IS BAD"
+      raise SauceWhisk::JobNotComplete
     end
   end
 
@@ -112,7 +130,7 @@ module SauceWhisk
     end
 
     def screenshots
-      unless @screenshots
+      unless @screenshots || screenshot_urls.nil?
        @screenshots = screenshot_urls.map do |screenshot|
           Assets.fetch id, screenshot
         end

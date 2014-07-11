@@ -65,15 +65,51 @@ describe SauceWhisk::Jobs do
   end
 
   describe "##fetch", :vcr => {:cassette_name => "jobs"} do
-    let(:job) {SauceWhisk::Jobs.fetch("bd9c43dd6b5549f1b942d1d581d98cac")}
+    context "for a completed job" do
+      let(:job) {SauceWhisk::Jobs.fetch("bd9c43dd6b5549f1b942d1d581d98cac")}
 
-    it "contains the list of screenshots for the job" do
-      expect( job.screenshot_urls ).to be_a_kind_of Enumerable
-      expect( job.screenshot_urls.length ).to_not be 0
+      it "contains the list of screenshots for the job" do
+        expect( job.screenshot_urls ).to be_a_kind_of Enumerable
+        expect( job.screenshot_urls.length ).to_not be 0
+      end
+
+      it "returns a job when a valid one is fetched" do
+        expect( job ).to be_an_instance_of SauceWhisk::Job
+      end
     end
 
-    it "returns a job when a valid one is fetched" do
-      expect( job ).to be_an_instance_of SauceWhisk::Job
+    context "for an incomplete job" do
+      let(:job) {SauceWhisk::Jobs.fetch("1ca64b180cfa40e0a4aee5a4a482f271")}
+
+      it "returns a job even when asset fetching fails" do
+        expect( job ).to be_an_instance_of SauceWhisk::Job
+        expect( job.screenshots ).to be_nil
+      end
+    end
+  end
+
+  describe "##fetch!", :vcr => {:cassette_name => "jobs"} do
+    context "for a completed job" do
+      let(:job) {SauceWhisk::Jobs.fetch! "bd9c43dd6b5549f1b942d1d581d98cac"}
+
+      it "contains the list of screenshots for the job" do
+        expect( job.screenshot_urls ).to be_a_kind_of Enumerable
+        expect( job.screenshot_urls.length ).to_not be 0
+      end
+
+      it "returns a job when a valid one is fetched" do
+        expect( job ).to be_an_instance_of SauceWhisk::Job
+      end
+    end
+
+    context "for an incomplete job" do
+      let(:job) {SauceWhisk::Jobs.fetch! "1ca64b180cfa40e0a4aee5a4a482f271" }
+
+      it "raises an exception" do
+        expect{
+          job
+        }.to raise_exception SauceWhisk::JobNotComplete
+      end
     end
   end
 
