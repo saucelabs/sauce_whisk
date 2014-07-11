@@ -1,7 +1,6 @@
 module SauceWhisk
   class Assets
     extend RestRequestBuilder
-
     def self.resource
       "#{SauceWhisk.username}/jobs"
     end
@@ -9,23 +8,43 @@ module SauceWhisk
     def self.fetch(job_id, asset, type=nil)
       retries ||= SauceWhisk.asset_fetch_retries
       attempts ||= 1
+
       data = get "#{job_id}/assets/#{asset}"
       Asset.new({:name => asset, :data => data, :job_id => job_id, :type => type})
     rescue RestClient::ResourceNotFound => e
       if attempts <= retries
         attempts += 1
         sleep(5)
-        retry
+      retry
       else
         raise e
       end
-    end
+      end
+
+    def self.delete_asset(job_id)
+      retries ||= SauceWhisk.asset_fetch_retries
+      attempts ||= 1
+
+      data = delete "#{job_id}/assets/"
+      Asset.new({:data => data,:job_id => job_id})
+    rescue RestClient::ResourceNotFound => e
+      if attempts <= retries
+        attempts += 1
+        sleep(5)
+      retry
+      else
+        raise e
+      end
+    
+    # Return nil as all of the assets we're already deleted.
+    rescue RestClient::BadRequest => e
+      nil
+      end
   end
 
   class Asset
 
     attr_reader :asset_type, :name, :data, :job
-
     def initialize(parameters={})
       @asset_type = parameters[:type] || :screenshot
       @name = parameters[:name]
