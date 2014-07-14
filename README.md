@@ -10,7 +10,7 @@ SauceWhisk provides an "ActiveRecord" style client for the [Sauce Labs](http://w
 
 Add this line to your application's Gemfile:
 
-    gem 'sauce_whisk'
+    gem 'sauce_whisk', 'Some Version Here'
 
 And then execute:
 
@@ -19,6 +19,8 @@ And then execute:
 Or install it yourself as:
 
     $ gem install sauce_whisk
+
+We recommend setting a hard version for now, as the gem is still kinda beta-y.
 
 ## Configuration
 
@@ -118,6 +120,11 @@ job.screenshot_urls # Array of URLs for accessing screenshots
 job.has_all_asset_names?  # True if all asset names were fetched (eg job was complete)
 ```
 
+### Deleting Jobs
+```ruby
+Jobs.delete_job job_id
+```
+
 ### Assets
 
 There are three types of asset for Sauce Labs jobs: screenshots, video and logs.  Assets are represented as an Asset object, which include the name, asset type and data.
@@ -134,6 +141,12 @@ There are three types of asset for Sauce Labs jobs: screenshots, video and logs.
 ```ruby
   job = SauceWhisk::Jobs.fetch job_id
   video = job.video # A single Asset, holding the video
+```
+
+#### Deleting Assets
+
+```ruby
+SauceWhisk::Assets.delete job_id #==> Deletes all assets for job.
 ```
 
 ### Accounts
