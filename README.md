@@ -255,7 +255,7 @@ You can set a custom logger object, passing anything that responds to puts:
 SauceWhisk.logger = my_logger
 ```
 
-SauceWhisk.logger defaults to STDOUT.
+SauceWhisk.logger defaults to STDOUT, at the warn level.
 
 ### Storage
 

@@ -48,7 +48,7 @@ module SauceWhisk
   end
 
   def self.logger
-    @logger||= ::Logger.new(STDOUT)
+    @logger||= default_logger
   end
 
   def self.public_link(job_id)
@@ -93,5 +93,13 @@ module SauceWhisk
   end
 
   class JobNotComplete < StandardError
+  end
+
+  private
+
+  def self.default_logger
+    log = ::Logger.new(STDOUT)
+    log.level = Logger::WARN
+    log
   end
 end 
