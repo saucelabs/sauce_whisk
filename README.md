@@ -67,7 +67,7 @@ SAUCE_ACCESS_KEY=Your Access Key, found on the lower left of your Account page
 
 ### Creating Job Objects
 
-There are two ways to create a Job object.
+There are three ways to create a Job object.
 
 ```ruby
 # Create an 'empty' job (i.e. don't retrieve job details from the API)
@@ -75,9 +75,12 @@ empty_job = SauceWhisk::Job.new job_id
 
 # Create a job with details fetched from the API
 fully_detailed_job = SauceWhisk::Jobs.fetch job_id
+
+# Create a job with details fetched from the API, failing if the job is incomplete
+partially_detailed_job = SauceWhisk::Jobs.fetch! job_id
 ```
 
-Use the first form when you just want a simple way to push details to the API.  Use the last form when you want to fetch details from the API.
+Use the first form when you just want a simple way to push details to the API.  Use the second form when you want to fetch details from the API, but aren't overly fussy about having complete job information.  Use the third form to throw a `SauceWhisk::JobNotComplete` exception when fetching an incomplete job.  Jobs that are fetched incomplete will not have screenshots, and may not have videos or logs.
 
 NB: It's not possible to create a new job on Sauce Labs' infrastructure with the API.
 
@@ -96,6 +99,24 @@ job.save
 ```
 
 It is not possible to alter any other job properties.
+
+### Other Job Properties
+
+```ruby
+job = SauceWhisk::Jobs.fetch job_id
+job.id      # Sauce job_id
+job.owner   # Account name of job's owner
+job.browser # Browser job ran on
+job.browser_verion  # Version of Browser
+job.os      # OS job ran on
+job.log_url # URL for accessing Job Log
+job.creation_time   # When the job was first created
+job.start_time      # When the job started running
+job.end_time        # When the job finished
+job.video_url       # URL for accessing screencast video
+job.screenshot_urls # Array of URLs for accessing screenshots
+job.has_all_asset_names?  # True if all asset names were fetched (eg job was complete)
+```
 
 ### Assets
 
