@@ -71,7 +71,6 @@ module SauceWhisk
 
       {"screenshot_urls" => screenshots}
     rescue RestClient::BadRequest
-      STDERR.puts "BAD REQUEST IS BAD"
       raise SauceWhisk::JobNotComplete
     end
   end
