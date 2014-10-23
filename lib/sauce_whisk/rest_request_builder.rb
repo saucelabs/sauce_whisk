@@ -1,5 +1,8 @@
 require "rest-client"
 
+RestClient.proxy = ENV["http_proxy"] if ENV["http_proxy"]
+RestClient.proxy = ENV["HTTP_PROXY"] if ENV["HTTP_PROXY"]
+
 module SauceWhisk
   module RestRequestBuilder
 
