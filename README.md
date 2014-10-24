@@ -33,7 +33,6 @@ You'll need a [Sauce Labs account](http://wwww.saucelabs.com/signup).  They're f
 |:access\_key | SAUCE\_ACCESS\_KEY| Your Access Key, found on the lower left of your Account page (Not your password!) |
 |:asset\_fetch\_retries | SAUCE\_ASSET\_FETCH\_RETRY | Number of times to retry fetching assets | 
 
-
 ### Locations
 There are three ways to configure SauceWhisk.  The gem tries each of the following locations in turn.
 
@@ -57,6 +56,9 @@ This is the preferred way.  Environment variable are available to all applicatio
 SAUCE_USERNAME=Your Sauce Username
 SAUCE_ACCESS_KEY=Your Access Key, found on the lower left of your Account page
 ```
+
+### HTTP Proxies
+To configure a proxy, set the 'HTTP_PROXY' or 'http_proxy' environment variable.  Proxies need to be a valid URI; HTTP Authentication can be included.
 
 ## Usage
 
