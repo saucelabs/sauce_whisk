@@ -18,7 +18,7 @@ module SauceWhisk
     def self.change_status(job_id, status)
       put job_id, {"passed" => status}.to_json
     rescue StandardError => e
-      SauceWhisk.logger.puts "Unable to change_status for #{job_id} to #{status}\nReason: #{e.to_s}"
+      SauceWhisk.logger.error "Unable to change_status for #{job_id} to #{status}\nReason: #{e.to_s}"
     end
 
     def self.pass_job(job_id)
