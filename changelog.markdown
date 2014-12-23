@@ -1,5 +1,8 @@
 # Major Version 0
 
+### 0.0.16
+* Don't try using 'puts' for the logger
+
 ### 0.0.15
 * Allowed for use of the HTTP_PROXY environment variable for uh, configuring proxies
 * Added 'saucewhisk' and 'sauce-whisk' require files
