@@ -42,16 +42,38 @@ describe SauceWhisk do
   end
 
   describe "##asset_fetch_retries" do
-    it "tries to read from Sauce.config" do
+    before :each do
       SauceWhisk.instance_variable_set(:@asset_fetch_retries, nil)
-      mock_config = Class.new(Hash) do
-        def initialize
-          self.store(:asset_fetch_retries, 3)
+    end
+
+    it "defaults to 1" do
+      expect( SauceWhisk.asset_fetch_retries ).to equal 1
+    end
+
+    describe "when a Sauce.config is available" do
+      before :each do
+        SauceWhisk.instance_variable_set(:@asset_fetch_retries, nil)
+        mock_config = Class.new(Hash) do
+          def initialize
+            self.store(:asset_fetch_retries, 3)
+          end
         end
+        stub_const "::Sauce::Config", mock_config
       end
 
-      stub_const "::Sauce::Config", mock_config
-      expect( SauceWhisk.asset_fetch_retries ).to equal 3
+      it "tries to read from Sauce.config" do
+        expect( SauceWhisk.asset_fetch_retries ).to equal 3
+      end
+
+      it "favours values set directly" do
+        SauceWhisk.asset_fetch_retries = 4
+        expect( SauceWhisk.asset_fetch_retries ).to equal 4
+      end
+    end
+
+    it "can be set directly" do
+      SauceWhisk.asset_fetch_retries = 5
+      expect( SauceWhisk.asset_fetch_retries ).to equal 5
     end
   end
 
@@ -61,16 +83,27 @@ describe SauceWhisk do
       expect( SauceWhisk.rest_retries ).to equal 1
     end
 
-    it "tries to read from Sauce.config" do
-      SauceWhisk.instance_variable_set(:@rest_retries, nil)
-      mock_config = Class.new(Hash) do
-        def initialize
-          self.store(:rest_retries, 3)
+    describe "when a Sauce.config is available" do
+
+      before :each do
+        SauceWhisk.instance_variable_set(:@rest_retries, nil)   
+        mock_config = Class.new(Hash) do
+          def initialize
+            self.store(:rest_retries, 3)
+          end
         end
+
+        stub_const "::Sauce::Config", mock_config     
       end
 
-      stub_const "::Sauce::Config", mock_config
-      expect( SauceWhisk.rest_retries ).to equal 3
+      it "tries to read from Sauce.config" do
+        expect( SauceWhisk.rest_retries ).to equal 3
+      end
+
+      it "favours values set directly" do
+        SauceWhisk.rest_retries = 2
+        expect( SauceWhisk.rest_retries ).to equal 2
+      end
     end
   end
 end

@@ -25,14 +25,30 @@ module SauceWhisk
     return self.load_first_found(:access_key)
   end
 
+  def self.asset_fetch_retries=(retries)
+    @asset_fetch_retries = retries
+  end
+
   def self.asset_fetch_retries
+    if @asset_fetch_retries
+      return @asset_fetch_retries
+    end
+
     retries = self.load_first_found(:asset_fetch_retries)
 
     return retries.to_i if retries
     return 1
   end
 
+  def self.rest_retries=(retries)
+    @rest_retries = retries
+  end
+
   def self.rest_retries
+    if @rest_retries
+      return @rest_retries
+    end
+
     retries = self.load_first_found(:rest_retries)
 
     return retries.to_i if retries
