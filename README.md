@@ -98,6 +98,19 @@ NB: It's not possible to create a new job on Sauce Labs' infrastructure with the
 
 ### Updating Job Metadata
 
+#### Updating Pass or Fail Status
+See [here](#marking-jobs-passed-or-failed)
+
+#### Changing job names
+```ruby
+job = SauceWhisk::Jobs.fetch job_id
+job.name = "Determine if the User can Invite Friends"
+
+job.save
+```
+
+#### All possible changes
+
 ```ruby
 job = SauceWhisk::Jobs.fetch job_id
 job.build = "12.3.04-beta"
