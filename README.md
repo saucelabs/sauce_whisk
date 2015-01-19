@@ -32,9 +32,17 @@ You'll need a [Sauce Labs account](http://wwww.saucelabs.com/signup).  They're f
 |:username | SAUCE_USERNAME | Your Sauce Labs Username |
 |:access\_key | SAUCE\_ACCESS\_KEY| Your Access Key, found on the lower left of your Account page (Not your password!) |
 |:asset\_fetch\_retries | SAUCE\_ASSET\_FETCH\_RETRY | Number of times to retry fetching assets | 
+|:rest_retries | SAUCE_REST_RETRIES | Number of times to try failing REST calls |
+
 
 ### Locations
 There are three ways to configure SauceWhisk.  The gem tries each of the following locations in turn.
+
+#### Directly on the SauceWhisk object
+`asset_fetch_retries` and `rest_retries` can be set directly on the SauceWhisk object:
+```ruby
+SauceWhisk.asset_fetch_retries = 5
+```
 
 #### The Sauce gem
 If you have the Sauce gem required, the SauceWhisk gem will try to read its configuration from the Sauce gem's configuration.
