@@ -1,5 +1,8 @@
 # Major Version 0
 
+### 0.0.17
+* Added `asset_fetch_retries=` and `rest_retries=` methods to `SauceWhisk` object.  These are used in preference to any other configuration value.
+
 ### 0.0.16
 * Don't try using 'puts' for the logger
 
