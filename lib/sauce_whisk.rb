@@ -17,6 +17,14 @@ module SauceWhisk
     "https://saucelabs.com/rest/v1"
   end
 
+  def self.username= username
+    @username = username
+  end
+
+  def self.access_key= access_key
+    @access_key = access_key
+  end
+
   def self.username
     return self.load_first_found(:username)
   end
@@ -98,8 +106,14 @@ module SauceWhisk
   end
 
   def self.load_first_found(key)
-    value = ::Sauce::Config.new[key] if defined? ::Sauce
+    value = self.instance_variable_get "@#{key}".to_sym
+
+    unless value
+      value = ::Sauce::Config.new[key] if defined? ::Sauce
+    end
+
     value = self.from_yml(key) unless value
+    
     unless value
       env_key = "SAUCE_#{key.to_s.upcase}" 
       value = ENV[env_key]
