@@ -36,11 +36,12 @@ You'll need a [Sauce Labs account](http://wwww.saucelabs.com/signup).  They're f
 
 
 ### Locations
-There are three ways to configure SauceWhisk.  The gem tries each of the following locations in turn.
+There are four ways to configure SauceWhisk.  The gem tries each of the following locations in turn.  Note, Environment Variables are the preferred means of setting configuration.
 
 #### Directly on the SauceWhisk object
-`asset_fetch_retries` and `rest_retries` can be set directly on the SauceWhisk object:
+`username`, `access_key`, `asset_fetch_retries` and `rest_retries` can be set directly on the SauceWhisk object:
 ```ruby
+SauceWhisk.username = 'some_rad_tester'
 SauceWhisk.asset_fetch_retries = 5
 ```
 
