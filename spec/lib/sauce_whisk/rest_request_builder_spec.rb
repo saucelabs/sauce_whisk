@@ -144,11 +144,6 @@ end
       dummy_client.put "something", "another_thing"
     end
 
-    it "includes the right content_type" do
-      expect( RestClient::Request ).to receive(:execute).with(hash_including({:content_type => "application/json"}))
-      dummy_client.put "something", "another_thing"
-    end
-
     it "includes the right method" do
       expect( RestClient::Request ).to receive(:execute).with(hash_including({:method => :put}))
       dummy_client.put "something", "another_thing"

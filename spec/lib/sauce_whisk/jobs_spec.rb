@@ -24,7 +24,7 @@ describe SauceWhisk::Jobs do
     it "passes a test status to the REST api" do
       job_id = "bd9c43dd6b5549f1b942d1d581d98cac"
       SauceWhisk::Jobs.change_status job_id, true
-      assert_requested :put, "https://#{auth}@saucelabs.com/rest/v1/#{user}/jobs/#{job_id}", :body => pass_string, :content_type => "application/json"
+      assert_requested :put, "https://#{auth}@saucelabs.com/rest/v1/#{user}/jobs/#{job_id}", :body => pass_string
     end
   end
 
@@ -51,7 +51,7 @@ describe SauceWhisk::Jobs do
       job_id = "bd9c43dd6b5549f1b942d1d581d98cac"
       job = SauceWhisk::Job.new({:id => job_id})
       SauceWhisk::Jobs.save (job)
-      assert_requested :put, "https://#{auth}@saucelabs.com/rest/v1/#{user}/jobs/#{job.id}", :body => anything, :content_type => "application/json"
+      assert_requested :put, "https://#{auth}@saucelabs.com/rest/v1/#{user}/jobs/#{job.id}", :body => anything
     end
 
     it "only sends updated information" do
@@ -60,7 +60,7 @@ describe SauceWhisk::Jobs do
       job.name = "Updated Name"
       SauceWhisk::Jobs.save (job)
       expected_body = {:name => "Updated Name"}.to_json
-      assert_requested :put, "https://#{auth}@saucelabs.com/rest/v1/#{user}/jobs/#{job.id}", :body => expected_body, :content_type => "application/json"
+      assert_requested :put, "https://#{auth}@saucelabs.com/rest/v1/#{user}/jobs/#{job.id}", :body => expected_body
     end
   end
 
@@ -116,7 +116,7 @@ describe SauceWhisk::Jobs do
   describe "##stop", :vcr => {:cassette_name => "jobs"} do
     it "calls the API correctly" do
       SauceWhisk::Jobs.stop "3edc8fe6d52645bf931b1003da65af1f"
-      assert_requested :put, "https://#{auth}@saucelabs.com/rest/v1/#{user}/jobs/3edc8fe6d52645bf931b1003da65af1f/stop", :content_type => "application/json"
+      assert_requested :put, "https://#{auth}@saucelabs.com/rest/v1/#{user}/jobs/3edc8fe6d52645bf931b1003da65af1f/stop"
     end
 
     it "does something interesting when the job is already stopped" do

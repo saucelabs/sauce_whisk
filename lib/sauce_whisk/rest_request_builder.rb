@@ -20,7 +20,7 @@ module SauceWhisk
           :method => :put,
           :url => url,
           :payload => body,
-          :content_type => "application/json",
+          :content_type => :json,
           :headers => headers
       }
       make_request(req_params.merge auth_details)
