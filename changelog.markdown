@@ -1,6 +1,7 @@
 # Major Version 0
 ### 0.0.19
-* You can now configure SauceWhisk.username and SauceWhisk.access_key.  These values override all other configuration settings.
+* You can now configure SauceWhisk.username and SauceWhisk.access_key.  These values override all other configuration settings
+* Removed Content-Type header from PUT commands as per documentation
 
 ### 0.0.18
 * @tommeier is a champion and bumped rest_client to 1.8.0 to avoid a security flaw (Fixes #42).
