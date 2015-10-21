@@ -62,6 +62,15 @@ describe SauceWhisk::Jobs do
       expected_body = {:name => "Updated Name"}.to_json
       assert_requested :put, "https://#{auth}@saucelabs.com/rest/v1/#{user}/jobs/#{job.id}", :body => expected_body
     end
+
+    it "sends custom-data with hyphen", :focus => true do
+      job_id = "bd9c43dd6b5549f1b942d1d581d98cac"
+      job = SauceWhisk::Job.new({:id => job_id})
+      job.custom_data = {:key => "value"}
+      SauceWhisk::Jobs.save (job)
+      expected_body = {:'custom-data' => {:key => "value"}}.to_json
+      assert_requested :put, "https://#{auth}@saucelabs.com/rest/v1/#{user}/jobs/#{job.id}", :body => expected_body
+    end
   end
 
   describe "##fetch", :vcr => {:cassette_name => "jobs"} do
