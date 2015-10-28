@@ -31,7 +31,11 @@ module SauceWhisk
 
     def self.save(job)
       fields_to_save = job.updated_fields.each_with_object(Hash.new) do |field, hsh|
-        hsh[field] = job.send(field.to_s)
+        if field == :custom_data
+          hsh[:'custom-data'] = job.send(field.to_s)
+        else
+          hsh[field] = job.send(field.to_s)
+        end
       end
       put job.id, fields_to_save.to_json
     end
