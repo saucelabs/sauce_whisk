@@ -26,11 +26,15 @@ module SauceWhisk
   end
 
   def self.username
-    return self.load_first_found(:username)
+    configured_username = self.load_first_found(:username)
+    return configured_username unless configured_username.nil? || configured_username.empty?
+    raise ::ArgumentError.new "Couldn't find Username in Sauce::Config, yaml file or Environment Variables"
   end
 
   def self.password
-    return self.load_first_found(:access_key)
+    configured_key = self.load_first_found(:access_key)
+    return configured_key unless configured_key.nil? || configured_key.empty?
+    raise ::ArgumentError.new "Couldn't find Access Key in Sauce::Config, yaml file or Environment Variables"
   end
 
   def self.asset_fetch_retries=(retries)

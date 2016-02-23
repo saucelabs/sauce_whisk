@@ -10,11 +10,41 @@ describe SauceWhisk do
   describe "##username" do
     subject {SauceWhisk.username}
     it {should eq ENV["SAUCE_USERNAME"]}
+
+    describe "when empty" do
+      subject {lambda {SauceWhisk.username}}
+
+      around do |spec|
+        @un = ENV["SAUCE_USERNAME"]
+        ENV.delete "SAUCE_USERNAME"
+        
+        spec.run
+
+        ENV["SAUCE_USERNAME"] = @un
+      end
+
+      it {is_expected.to raise_exception}
+    end  
   end
 
   describe "##password" do
     subject {SauceWhisk.password}
     it {should eq ENV["SAUCE_ACCESS_KEY"]}
+
+    describe "when empty" do
+      subject {lambda {SauceWhisk.password}}
+
+      around do |spec|
+        @pw = ENV["SAUCE_ACCESS_KEY"]
+        ENV.delete "SAUCE_ACCESS_KEY"
+        
+        spec.run
+
+        ENV["SAUCE_ACCESS_KEY"] = @pw
+      end
+
+      it {is_expected.to raise_exception}
+    end  
   end
 
   describe "##pass_job" do
