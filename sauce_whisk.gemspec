@@ -1,9 +1,11 @@
+STDERR.puts "Reading Gemspec File"
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'sauce_whisk/version'
 
 Gem::Specification.new do |gem|
+  STDERR.puts "Gemspec evaluating"
   gem.name        = 'sauce_whisk'
   gem.version     = SauceWhisk::VERSION
   gem.authors     = ['Dylan Lacey']
@@ -26,3 +28,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rspec', '~> 3.3.0'
   gem.add_development_dependency 'rake', '~> 10.4.2'
 end
+
+STDERR.puts "Gemspec read"

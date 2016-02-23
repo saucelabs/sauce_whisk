@@ -1,3 +1,4 @@
+STDERR.puts "Evaluating spec_helper.rb"
 require "psych"
 require "sauce_whisk"
 require "webmock/rspec"

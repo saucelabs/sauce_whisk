@@ -1,3 +1,4 @@
+STDERR.puts "Evaluating Rakefile"
 require 'rspec/core/rake_task'
 
 Bundler::GemHelper.install_tasks
@@ -11,5 +12,7 @@ begin
 
   task :default => :spec
 rescue LoadError
+  STDERR.puts "No Rake In Raketask"
   # No Rspec here
 end
+STDERR.puts "Rakefile evaluated"
