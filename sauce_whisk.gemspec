@@ -27,6 +27,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'webmock', '~> 1.21.0'
   gem.add_development_dependency 'rspec', '~> 3.3.0'
   gem.add_development_dependency 'rake', '~> 10.4.2'
+  STDERR.puts "Gemspec Evaluated"
 end
-
-STDERR.puts "Gemspec read"
