@@ -1,4 +1,8 @@
 # Major Version 0
+###
+* ArgumentError will now be thrown if the gem can't find a Username or Access Key
+* Jobs.fetch no longer swallows RestClient errors _unless_ specifically caused by a job not being finished.
+
 ### 0.0.19
 * You can now configure SauceWhisk.username and SauceWhisk.access_key.  These values override all other configuration settings
 * Removed Content-Type header from PUT commands as per documentation
