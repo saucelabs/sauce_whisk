@@ -41,12 +41,15 @@ module SauceWhisk
     end
 
     def self.fetch(job_id)
-      job_hash = JSON.parse(get job_id)
-      assets = job_assets job_id
-      job_hash.merge! assets
-    rescue SauceWhisk::JobNotComplete
-      # Always succeed
-    ensure
+      job_hash = {}
+      begin
+        job_hash = JSON.parse(get job_id)
+        assets = job_assets job_id
+        job_hash.merge! assets
+      rescue SauceWhisk::JobNotComplete
+        # Always succeed
+      end
+
       return Job.new(job_hash)
     end
 
