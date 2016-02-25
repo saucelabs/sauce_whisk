@@ -1,5 +1,9 @@
 # Major Version 0
-###
+### 0.0.21
+* Jobs.fetch will now _actually_ not swallow RestClient errors
+* Gem should be faster to install; Test files are no longer included which means no waiting to download fixtures.
+
+### 0.0.20
 * ArgumentError will now be thrown if the gem can't find a Username or Access Key
 * Jobs.fetch no longer swallows RestClient errors _unless_ specifically caused by a job not being finished.
 
