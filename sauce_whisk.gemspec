@@ -12,9 +12,8 @@ Gem::Specification.new do |gem|
   gem.summary     = "Sauce_Whisk lets you mix extra data into your Sauce test results!\nFetch and update Job details, screenshots, videos and logs."
   gem.homepage    = 'http://www.github.com/dylanlacey/sauce_whisk'
 
-  gem.files         = `git ls-files`.split($/)
+  gem.files         = `git ls-files`.split($/).reject { |e| /spec/.match e }
   gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
   gem.license = 'MIT'
