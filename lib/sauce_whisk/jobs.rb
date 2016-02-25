@@ -75,10 +75,11 @@ module SauceWhisk
 
       {"screenshot_urls" => screenshots}
     rescue RestClient::BadRequest => e
-      SauceWhisk.logger.debug("Exception fetching assets: #{e}")
       if (/Job hasn't finished running/.match e.response)
+        SauceWhisk.logger.debug("Exception fetching assets: #{e.message} - #{e.response}")
         raise SauceWhisk::JobNotComplete
       else
+        SauceWhisk.logger.error("Exception fetching assets: #{e.message} - #{e.response}")
         raise e
       end
     end
