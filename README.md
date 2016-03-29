@@ -341,6 +341,14 @@ Upload a file.
 storage.upload '/tmp/sauce/test.zip'
 ```
 
+## Troubleshooting
+### SSL Problems
+#### SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (RestClient::SSLCertificateNotVerified)
+
+This error is often thrown when you are missing certs.  Many thanks to Greg Sypolt who discovered that one possibe cause is:
+
+_Ruby 2.2.1 comes packaged with a bad cert since OpenSSL is deprecated in Apple. It doesn't get updated by default with homebrew. This link https://github.com/google/google-api-ruby-client/issues/253 shows you how to fix the SSL issue for 2.2.1 and by moving to 2.2.3 it suppose to be fixed. I upgraded my local and Jenkins to use Ruby 2.2.3 and OpenSSL issues no longer exists._
+
 ## Contributing
 
 1. Fork the [sauce-labs version](https://github.com/saucelabs/sauce_whisk) of this repository
