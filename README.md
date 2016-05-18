@@ -24,7 +24,7 @@ We recommend setting a hard version for now, as the gem is still kinda beta-y.
 
 ## Configuration
 
-You'll need a [Sauce Labs account](http://wwww.saucelabs.com/signup).  They're free to try and, if you're an open source project, [your access is always free](http://saucelabs.com/opensauce).
+You'll need a [Sauce Labs account](http://www.saucelabs.com/signup).  They're free to try and, if you're an open source project, [your access is always free](http://saucelabs.com/opensauce).
 
 ### Values
 | Value | ENV Variable | Meaning |
