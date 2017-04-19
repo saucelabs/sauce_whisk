@@ -31,7 +31,7 @@ describe SauceWhisk::Job do
 
     it "sets parameters at init" do
       params.each do |k,v|
-        subject.send(k).should eq v
+        expect(subject.send(k)).to eq v
       end
     end
 
@@ -81,7 +81,7 @@ describe SauceWhisk::Job do
         [:name, :build, :passed, :tags, :custom_data, :visibility].each do |param|
           changed_value = "Changed#{param}"
           subject.send("#{param}=", changed_value)
-          subject.send(param).should eq changed_value
+          expect(subject.send(param)).to eq changed_value
         end
       end
 
@@ -91,7 +91,7 @@ describe SauceWhisk::Job do
         ].each do |param|
           expect {
             subject.send("#{param}=", "TOTALLYDIFFERENT")
-          }.to raise_exception
+          }.to raise_exception NoMethodError
 
           expect( subject.send(param) ).not_to eq "TOTALLYDIFFERENT"
         end

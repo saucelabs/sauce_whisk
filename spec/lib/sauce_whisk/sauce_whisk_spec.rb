@@ -23,7 +23,7 @@ describe SauceWhisk do
         ENV["SAUCE_USERNAME"] = @un
       end
 
-      it {is_expected.to raise_exception}
+      it {is_expected.to raise_exception ArgumentError}
     end  
   end
 
@@ -43,7 +43,7 @@ describe SauceWhisk do
         ENV["SAUCE_ACCESS_KEY"] = @pw
       end
 
-      it {is_expected.to raise_exception}
+      it {is_expected.to raise_exception ArgumentError}
     end  
   end
 

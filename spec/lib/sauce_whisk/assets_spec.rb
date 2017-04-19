@@ -15,7 +15,7 @@ describe SauceWhisk::Assets do
     end
 
     it "returns an asset" do
-      SauceWhisk::Assets.fetch(job_id, asset_name).should be_an_instance_of SauceWhisk::Asset
+      expect(SauceWhisk::Assets.fetch(job_id, asset_name)).to be_an_instance_of SauceWhisk::Asset
     end
 
     it "initializes the asset properly" do
@@ -39,7 +39,7 @@ describe SauceWhisk::Assets do
       let(:slow_job_id) {"n0th3r3y3t"}
 
       it "returns the asset" do
-        SauceWhisk::Assets.fetch(slow_job_id, asset_name).should be_an_instance_of SauceWhisk::Asset
+        expect(SauceWhisk::Assets.fetch(slow_job_id, asset_name)).to be_an_instance_of SauceWhisk::Asset
       end
     end
   end
@@ -47,14 +47,14 @@ describe SauceWhisk::Assets do
   describe "#delete", :vcr => {:cassette_name => "assets"} do
     let(:asset_job_id) {"f7bcec8f706f4910ba128f48e0b8c6c7"}
     it "can delete a job" do
-      SauceWhisk::Assets.delete(asset_job_id).should be_an_instance_of SauceWhisk::Asset
+      expect(SauceWhisk::Assets.delete(asset_job_id)).to be_an_instance_of SauceWhisk::Asset
     end
   end
   
   describe "#already_deleted_asset", :vcr => {:cassette_name => "assets"} do
     let(:asset_job_id) {"651c7d737b7547e994678d981dcc433c"}
     it "returns nil for already deleted assets" do
-      SauceWhisk::Assets.delete(asset_job_id).should be_an_instance_of SauceWhisk::Asset
+      expect(SauceWhisk::Assets.delete(asset_job_id)).to be_an_instance_of SauceWhisk::Asset
     end
   end
 

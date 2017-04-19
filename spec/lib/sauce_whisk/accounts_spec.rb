@@ -48,15 +48,15 @@ describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts", :match_req
 
     it "returns concurrencies with altered names" do
       expected_hash = {:mac_concurrency => 5, :total_concurrency => 20}
-      SauceWhisk::Accounts.concurrency_for(ENV["SAUCE_USERNAME"]).should eq expected_hash
+      expect(SauceWhisk::Accounts.concurrency_for(ENV["SAUCE_USERNAME"])).to eq expected_hash
     end
 
     it "returns just mac as an integer when requested" do
-      SauceWhisk::Accounts.concurrency_for(ENV["SAUCE_USERNAME"], :mac).should eq 5
+      expect(SauceWhisk::Accounts.concurrency_for(ENV["SAUCE_USERNAME"], :mac)).to eq 5
     end
 
     it "returns just the total as an integer when requested" do
-      SauceWhisk::Accounts.concurrency_for(ENV["SAUCE_USERNAME"], :total).should eq 20
+      expect(SauceWhisk::Accounts.concurrency_for(ENV["SAUCE_USERNAME"], :total)).to eq 20
     end
   end
 
