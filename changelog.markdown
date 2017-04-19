@@ -1,4 +1,7 @@
 # Major Version 0
+### 0.0.22
+* Looser version requirements (thanks @jeremy)
+
 ### 0.0.21
 * Jobs.fetch will now _actually_ not swallow RestClient errors
 * Gem should be faster to install; Test files are no longer included which means no waiting to download fixtures.
