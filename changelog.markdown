@@ -1,4 +1,8 @@
 # Major Version 0
+## Minor Version 0.1
+### 0.1.0
+* Update REST_CLIENT and JSON libraries to allow them to place nicer with Ruby 2.4.x
+
 ### 0.0.22
 * Looser version requirements (thanks @jeremy)
 
