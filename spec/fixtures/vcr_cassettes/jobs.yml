@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs
     body:
       encoding: US-ASCII
       string: ''
@@ -13,6 +13,8 @@ http_interactions:
       - gzip, deflate
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 200
@@ -94,7 +96,7 @@ http_interactions:
   recorded_at: Fri, 24 May 2013 06:13:22 GMT
 - request:
     method: put
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/bd9c43dd6b5549f1b942d1d581d98cac
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/bd9c43dd6b5549f1b942d1d581d98cac
     body:
       encoding: UTF-8
       string: '{"passed":true}'
@@ -107,6 +109,8 @@ http_interactions:
       - '15'
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 200
@@ -146,7 +150,7 @@ http_interactions:
   recorded_at: Fri, 24 May 2013 06:13:24 GMT
 - request:
     method: get
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/bd9c43dd6b5549f1b942d1d581d98cac
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/bd9c43dd6b5549f1b942d1d581d98cac
     body:
       encoding: US-ASCII
       string: ''
@@ -157,6 +161,8 @@ http_interactions:
       - gzip, deflate
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 200
@@ -196,7 +202,7 @@ http_interactions:
   recorded_at: Fri, 24 May 2013 06:13:25 GMT
 - request:
     method: get
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/bd9c43dd6b5549f1b942d1d581d98cac/assets
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/bd9c43dd6b5549f1b942d1d581d98cac/assets
     body:
       encoding: US-ASCII
       string: ''
@@ -207,6 +213,8 @@ http_interactions:
       - gzip, deflate
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 200
@@ -242,7 +250,7 @@ http_interactions:
   recorded_at: Fri, 24 May 2013 06:13:26 GMT
 - request:
     method: put
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/job_id/stop
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/job_id/stop
     body:
       encoding: ASCII-8BIT
       string: ''
@@ -257,6 +265,8 @@ http_interactions:
       - application/x-www-form-urlencoded
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 404
@@ -292,7 +302,7 @@ http_interactions:
   recorded_at: Mon, 10 Jun 2013 07:21:54 GMT
 - request:
     method: put
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/986bafd435c341b7bf8a1ee995606183/stop
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/986bafd435c341b7bf8a1ee995606183/stop
     body:
       encoding: ASCII-8BIT
       string: ''
@@ -307,6 +317,8 @@ http_interactions:
       - application/x-www-form-urlencoded
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 404
@@ -342,7 +354,7 @@ http_interactions:
   recorded_at: Mon, 10 Jun 2013 07:37:09 GMT
 - request:
     method: put
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/3edc8fe6d52645bf931b1003da65af1f/stop
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/3edc8fe6d52645bf931b1003da65af1f/stop
     body:
       encoding: ASCII-8BIT
       string: ''
@@ -357,6 +369,8 @@ http_interactions:
       - application/x-www-form-urlencoded
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 200
@@ -396,7 +410,7 @@ http_interactions:
   recorded_at: Mon, 10 Jun 2013 07:38:46 GMT
 - request:
     method: put
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/9591ce8519f043f8b3bea0462923c883/stop
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/9591ce8519f043f8b3bea0462923c883/stop
     body:
       encoding: ASCII-8BIT
       string: ''
@@ -411,6 +425,8 @@ http_interactions:
       - application/x-www-form-urlencoded
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 200
@@ -450,7 +466,7 @@ http_interactions:
   recorded_at: Mon, 10 Jun 2013 08:05:32 GMT
 - request:
     method: put
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/dsfargeg/stop
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/dsfargeg/stop
     body:
       encoding: ASCII-8BIT
       string: ''
@@ -465,6 +481,8 @@ http_interactions:
       - application/x-www-form-urlencoded
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 404
@@ -500,7 +518,7 @@ http_interactions:
   recorded_at: Mon, 10 Jun 2013 08:54:49 GMT
 - request:
     method: get
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/1ca64b180cfa40e0a4aee5a4a482f271/assets
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/1ca64b180cfa40e0a4aee5a4a482f271/assets
     body:
       encoding: US-ASCII
       string: ''
@@ -511,6 +529,8 @@ http_interactions:
       - gzip, deflate
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 400
@@ -534,7 +554,7 @@ http_interactions:
   recorded_at: Fri, 11 Jul 2014 04:53:50 GMT
 - request:
     method: get
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/1ca64b180cfa40e0a4aee5a4a482f271/assets
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/1ca64b180cfa40e0a4aee5a4a482f271/assets
     body:
       encoding: US-ASCII
       string: ''
@@ -545,6 +565,8 @@ http_interactions:
       - gzip, deflate
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 200
@@ -574,7 +596,7 @@ http_interactions:
   recorded_at: Fri, 11 Jul 2014 04:59:18 GMT
 - request:
     method: get
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/1ca64b180cfa40e0a4aee5a4a482f271
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/jobs/1ca64b180cfa40e0a4aee5a4a482f271
     body:
       encoding: US-ASCII
       string: ''
@@ -585,6 +607,8 @@ http_interactions:
       - gzip, deflate
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 200

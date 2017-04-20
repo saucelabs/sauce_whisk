@@ -72,7 +72,7 @@ describe SauceWhisk::Job do
 
       it "Calls the correct REST API method", :vcr => {:cassette_name => "jobs"} do
         subject.stop
-        assert_requested :put, "https://#{user}:#{ENV["SAUCE_ACCESS_KEY"]}@saucelabs.com/rest/v1/#{user}/jobs/#{subject.id}/stop"
+        assert_requested :put, "https://saucelabs.com/rest/v1/#{user}/jobs/#{subject.id}/stop", :headers => basic_auth
       end
     end
 

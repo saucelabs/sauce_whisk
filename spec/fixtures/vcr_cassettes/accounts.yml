@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/users/<SAUCE_USERNAME>
+    uri: https://saucelabs.com/rest/v1/users/<SAUCE_USERNAME>
     body:
       encoding: US-ASCII
       string: ''
@@ -13,6 +13,8 @@ http_interactions:
       - gzip, deflate
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 200
@@ -47,7 +49,7 @@ http_interactions:
   recorded_at: Mon, 17 Jun 2013 12:30:46 GMT
 - request:
     method: get
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/limits
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/limits
     body:
       encoding: US-ASCII
       string: ''
@@ -58,6 +60,8 @@ http_interactions:
       - gzip, deflate
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 200
@@ -91,7 +95,7 @@ http_interactions:
   recorded_at: Mon, 17 Jun 2013 12:30:47 GMT
 - request:
     method: post
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/users/<SAUCE_USERNAME>
+    uri: https://saucelabs.com/rest/v1/users/<SAUCE_USERNAME>
     body:
       encoding: UTF-8
       string: '{"username":"newsub77","password":"davesdisease","name":"Manny","email":"Manny@blackbooks.co.uk"}'
@@ -104,6 +108,8 @@ http_interactions:
       - '97'
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 201
@@ -140,7 +146,7 @@ http_interactions:
   recorded_at: Wed, 28 Aug 2013 21:04:45 GMT
 - request:
     method: post
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/users/<SAUCE_USERNAME>
+    uri: https://saucelabs.com/rest/v1/users/<SAUCE_USERNAME>
     body:
       encoding: UTF-8
       string: '{"username":"duplicate","password":"davesdisease","name":"Manny","email":"Manny@blackbooks.co.uk"}'
@@ -153,6 +159,8 @@ http_interactions:
       - '98'
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 400
@@ -188,7 +196,7 @@ http_interactions:
   recorded_at: Thu, 29 Aug 2013 01:23:06 GMT
 - request:
     method: post
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/users/<SAUCE_USERNAME>
+    uri: https://saucelabs.com/rest/v1/users/<SAUCE_USERNAME>
     body:
       encoding: UTF-8
       string: '{"username":"toomany","password":"davesdisease","name":"Manny","email":"Manny@blackbooks.co.uk"}'
@@ -201,6 +209,8 @@ http_interactions:
       - '96'
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 400
@@ -236,7 +246,7 @@ http_interactions:
   recorded_at: Thu, 29 Aug 2013 01:24:25 GMT
 - request:
     method: post
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/users/<SAUCE_USERNAME>
+    uri: https://saucelabs.com/rest/v1/users/<SAUCE_USERNAME>
     body:
       encoding: UTF-8
       string: '{"username":"deeptree","password":"davesdisease","name":"Manny","email":"Manny@blackbooks.co.uk"}'
@@ -249,6 +259,8 @@ http_interactions:
       - '96'
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 400
@@ -284,7 +296,7 @@ http_interactions:
   recorded_at: Thu, 29 Aug 2013 01:24:25 GMT
 - request:
     method: post
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/users/nopenotaperson
+    uri: https://saucelabs.com/rest/v1/users/nopenotaperson
     body:
       encoding: UTF-8
       string: '{"username":"deeptree","password":"davesdisease","name":"Manny","email":"Manny@blackbooks.co.uk"}'
@@ -297,6 +309,8 @@ http_interactions:
       - '97'
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 404
@@ -332,7 +346,7 @@ http_interactions:
   recorded_at: Fri, 30 Aug 2013 01:51:08 GMT
 - request:
     method: get
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/users/IDontExist
+    uri: https://saucelabs.com/rest/v1/users/IDontExist
     body:
       encoding: US-ASCII
       string: ''
@@ -343,6 +357,8 @@ http_interactions:
       - gzip, deflate
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 404

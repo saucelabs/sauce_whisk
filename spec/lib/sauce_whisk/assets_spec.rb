@@ -11,7 +11,7 @@ describe SauceWhisk::Assets do
     it "fetches an asset for the requested job" do
       SauceWhisk::Assets.fetch job_id, asset_name
 
-      assert_requested :get, "https://#{auth}@saucelabs.com/rest/v1/#{user}/jobs/#{job_id}/assets/#{asset_name}"
+      assert_requested :get, "https://saucelabs.com/rest/v1/#{user}/jobs/#{job_id}/assets/#{asset_name}", :headers => basic_auth
     end
 
     it "returns an asset" do

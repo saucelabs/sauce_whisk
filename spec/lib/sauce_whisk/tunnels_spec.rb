@@ -7,7 +7,7 @@ describe SauceWhisk::Tunnels, :vcr => {:cassette_name => "tunnels"} do
   describe "##all" do
     it "lists all tunnels a user has open" do
       SauceWhisk::Tunnels.all
-      assert_requested :get, "https://#{auth}@saucelabs.com/rest/v1/#{user}/tunnels"
+      assert_requested :get, "https://saucelabs.com/rest/v1/#{user}/tunnels", :headers => basic_auth
     end
 
     it "returns nothing when no tunnels are found", :vcr => {:cassette_name => "no_tunnels", :exclusive => true} do
@@ -36,7 +36,7 @@ describe SauceWhisk::Tunnels, :vcr => {:cassette_name => "tunnels"} do
     let(:job_id) {"fcf7b980037b4a37aa5ff19808e46da7"}
     it "fetches a single instance of a tunnel" do
       SauceWhisk::Tunnels.fetch job_id
-      assert_requested :get, "https://#{auth}@saucelabs.com/rest/v1/#{user}/tunnels/#{job_id}"
+      assert_requested :get, "https://saucelabs.com/rest/v1/#{user}/tunnels/#{job_id}", :headers => basic_auth
     end
 
     it "returns instances of Tunnel" do
@@ -53,7 +53,7 @@ describe SauceWhisk::Tunnels, :vcr => {:cassette_name => "tunnels"} do
     it "calls the correct API method" do
       tunnel_id = "7a4815f52407435581517ffd4d71c3a7"
       SauceWhisk::Tunnels.stop tunnel_id
-      assert_requested :delete, "https://#{auth}@saucelabs.com/rest/v1/#{user}/tunnels/#{tunnel_id}"
+      assert_requested :delete, "https://saucelabs.com/rest/v1/#{user}/tunnels/#{tunnel_id}", :headers => basic_auth
     end
   end
 
@@ -61,7 +61,7 @@ describe SauceWhisk::Tunnels, :vcr => {:cassette_name => "tunnels"} do
     let(:params) {{:tunnel_identifier => "bees", :ssh_port => 9123, :use_caching_proxy => false, :use_kgp => true}}
     it "calls the correct API method" do
       SauceWhisk::Tunnels.open params
-      assert_requested(:post, "https://#{auth}@saucelabs.com/rest/v1/#{user}/tunnels",:body => params.to_json)
+      assert_requested :post, "https://saucelabs.com/rest/v1/#{user}/tunnels",:body => params.to_json, :headers => basic_auth
     end
 
     it "returns an instance of tunnel" do
@@ -79,7 +79,7 @@ describe SauceWhisk::Tunnels, :vcr => {:cassette_name => "tunnels"} do
         t_id = requested_tunnel.id
 
         # There are 3 failing and 1 passing examples in the fixture
-        assert_requested :get, "https://#{auth}@saucelabs.com/rest/v1/#{user}/tunnels/#{t_id}", :times => 4
+        assert_requested :get, "https://saucelabs.com/rest/v1/#{user}/tunnels/#{t_id}", :headers => basic_auth, :times => 4
       end
 
       it "throws an exception if the timeout is exceeded" do

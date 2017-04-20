@@ -6,7 +6,7 @@ describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts", :match_req
   describe "#fetch" do
     it "fetches the passed in account" do
       SauceWhisk::Accounts.fetch ENV["SAUCE_USERNAME"]
-      assert_requested :get, "https://#{auth}@saucelabs.com/rest/v1/users/#{ENV["SAUCE_USERNAME"]}"
+      assert_requested :get, "https://saucelabs.com/rest/v1/users/#{ENV["SAUCE_USERNAME"]}", :headers => basic_auth
     end
 
     it "returns an Account object" do
@@ -20,14 +20,14 @@ describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts", :match_req
 
     it "includes the concurrency by default" do
       account = SauceWhisk::Accounts.fetch ENV["SAUCE_USERNAME"]
-      assert_requested :get, "https://#{auth}@saucelabs.com/rest/v1/#{ENV["SAUCE_USERNAME"]}/limits"
+      assert_requested :get, "https://saucelabs.com/rest/v1/#{ENV["SAUCE_USERNAME"]}/limits", :headers => basic_auth
       expect( account.total_concurrency ).to eq 20
       expect( account.mac_concurrency ).to eq 5
     end
 
     it "should not include concurrency when conservative is set to false" do
       account = SauceWhisk::Accounts.fetch(ENV["SAUCE_USERNAME"], false)
-      assert_not_requested :get, "https://#{auth}@saucelabs.com/rest/v1/#{ENV["SAUCE_USERNAME"]}/limits"
+      assert_not_requested :get, "https://saucelabs.com/rest/v1/#{ENV["SAUCE_USERNAME"]}/limits", :headers => basic_auth
       expect( account.total_concurrency ).to be_nil
     end
 
@@ -43,7 +43,7 @@ describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts", :match_req
   describe "#concurrency_for" do
     it "fetches the concurrency for the passed in account" do
       SauceWhisk::Accounts.concurrency_for ENV["SAUCE_USERNAME"]
-      assert_requested :get, "https://#{auth}@saucelabs.com/rest/v1/#{ENV["SAUCE_USERNAME"]}/limits"
+      assert_requested :get, "https://saucelabs.com/rest/v1/#{ENV["SAUCE_USERNAME"]}/limits", :headers => basic_auth
     end
 
     it "returns concurrencies with altered names" do
@@ -75,7 +75,8 @@ describe SauceWhisk::Accounts, :vcr => {:cassette_name => "accounts", :match_req
           "Manny", "newsub77", "Manny@blackbooks.co.uk", "davesdisease")
 
       assert_requested(:post,
-        "https://#{auth}@saucelabs.com/rest/v1/users/#{ENV["SAUCE_USERNAME"]}",
+        "https://saucelabs.com/rest/v1/users/#{ENV["SAUCE_USERNAME"]}",
+        :headers => basic_auth,
         :body => params.to_json
       )
     end

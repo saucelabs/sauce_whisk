@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels
     body:
       encoding: US-ASCII
       string: ''
@@ -13,6 +13,8 @@ http_interactions:
       - gzip, deflate
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 200

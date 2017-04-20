@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels
     body:
       encoding: UTF-8
       string: '{"tunnel_identifier":"KarlMarx"}'
@@ -15,6 +15,8 @@ http_interactions:
       - '85'
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 200
@@ -92,7 +94,7 @@ http_interactions:
   recorded_at: Tue, 30 Jul 2013 08:46:35 GMT
 - request:
     method: get
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels/4824d6b282e04d1184daff5401a52e1e
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels/4824d6b282e04d1184daff5401a52e1e
     body:
       encoding: US-ASCII
       string: ''
@@ -103,6 +105,8 @@ http_interactions:
       - gzip, deflate
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 200
@@ -176,7 +180,7 @@ http_interactions:
   recorded_at: Thu, 01 Aug 2013 03:28:18 GMT
 - request:
     method: get
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels/4824d6b282e04d1184daff5401a52e1e
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels/4824d6b282e04d1184daff5401a52e1e
     body:
       encoding: US-ASCII
       string: ''
@@ -187,6 +191,8 @@ http_interactions:
       - gzip, deflate
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 200
@@ -260,7 +266,7 @@ http_interactions:
   recorded_at: Thu, 01 Aug 2013 06:31:36 GMT
 - request:
     method: get
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels/4824d6b282e04d1184daff5401a52e1e
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels/4824d6b282e04d1184daff5401a52e1e
     body:
       encoding: US-ASCII
       string: ''
@@ -271,6 +277,8 @@ http_interactions:
       - gzip, deflate
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 200
@@ -344,7 +352,7 @@ http_interactions:
   recorded_at: Thu, 01 Aug 2013 06:32:36 GMT
 - request:
     method: get
-    uri: https://<SAUCE_USERNAME>:<SAUCE_ACCESS_KEY>@saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels/4824d6b282e04d1184daff5401a52e1e
+    uri: https://saucelabs.com/rest/v1/<SAUCE_USERNAME>/tunnels/4824d6b282e04d1184daff5401a52e1e
     body:
       encoding: US-ASCII
       string: ''
@@ -355,6 +363,8 @@ http_interactions:
       - gzip, deflate
       User-Agent:
       - Ruby
+      Authorization:
+      - <basic_auth_string>
   response:
     status:
       code: 200
