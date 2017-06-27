@@ -110,20 +110,9 @@ module SauceWhisk
   end
 
   def self.load_first_found(key)
-    value = self.instance_variable_get "@#{key}".to_sym
-
-    unless value
-      value = ::Sauce::Config.new[key] if defined? ::Sauce
-    end
-
-    value = self.from_yml(key) unless value
-    
-    unless value
-      env_key = "SAUCE_#{key.to_s.upcase}" 
-      value = ENV[env_key]
-    end
-    
-    return value
+    self.instance_variable_get("@#{key}".to_sym) ||
+                                   self.from_yml(key) ||
+                                   ENV["SAUCE_#{key.to_s.upcase}"]
   end
 
   class JobNotComplete < StandardError
