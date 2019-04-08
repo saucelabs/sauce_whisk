@@ -1,4 +1,10 @@
 # Major Version 0
+## Minor Version 0.2
+### 0.2.0
+* Added the ability to select between US & EU VDC
+* Made US VDC the default endpoint
+* Added Deprecation warning for using the default endpoint instead of specifying it
+
 ## Minor Version 0.1
 ### 0.1.0
 * Update REST_CLIENT and JSON libraries to allow them to place nicer with Ruby 2.4.x
