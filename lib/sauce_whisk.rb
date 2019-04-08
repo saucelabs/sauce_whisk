@@ -14,7 +14,7 @@ require 'logger'
 module SauceWhisk
 
   def self.base_url
-    "https://saucelabs.com/rest/v1"
+    data_center == :US_VDC ? "https://saucelabs.com/rest/v1" : "https://eu-central-1.saucelabs.com/rest/v1"
   end
 
   def self.username= username
@@ -65,6 +65,35 @@ module SauceWhisk
 
     return retries.to_i if retries
     return 1
+  end
+
+  def self.data_center
+    configured_dc = self.load_first_found(:data_center)
+    
+    if configured_dc.nil?
+      logger.warn "[DEPRECATED] You have not selected a REST API Endpoint - using US by default. This behaviour is deprecated and will be removed in an upcoming version. Please select a data center as described here: https://github.com/saucelabs/sauce_whisk#data-center"
+      configured_dc = :US_VDC
+    end
+
+    validated_dc = validate_dc configured_dc
+    validated_dc
+  end
+
+  def self.data_center= dc
+    @data_center = validate_dc dc
+  end
+
+  def self.validate_dc dc
+    dc = :eu_vdc if dc == :eu
+    dc = :us_vdc if dc == :us
+
+    ucdc = dc.to_s.upcase.to_sym
+
+    if ![:EU_VDC, :US_VDC].include? ucdc
+      raise ::ArgumentError.new("Invalid data center requested: #{ucdc}.  Value values are :eu_vdc and :us_vdc.")
+    end
+
+    @data_center = ucdc
   end
 
   def self.pass_job(job_id)

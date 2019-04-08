@@ -27,7 +27,10 @@ We recommend setting a hard version for now, as the gem is still kinda beta-y.
 You'll need a [Sauce Labs account](http://www.saucelabs.com/signup).  They're free to try and, if you're an open source project, [your access is always free](http://saucelabs.com/opensauce).
 
 ## Data Center
-By default, the gem tries to access the US data center. If your user account is located in the EU, you'll need to select the EU DC, by setting the `data_center` value to `:EU`.  The default value is `:US`
+As Sauce Labs now has two data centers, you'll need to select the DC your account is located in.
+
+Choose `:EU_VDC` for the European Data Center.
+Choose `:US_VDC` for the US Data Center.
 
 Read more about the data center options [here](https://wiki.saucelabs.com/display/DOCS/Accessing+the+API).
 
