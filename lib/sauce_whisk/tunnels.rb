@@ -49,7 +49,7 @@ module SauceWhisk
   end
 
   class Tunnel
-    attr_reader :id, :owner, :status, :host, :creation_time, :ssh_port
+    attr_reader :id, :owner, :status, :host, :creation_time, :ssh_port, :tunnel_identifier
 
     def initialize(params)
       params.each do |param, val|

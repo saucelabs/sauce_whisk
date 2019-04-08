@@ -6,7 +6,8 @@ describe SauceWhisk::Tunnel do
     :owner  => "test_user",
     :status => "open",
     :host => "yacko.wacko.dot",
-    :creation_time => Time.now
+    :creation_time => Time.now,
+    :tunnel_identifier => "tunnel_identifier"
   }}
 
   describe "#new" do
@@ -17,6 +18,7 @@ describe SauceWhisk::Tunnel do
       expect( tunnel.status ).to eq "open"
       expect( tunnel.host ).to eq "yacko.wacko.dot"
       expect( tunnel.creation_time ).to eq params[:creation_time]
+      expect( tunnel.tunnel_identifier ).to eq params[:tunnel_identifier]
     end
   end
 
