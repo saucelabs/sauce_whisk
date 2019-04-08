@@ -26,6 +26,11 @@ We recommend setting a hard version for now, as the gem is still kinda beta-y.
 
 You'll need a [Sauce Labs account](http://www.saucelabs.com/signup).  They're free to try and, if you're an open source project, [your access is always free](http://saucelabs.com/opensauce).
 
+## Data Center
+By default, the gem tries to access the US data center. If your user account is located in the EU, you'll need to select the EU DC, by setting the `data_center` value to `:EU`.  The default value is `:US`
+
+Read more about the data center options [here](https://wiki.saucelabs.com/display/DOCS/Accessing+the+API).
+
 ### Values
 | Value | ENV Variable | Meaning |
 |-------|--------------|---------|
@@ -33,13 +38,14 @@ You'll need a [Sauce Labs account](http://www.saucelabs.com/signup).  They're fr
 |:access\_key | SAUCE\_ACCESS\_KEY| Your Access Key, found on the lower left of your Account page (Not your password!) |
 |:asset\_fetch\_retries | SAUCE\_ASSET\_FETCH\_RETRY | Number of times to retry fetching assets | 
 |:rest_retries | SAUCE_REST_RETRIES | Number of times to try failing REST calls |
+|:data_center | SAUCE_DATA_CENTER | Which Data Center to access |
 
 
 ### Locations
 There are four ways to configure SauceWhisk.  The gem tries each of the following locations in turn.  Note, Environment Variables are the preferred means of setting configuration.
 
 #### Directly on the SauceWhisk object
-`username`, `access_key`, `asset_fetch_retries` and `rest_retries` can be set directly on the SauceWhisk object:
+`username`, `access_key`, `asset_fetch_retries`, `rest_retries` and `data_center` can be set directly on the SauceWhisk object:
 ```ruby
 SauceWhisk.username = 'some_rad_tester'
 SauceWhisk.asset_fetch_retries = 5
