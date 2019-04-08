@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email       = ['github@dylanlacey.com']
   gem.description = 'A Wrapper for the Sauce Labs REST API.'
   gem.summary     = "Sauce_Whisk lets you mix extra data into your Sauce test results!\nFetch and update Job details, screenshots, videos and logs."
-  gem.homepage    = 'http://www.github.com/dylanlacey/sauce_whisk'
+  gem.homepage    = 'http://www.github.com/saucelabs/sauce_whisk'
 
   gem.files         = `git ls-files`.split($/).reject { |e| /spec/.match e }
   gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
