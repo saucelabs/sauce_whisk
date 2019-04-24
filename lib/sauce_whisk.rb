@@ -14,7 +14,16 @@ require 'logger'
 module SauceWhisk
 
   def self.base_url
-    data_center == :US_VDC ? "https://saucelabs.com/rest/v1" : "https://eu-central-1.saucelabs.com/rest/v1"
+    case data_center
+    when :US_WEST
+      "https://saucelabs.com/rest/v1"
+    when :US_EAST
+      "https://us-east-1.saucelabs.com/rest/v1"
+    when :EU_VDC
+      "https://eu-central-1.saucelabs.com/rest/v1"
+    else
+      raise ::ArgumentError.new "No Data Center Selected (Which should not happen?)"
+    end
   end
 
   def self.username= username
@@ -72,7 +81,7 @@ module SauceWhisk
     
     if configured_dc.nil?
       logger.warn "[DEPRECATED] You have not selected a REST API Endpoint - using US by default. This behaviour is deprecated and will be removed in an upcoming version. Please select a data center as described here: https://github.com/saucelabs/sauce_whisk#data-center"
-      configured_dc = :US_VDC
+      configured_dc = :US_WEST
     end
 
     validated_dc = validate_dc configured_dc
@@ -84,13 +93,14 @@ module SauceWhisk
   end
 
   def self.validate_dc dc
-    dc = :eu_vdc if dc == :eu
-    dc = :us_vdc if dc == :us
+    dc = :eu_vdc if dc.to_s.upcase.to_sym == :EU
+    dc = :us_west if dc.to_s.upcase.to_sym == :US
+    dc = :us_west if dc.to_s.upcase.to_sym == :US_VDC
 
     ucdc = dc.to_s.upcase.to_sym
 
-    if ![:EU_VDC, :US_VDC].include? ucdc
-      raise ::ArgumentError.new("Invalid data center requested: #{ucdc}.  Value values are :eu_vdc and :us_vdc.")
+    if ![:EU_VDC, :US_EAST, :US_WEST].include? ucdc
+      raise ::ArgumentError.new("Invalid data center requested: #{ucdc}.  Value values are :EU_VDC, :US_EAST and :US_WEST.")
     end
 
     @data_center = ucdc
