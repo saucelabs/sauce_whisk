@@ -30,7 +30,8 @@ You'll need a [Sauce Labs account](http://www.saucelabs.com/signup).  They're fr
 As Sauce Labs now has two data centers, you'll need to select the DC your account is located in.
 
 Choose `:EU_VDC` for the European Data Center.
-Choose `:US_VDC` for the US Data Center.
+Choose `:US_WEST` for the US West Coast Data Center.
+Choose `:US_EAST` for the US East Coast Data Center (currently only in use with Headless).
 
 Read more about the data center options [here](https://wiki.saucelabs.com/display/DOCS/Accessing+the+API).
 
@@ -56,6 +57,8 @@ SauceWhisk.asset_fetch_retries = 5
 
 #### The Sauce gem
 If you have the Sauce gem required, the SauceWhisk gem will try to read its configuration from the Sauce gem's configuration.
+
+NB: The Sauce gem is deprecated. We recommend using different configuration techniques.
 
 #### ondemand.yml
 If you have an ondemand.yml, the SauceWhisk gem will try to read its configuration from that file.  The locations the gem looks for a ondemand.yml are, in order:
