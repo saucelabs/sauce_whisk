@@ -1,1 +1,1 @@
-require 'sauce-whisk'
+require 'sauce_whisk'
