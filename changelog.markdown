@@ -1,9 +1,13 @@
 # Major Version 0
 ## Minor Version 0.2
+### 0.2.2
+* Fixed require in `lib\sauce-whisk` to refer to the correct file; Thanks @anthony-chu!
+
 ### 0.2.1
 * Added US_EAST option for headless
 * Changed preferred value from US_VDC to US_WEST. US_VDC wil continue to work.
 * @juandelgado added tunnel_identifier to Tunnels endpoint, closing #59; Thanks!
+
 ### 0.2.0
 * Added the ability to select between US & EU VDC
 * Made US VDC the default endpoint
