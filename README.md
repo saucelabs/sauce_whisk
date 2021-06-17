@@ -81,6 +81,9 @@ SAUCE_ACCESS_KEY=Your Access Key, found on the lower left of your Account page
 ### HTTP Proxies
 To configure a proxy, set the 'HTTP_PROXY' or 'http_proxy' environment variable.  Proxies need to be a valid URI; HTTP Authentication can be included.
 
+## Support
+For support, please visit [The Sauce Labs Community Hub](https://community.saucelabs.com)
+
 ## Usage
 
 ### Marking jobs passed or failed
