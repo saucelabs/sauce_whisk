@@ -32,6 +32,7 @@ As Sauce Labs now has two data centers, you'll need to select the DC your accoun
 Choose `:EU_VDC` for the European Data Center.
 Choose `:US_WEST` for the US West Coast Data Center.
 Choose `:US_EAST` for the US East Coast Data Center (currently only in use with Headless).
+Choose `:APAC` for the Australian Data Center.
 
 Read more about the data center options [here](https://wiki.saucelabs.com/display/DOCS/Accessing+the+API).
 

@@ -21,6 +21,8 @@ module SauceWhisk
       "https://us-east-1.saucelabs.com/rest/v1"
     when :EU_VDC
       "https://eu-central-1.saucelabs.com/rest/v1"
+    when :APAC
+      "https://apac-southeast-1.saucelabs.com/rest/v1"
     else
       raise ::ArgumentError.new "No Data Center Selected (Which should not happen?)"
     end
@@ -99,7 +101,7 @@ module SauceWhisk
 
     ucdc = dc.to_s.upcase.to_sym
 
-    if ![:EU_VDC, :US_EAST, :US_WEST].include? ucdc
+    if ![:EU_VDC, :US_EAST, :US_WEST, :APAC].include? ucdc
       raise ::ArgumentError.new("Invalid data center requested: #{ucdc}.  Value values are :EU_VDC, :US_EAST and :US_WEST.")
     end
 
