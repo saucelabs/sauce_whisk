@@ -154,7 +154,7 @@ module SauceWhisk
     value = self.instance_variable_get "@#{key}".to_sym
 
     unless value
-      value = ::Sauce::Config.new[key] if defined? ::Sauce
+      value = ::Sauce::Config.new[key] if defined? ::Sauce::Config
     end
 
     value = self.from_yml(key) unless value
