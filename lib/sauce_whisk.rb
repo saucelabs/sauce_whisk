@@ -141,7 +141,7 @@ module SauceWhisk
     ]
 
     paths.each do |path|
-      if File.exists? path
+      if File.exist? path
         conf = YAML.load_file(path)
         return conf.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
       end
